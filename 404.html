@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>404 — Page Not Found</title>
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+
+    background:#02130c;
+
+    color:#f2f7ef;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.error-page{
+
+    position:relative;
+
+    width:100%;
+    height:100vh;
+    height:100svh;
+
+    min-height:600px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    isolation:isolate;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 43%,
+            rgba(39,117,69,.16),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 50%,
+            #0a3020 0%,
+            #061f15 42%,
+            #03140d 76%,
+            #010a06 100%
+        );
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.background-glow{
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(87,190,105,.13) 0%,
+            rgba(39,125,68,.06) 28%,
+            transparent 68%
+        );
+
+    filter:blur(20px);
+
+    z-index:-6;
+
+    pointer-events:none;
+
+    animation:
+        backgroundPulse 5s ease-in-out infinite;
+}
+
+
+@keyframes backgroundPulse{
+
+    0%,
+    100%{
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+
+        opacity:.6;
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            scale(1.08);
+
+        opacity:1;
+    }
+}
+
+
+/* =========================================================
+   3D ORBIT SYSTEM
+========================================================= */
+
+.orbit-system{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:650px;
+    height:650px;
+
+    transform:
+        translate(-50%,-50%);
+
+    perspective:1000px;
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+
+.orbit{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(119,205,133,.12);
+
+    transform-style:preserve-3d;
+}
+
+
+.orbit-one{
+
+    width:100%;
+    height:30%;
+
+    transform:
+        translate(-50%,-50%)
+        rotateX(72deg);
+
+    animation:
+        orbitOne 7s linear infinite;
+}
+
+
+.orbit-two{
+
+    width:82%;
+    height:82%;
+
+    border-color:
+        rgba(92,181,110,.08);
+
+    transform:
+        translate(-50%,-50%)
+        rotateX(68deg)
+        rotateY(20deg);
+
+    animation:
+        orbitTwo 11s linear infinite;
+}
+
+
+.orbit-three{
+
+    width:48%;
+    height:100%;
+
+    border-color:
+        rgba(135,208,148,.07);
+
+    transform:
+        translate(-50%,-50%)
+        rotateY(72deg)
+        rotateZ(25deg);
+
+    animation:
+        orbitThree 9s linear infinite;
+}
+
+
+@keyframes orbitOne{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotateX(72deg)
+            rotateZ(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotateX(72deg)
+            rotateZ(360deg);
+    }
+}
+
+
+@keyframes orbitTwo{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotateX(68deg)
+            rotateY(20deg)
+            rotateZ(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotateX(68deg)
+            rotateY(20deg)
+            rotateZ(-360deg);
+    }
+}
+
+
+@keyframes orbitThree{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotateY(72deg)
+            rotateZ(25deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotateY(72deg)
+            rotateZ(385deg);
+    }
+}
+
+
+/* =========================================================
+   SUN WRAPPER
+========================================================= */
+
+.sun-wrapper{
+
+    position:absolute;
+
+    left:50%;
+    top:43%;
+
+    width:300px;
+    height:300px;
+
+    transform:
+        translate(-50%,-50%);
+
+    perspective:1000px;
+
+    z-index:1;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   SUN AURA
+========================================================= */
+
+.sun-aura{
+
+    position:absolute;
+
+    inset:-90px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(103,210,120,.14),
+            rgba(55,151,80,.07) 28%,
+            transparent 70%
+        );
+
+    filter:blur(12px);
+
+    animation:
+        auraBreath 3s ease-in-out infinite;
+}
+
+
+@keyframes auraBreath{
+
+    0%,
+    100%{
+        transform:scale(.88);
+        opacity:.6;
+    }
+
+    50%{
+        transform:scale(1.12);
+        opacity:1;
+    }
+}
+
+
+/* =========================================================
+   SUN RING
+========================================================= */
+
+.sun-ring{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:270px;
+    height:270px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(160,225,160,.18);
+
+    box-shadow:
+        0 0 35px rgba(82,190,104,.08),
+        inset 0 0 35px rgba(82,190,104,.06);
+
+    animation:
+        ringRotate 4s linear infinite;
+}
+
+
+.sun-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:18px;
+
+    border-radius:50%;
+
+    border:
+        1px dashed
+        rgba(147,220,149,.20);
+
+    animation:
+        innerRingRotate 2.7s linear infinite reverse;
+}
+
+
+.sun-ring::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:42px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(150,226,158,.12);
+
+    animation:
+        innerRingRotate 5s linear infinite;
+}
+
+
+@keyframes ringRotate{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+    }
+}
+
+
+@keyframes innerRingRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   MAIN SUN
+========================================================= */
+
+.sun-core{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:135px;
+    height:135px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle at 38% 32%,
+            #e0f7d0 0%,
+            #a8df98 10%,
+            #62bd70 26%,
+            #299557 49%,
+            #12663c 70%,
+            #06391f 100%
+        );
+
+    box-shadow:
+
+        0 0 15px
+        rgba(118,215,126,.9),
+
+        0 0 35px
+        rgba(76,191,103,.65),
+
+        0 0 75px
+        rgba(54,157,83,.42),
+
+        0 0 130px
+        rgba(35,116,61,.25),
+
+        inset
+        -18px -22px 30px
+        rgba(0,25,14,.35),
+
+        inset
+        15px 12px 25px
+        rgba(219,255,207,.18);
+
+    animation:
+        sunRotate 3s linear infinite,
+        sunFloat 2.6s ease-in-out infinite;
+
+    overflow:hidden;
+}
+
+
+.sun-core::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:55%;
+    height:150%;
+
+    left:-20%;
+    top:-25%;
+
+    transform:
+        rotate(25deg);
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(224,255,216,.28),
+            transparent
+        );
+
+    filter:blur(8px);
+
+    animation:
+        sunLightMove 1.8s linear infinite;
+}
+
+
+.sun-core::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:10px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(218,255,209,.18);
+
+    box-shadow:
+        inset
+        0 0 18px
+        rgba(0,40,20,.35);
+
+    animation:
+        coreDepth 2.2s ease-in-out infinite;
+}
+
+
+@keyframes sunRotate{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+    }
+}
+
+
+@keyframes sunFloat{
+
+    0%,
+    100%{
+        margin-top:0;
+        scale:1;
+    }
+
+    50%{
+        margin-top:-7px;
+        scale:1.035;
+    }
+}
+
+
+@keyframes sunLightMove{
+
+    0%{
+        left:-70%;
+    }
+
+    100%{
+        left:120%;
+    }
+}
+
+
+@keyframes coreDepth{
+
+    0%,
+    100%{
+        inset:10px;
+        opacity:.45;
+    }
+
+    50%{
+        inset:15px;
+        opacity:.9;
+    }
+}
+
+
+/* =========================================================
+   ORBIT LIGHTS
+========================================================= */
+
+.light-orbit{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:340px;
+    height:340px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    animation:
+        lightOrbit 2.8s linear infinite;
+}
+
+
+.light-orbit span{
+
+    position:absolute;
+
+    top:-3px;
+    left:50%;
+
+    width:6px;
+    height:6px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:50%;
+
+    background:#bcefb4;
+
+    box-shadow:
+        0 0 8px #8fdb91,
+        0 0 20px rgba(100,206,113,.8);
+}
+
+
+.light-orbit-two{
+
+    width:420px;
+    height:420px;
+
+    animation:
+        lightOrbitTwo 5s linear infinite reverse;
+}
+
+
+.light-orbit-two span{
+
+    width:4px;
+    height:4px;
+
+    background:#72c881;
+
+    box-shadow:
+        0 0 10px rgba(105,213,122,.9);
+}
+
+
+@keyframes lightOrbit{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+    }
+}
+
+
+@keyframes lightOrbitTwo{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   404 CONTENT
+========================================================= */
+
+.error-content{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    pointer-events:none;
+
+    margin-top:90px;
+
+    opacity:0;
+
+    transform:
+        translateY(35px)
+        scale(.96);
+
+    transition:
+        opacity 1s ease .2s,
+        transform 1.2s cubic-bezier(.16,1,.3,1) .2s;
+}
+
+
+/* =========================================================
+   REVEAL AFTER DOOR
+========================================================= */
+
+body.page-ready .error-content{
+
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+body.page-ready .sun-wrapper{
+
+    animation:
+        sunEntrance 1.3s cubic-bezier(.16,1,.3,1) both;
+}
+
+
+@keyframes sunEntrance{
+
+    0%{
+        opacity:0;
+        transform:
+            translate(-50%,-50%)
+            scale(.2)
+            rotate(-90deg);
+        filter:blur(15px);
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            translate(-50%,-50%)
+            scale(1)
+            rotate(0deg);
+        filter:blur(0);
+    }
+}
+
+
+/* =========================================================
+   404 NUMBER
+========================================================= */
+
+.error-number{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:
+        clamp(170px,24vw,330px);
+
+    line-height:.72;
+
+    letter-spacing:
+        -.09em;
+
+    font-weight:900;
+
+    color:
+        rgba(232,245,226,.94);
+
+    text-shadow:
+
+        0 2px 0 rgba(255,255,255,.04),
+
+        0 15px 35px
+        rgba(0,0,0,.42),
+
+        0 0 60px
+        rgba(52,145,76,.12);
+
+    user-select:none;
+}
+
+
+/* =========================================================
+   ZERO
+========================================================= */
+
+.number-zero{
+
+    position:relative;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:
+        clamp(130px,19vw,250px);
+
+    height:
+        clamp(165px,25vw,310px);
+
+    margin:
+        0 clamp(-4px,-.4vw,-1px);
+
+    border-radius:50%;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(237,247,232,.98),
+            rgba(205,226,198,.94)
+        );
+
+    box-shadow:
+
+        inset
+        12px 15px 25px
+        rgba(255,255,255,.25),
+
+        inset
+        -18px -20px 35px
+        rgba(27,77,43,.28),
+
+        0 20px 45px
+        rgba(0,0,0,.28);
+}
+
+
+.number-zero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:
+        clamp(75px,11vw,145px);
+
+    height:
+        clamp(105px,17vw,205px);
+
+    border-radius:50%;
+
+    background:#052117;
+
+    box-shadow:
+        inset
+        0 0 30px
+        rgba(0,0,0,.55);
+}
+
+
+/* =========================================================
+   SUN INSIDE ZERO
+========================================================= */
+
+.zero-sun{
+
+    position:absolute;
+
+    width:
+        clamp(55px,7vw,92px);
+
+    height:
+        clamp(55px,7vw,92px);
+
+    border-radius:50%;
+
+    z-index:4;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 30%,
+            #e0f8cc 0%,
+            #a4df96 12%,
+            #54b96b 32%,
+            #23894e 58%,
+            #0b4d2c 100%
+        );
+
+    box-shadow:
+
+        0 0 12px
+        rgba(133,226,130,.95),
+
+        0 0 28px
+        rgba(85,199,104,.78),
+
+        0 0 55px
+        rgba(58,160,80,.48);
+
+    animation:
+        zeroSunSpin 1.6s linear infinite;
+}
+
+
+.zero-sun::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-15px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(126,218,130,.22);
+
+    animation:
+        zeroSunRing 2s linear infinite;
+}
+
+
+.zero-sun::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:5px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(222,255,214,.18);
+}
+
+
+@keyframes zeroSunSpin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+@keyframes zeroSunRing{
+
+    from{
+        transform:
+            rotate(360deg)
+            scale(.8);
+
+        opacity:.3;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+            rotate(0deg)
+            scale(1.15);
+
+        opacity:.3;
+    }
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.error-label{
+
+    margin-top:58px;
+
+    font-size:12px;
+
+    letter-spacing:.38em;
+
+    text-transform:uppercase;
+
+    color:
+        rgba(187,221,188,.62);
+
+    font-weight:600;
+}
+
+
+.error-title{
+
+    margin-top:14px;
+
+    font-size:
+        clamp(24px,3vw,42px);
+
+    font-weight:700;
+
+    letter-spacing:-.035em;
+
+    color:#edf5e9;
+}
+
+
+.error-description{
+
+    max-width:500px;
+
+    margin-top:14px;
+
+    padding:0 20px;
+
+    font-size:14px;
+
+    line-height:1.8;
+
+    color:
+        rgba(195,218,197,.62);
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.home-button{
+
+    pointer-events:auto;
+
+    position:relative;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:180px;
+
+    height:50px;
+
+    margin-top:28px;
+
+    padding:0 26px;
+
+    border-radius:100px;
+
+    border:
+        1px solid
+        rgba(156,220,157,.25);
+
+    background:
+        rgba(31,103,59,.30);
+
+    color:#eaf5e7;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
+    overflow:hidden;
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.home-button::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(201,246,192,.18),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .6s ease;
+}
+
+
+.home-button:hover{
+
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(50,137,76,.38);
+
+    border-color:
+        rgba(174,231,173,.48);
+
+    box-shadow:
+        0 12px 35px
+        rgba(26,110,54,.25);
+}
+
+
+.home-button:hover::before{
+
+    left:120%;
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particles{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:0;
+}
+
+
+.particles span{
+
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:
+        rgba(156,219,155,.5);
+
+    box-shadow:
+        0 0 8px
+        rgba(130,216,132,.45);
+
+    animation:
+        particleFloat
+        var(--duration)
+        linear infinite;
+
+    animation-delay:
+        var(--delay);
+
+    left:
+        var(--left);
+
+    top:105%;
+}
+
+
+@keyframes particleFloat{
+
+    0%{
+        transform:
+            translate3d(0,0,0)
+            scale(.4);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:.7;
+    }
+
+    80%{
+        opacity:.45;
+    }
+
+    100%{
+        transform:
+            translate3d(
+                var(--move),
+                -120vh,
+                0
+            )
+            scale(1.2);
+
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   GRAIN
+========================================================= */
+
+.grain{
+
+    position:absolute;
+
+    inset:-50%;
+
+    z-index:30;
+
+    pointer-events:none;
+
+    opacity:.045;
+
+    background-image:
+
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+    animation:
+        grainMove .2s steps(2) infinite;
+}
+
+
+@keyframes grainMove{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    25%{
+        transform:translate(2%,1%);
+    }
+
+    50%{
+        transform:translate(-1%,2%);
+    }
+
+    75%{
+        transform:translate(1%,-2%);
+    }
+
+    100%{
+        transform:translate(-2%,-1%);
+    }
+}
+
+
+/* =========================================================
+   VIGNETTE
+========================================================= */
+
+.vignette{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:29;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,10,6,.30) 78%,
+            rgba(0,6,4,.72) 100%
+        );
+}
+
+
+/* =========================================================
+   =========================================================
+   3D DOOR PRELOADER
+   =========================================================
+========================================================= */
+
+.door-loader{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    display:flex;
+
+    align-items:stretch;
+
+    justify-content:center;
+
+    perspective:1800px;
+
+    background:#02130c;
+
+    pointer-events:all;
+
+    transition:
+        visibility 0s linear 3.4s;
+}
+
+
+.door-loader.hidden{
+
+    visibility:hidden;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   DOOR LIGHT BEHIND
+========================================================= */
+
+.door-light{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:220px;
+    height:220px;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.2);
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(176,235,157,.85),
+            rgba(82,180,93,.38) 25%,
+            rgba(31,108,60,.16) 48%,
+            transparent 72%
+        );
+
+    filter:blur(15px);
+
+    opacity:0;
+
+    animation:
+        doorLightReveal 3.4s ease forwards;
+}
+
+
+@keyframes doorLightReveal{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            scale(.2);
+
+        opacity:0;
+    }
+
+    45%{
+        opacity:.05;
+    }
+
+    72%{
+        transform:
+            translate(-50%,-50%)
+            scale(.7);
+
+        opacity:.45;
+    }
+
+    100%{
+        transform:
+            translate(-50%,-50%)
+            scale(1.7);
+
+        opacity:.85;
+    }
+}
+
+
+/* =========================================================
+   DOOR PANELS
+========================================================= */
+
+.door{
+
+    position:relative;
+
+    width:50%;
+    height:100%;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #092b1d 0%,
+            #061f15 45%,
+            #03150d 100%
+        );
+
+    overflow:hidden;
+
+    transform-style:preserve-3d;
+
+    box-shadow:
+        inset 0 0 90px rgba(0,0,0,.5);
+}
+
+
+/* left door */
+
+.door-left{
+
+    transform-origin:left center;
+
+    border-right:
+        1px solid
+        rgba(135,204,137,.10);
+
+    animation:
+        leftDoorOpen 2.8s
+        cubic-bezier(.76,0,.24,1)
+        1.2s forwards;
+}
+
+
+/* right door */
+
+.door-right{
+
+    transform-origin:right center;
+
+    border-left:
+        1px solid
+        rgba(135,204,137,.10);
+
+    animation:
+        rightDoorOpen 2.8s
+        cubic-bezier(.76,0,.24,1)
+        1.2s forwards;
+}
+
+
+@keyframes leftDoorOpen{
+
+    0%{
+        transform:
+            rotateY(0deg);
+    }
+
+    20%{
+        transform:
+            rotateY(0deg);
+    }
+
+    100%{
+        transform:
+            rotateY(-92deg);
+    }
+}
+
+
+@keyframes rightDoorOpen{
+
+    0%{
+        transform:
+            rotateY(0deg);
+    }
+
+    20%{
+        transform:
+            rotateY(0deg);
+    }
+
+    100%{
+        transform:
+            rotateY(92deg);
+    }
+}
+
+
+/* =========================================================
+   DOOR INNER PANELS
+========================================================= */
+
+.door::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:8%;
+    bottom:8%;
+
+    width:70%;
+
+    border:
+        1px solid
+        rgba(131,196,134,.09);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.025),
+            rgba(0,0,0,.12)
+        );
+
+    box-shadow:
+
+        inset 0 0 50px
+        rgba(0,0,0,.25),
+
+        0 0 40px
+        rgba(0,0,0,.12);
+}
+
+
+.door-left::before{
+
+    right:10%;
+}
+
+
+.door-right::before{
+
+    left:10%;
+}
+
+
+/* =========================================================
+   DOOR FRAME
+========================================================= */
+
+.door-frame{
+
+    position:absolute;
+
+    top:4%;
+
+    width:4px;
+    height:92%;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(149,213,150,.20),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(111,197,117,.08);
+}
+
+
+.door-left .door-frame{
+
+    right:5%;
+}
+
+
+.door-right .door-frame{
+
+    left:5%;
+}
+
+
+/* =========================================================
+   DOOR CENTER LINE
+========================================================= */
+
+.door-center{
+
+    position:absolute;
+
+    left:50%;
+    top:0;
+
+    width:1px;
+    height:100%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(143,210,145,.13);
+
+    z-index:110;
+
+    animation:
+        centerLineFade 3s ease forwards;
+}
+
+
+@keyframes centerLineFade{
+
+    0%,
+    65%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   DOOR FLOOR SHADOW
+========================================================= */
+
+.door-floor{
+
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+
+    width:100%;
+    height:22%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.42),
+            transparent
+        );
+
+    pointer-events:none;
+
+    z-index:105;
+}
+
+
+/* =========================================================
+   PRELOADER CENTER
+========================================================= */
+
+.loader-center{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    z-index:120;
+
+    transform:
+        translate(-50%,-50%);
+
+    text-align:center;
+
+    pointer-events:none;
+
+    animation:
+        loaderCenterFade 3.1s ease forwards;
+}
+
+
+.loader-center-text{
+
+    font-size:
+        clamp(11px,1vw,14px);
+
+    letter-spacing:
+        .55em;
+
+    text-transform:uppercase;
+
+    color:
+        rgba(219,242,215,.65);
+
+    margin-left:.55em;
+}
+
+
+.loader-line{
+
+    width:70px;
+    height:1px;
+
+    margin:
+        18px auto 0;
+
+    background:
+        rgba(156,218,156,.35);
+
+    transform-origin:left;
+
+    animation:
+        loaderLine 2.7s ease forwards;
+}
+
+
+@keyframes loaderCenterFade{
+
+    0%,
+    58%{
+        opacity:1;
+    }
+
+    85%{
+        opacity:.35;
+    }
+
+    100%{
+        opacity:0;
+        transform:
+            translate(-50%,-50%)
+            scale(.8);
+    }
+}
+
+
+@keyframes loaderLine{
+
+    0%{
+        transform:scaleX(0);
+    }
+
+    45%{
+        transform:scaleX(1);
+    }
+
+    100%{
+        transform:scaleX(0);
+        transform-origin:right;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .orbit-system{
+
+        width:440px;
+        height:440px;
+    }
+
+
+    .sun-wrapper{
+
+        width:230px;
+        height:230px;
+
+        top:39%;
+    }
+
+
+    .sun-ring{
+
+        width:205px;
+        height:205px;
+    }
+
+
+    .sun-core{
+
+        width:105px;
+        height:105px;
+    }
+
+
+    .light-orbit{
+
+        width:260px;
+        height:260px;
+    }
+
+
+    .light-orbit-two{
+
+        width:320px;
+        height:320px;
+    }
+
+
+    .error-content{
+
+        margin-top:55px;
+    }
+
+
+    .error-label{
+
+        margin-top:42px;
+
+        font-size:9px;
+
+        letter-spacing:.27em;
+    }
+
+
+    .error-title{
+
+        font-size:25px;
+    }
+
+
+    .error-description{
+
+        max-width:350px;
+
+        font-size:12px;
+
+        line-height:1.7;
+    }
+
+
+    .home-button{
+
+        height:46px;
+
+        min-width:165px;
+
+        font-size:10px;
+    }
+}
+
+
+@media(max-width:430px){
+
+    .orbit-system{
+
+        width:350px;
+        height:350px;
+    }
+
+
+    .sun-wrapper{
+
+        width:190px;
+        height:190px;
+
+        top:37%;
+    }
+
+
+    .sun-ring{
+
+        width:170px;
+        height:170px;
+    }
+
+
+    .sun-core{
+
+        width:82px;
+        height:82px;
+    }
+
+
+    .light-orbit{
+
+        width:215px;
+        height:215px;
+    }
+
+
+    .light-orbit-two{
+
+        width:275px;
+        height:275px;
+    }
+
+
+    .error-content{
+
+        margin-top:45px;
+    }
+
+
+    .error-number{
+
+        font-size:130px;
+    }
+
+
+    .number-zero{
+
+        width:98px;
+        height:125px;
+    }
+
+
+    .number-zero::before{
+
+        width:55px;
+        height:80px;
+    }
+
+
+    .zero-sun{
+
+        width:45px;
+        height:45px;
+    }
+
+
+    .zero-sun::before{
+
+        inset:-9px;
+    }
+
+
+    .error-label{
+
+        margin-top:32px;
+    }
+
+
+    .error-title{
+
+        font-size:22px;
+    }
+
+
+    .error-description{
+
+        padding:0 25px;
+
+        font-size:11px;
+    }
+}
+
+
+@media(max-height:700px){
+
+    .sun-wrapper{
+        top:36%;
+    }
+
+
+    .error-content{
+        margin-top:40px;
+    }
+
+
+    .error-label{
+        margin-top:28px;
+    }
+
+
+    .error-description{
+        margin-top:9px;
+    }
+
+
+    .home-button{
+        margin-top:17px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     3D DOOR PRELOADER
+========================================================= -->
+
+<div
+    class="door-loader"
+    id="doorLoader"
+>
+
+
+    <!-- LIGHT BEHIND THE DOOR -->
+
+    <div class="door-light"></div>
+
+
+    <!-- LEFT DOOR -->
+
+    <div class="door door-left">
+
+        <div class="door-frame"></div>
+
+    </div>
+
+
+    <!-- RIGHT DOOR -->
+
+    <div class="door door-right">
+
+        <div class="door-frame"></div>
+
+    </div>
+
+
+    <!-- CENTER LINE -->
+
+    <div class="door-center"></div>
+
+
+    <!-- FLOOR SHADOW -->
+
+    <div class="door-floor"></div>
+
+
+    <!-- LOADER TEXT -->
+
+    <div class="loader-center">
+
+        <div class="loader-center-text">
+            FIND YOUR BALANCE
+        </div>
+
+        <div class="loader-line"></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MAIN 404 PAGE
+========================================================= -->
+
+<main
+    class="error-page"
+    id="errorPage"
+>
+
+
+    <!-- BACKGROUND GLOW -->
+
+    <div class="background-glow"></div>
+
+
+    <!-- ROTATING ORBITS -->
+
+    <div class="orbit-system">
+
+        <div class="orbit orbit-one"></div>
+
+        <div class="orbit orbit-two"></div>
+
+        <div class="orbit orbit-three"></div>
+
+    </div>
+
+
+    <!-- FLOATING PARTICLES -->
+
+    <div
+        class="particles"
+        id="particles"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN SUN
+    ====================================================== -->
+
+    <div class="sun-wrapper">
+
+        <div class="sun-aura"></div>
+
+        <div class="sun-ring"></div>
+
+
+        <div class="light-orbit">
+
+            <span></span>
+
+        </div>
+
+
+        <div class="light-orbit light-orbit-two">
+
+            <span></span>
+
+        </div>
+
+
+        <div class="sun-core"></div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         CENTER 404
+    ====================================================== -->
+
+    <div class="error-content">
+
+
+        <div class="error-number">
+
+
+            <span>
+                4
+            </span>
+
+
+            <span class="number-zero">
+
+                <span class="zero-sun"></span>
+
+            </span>
+
+
+            <span>
+                4
+            </span>
+
+
+        </div>
+
+
+        <div class="error-label">
+            PAGE NOT FOUND
+        </div>
+
+
+        <h1 class="error-title">
+            Find Your Way Back
+        </h1>
+
+
+        <p class="error-description">
+            The page you're looking for has moved,
+            disappeared, or doesn't exist anymore.
+            Return to the beginning and continue your journey.
+        </p>
+
+
+        <a
+            href="index.html"
+            class="home-button"
+        >
+            Back To Home
+        </a>
+
+
+    </div>
+
+
+
+    <!-- GRAIN -->
+
+    <div class="grain"></div>
+
+
+    <!-- VIGNETTE -->
+
+    <div class="vignette"></div>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================================================
+   DOOR LOADER
+========================================================= */
+
+const doorLoader =
+    document.getElementById("doorLoader");
+
+
+/*
+    Door sequence:
+
+    0.0s  → door closed
+    1.2s  → opening starts
+    4.0s  → completely open
+*/
+
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                document.body.classList.add(
+                    "page-ready"
+                );
+
+                doorLoader.classList.add(
+                    "hidden"
+                );
+
+            },
+            4000
+        );
+
+    }
+);
+
+
+/* =========================================================
+   FLOATING PARTICLES
+========================================================= */
+
+const particles =
+    document.getElementById("particles");
+
+
+const particleCount = 34;
+
+
+for(
+    let i = 0;
+    i < particleCount;
+    i++
+){
+
+    const particle =
+        document.createElement("span");
+
+
+    const left =
+        Math.random() * 100;
+
+
+    const duration =
+        8 + Math.random() * 13;
+
+
+    const delay =
+        -(Math.random() * duration);
+
+
+    const move =
+        (Math.random() * 120) - 60;
+
+
+    const size =
+        1 + Math.random() * 2;
+
+
+    particle.style.setProperty(
+        "--left",
+        `${left}%`
+    );
+
+
+    particle.style.setProperty(
+        "--duration",
+        `${duration}s`
+    );
+
+
+    particle.style.setProperty(
+        "--delay",
+        `${delay}s`
+    );
+
+
+    particle.style.setProperty(
+        "--move",
+        `${move}px`
+    );
+
+
+    particle.style.width =
+        `${size}px`;
+
+
+    particle.style.height =
+        `${size}px`;
+
+
+    particles.appendChild(
+        particle
+    );
+}
+
+
+/* =========================================================
+   MOUSE PARALLAX
+========================================================= */
+
+const page =
+    document.getElementById("errorPage");
+
+
+const orbitSystem =
+    document.querySelector(".orbit-system");
+
+
+const sunWrapper =
+    document.querySelector(".sun-wrapper");
+
+
+const errorContent =
+    document.querySelector(".error-content");
+
+
+page.addEventListener(
+    "mousemove",
+    (event) => {
+
+        const x =
+            (event.clientX /
+                window.innerWidth) - .5;
+
+
+        const y =
+            (event.clientY /
+                window.innerHeight) - .5;
+
+
+        orbitSystem.style.transform =
+            `translate(
+                calc(-50% + ${x * 18}px),
+                calc(-50% + ${y * 18}px)
+            )
+            rotateX(${y * -3}deg)
+            rotateY(${x * 3}deg)`;
+
+
+        sunWrapper.style.transform =
+            `translate(
+                calc(-50% + ${x * 12}px),
+                calc(-50% + ${y * 12}px)
+            )`;
+
+
+        errorContent.style.transform =
+            `translate(
+                ${x * 5}px,
+                ${y * 5}px
+            )`;
+    }
+);
+
+
+/* =========================================================
+   RESET PARALLAX
+========================================================= */
+
+page.addEventListener(
+    "mouseleave",
+    () => {
+
+        orbitSystem.style.transform =
+            "translate(-50%,-50%)";
+
+
+        sunWrapper.style.transform =
+            "translate(-50%,-50%)";
+
+
+        errorContent.style.transform =
+            "translate(0,0)";
+    }
+);
+
+
+/* =========================================================
+   BUTTON MICRO INTERACTION
+========================================================= */
+
+const button =
+    document.querySelector(".home-button");
+
+
+button.addEventListener(
+    "mousemove",
+    (event) => {
+
+        const rect =
+            button.getBoundingClientRect();
+
+
+        const x =
+            event.clientX - rect.left;
+
+
+        const y =
+            event.clientY - rect.top;
+
+
+        const rotateX =
+            ((y / rect.height) - .5) * -8;
+
+
+        const rotateY =
+            ((x / rect.width) - .5) * 8;
+
+
+        button.style.transform =
+            `translateY(-4px)
+             perspective(500px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)`;
+    }
+);
+
+
+button.addEventListener(
+    "mouseleave",
+    () => {
+
+        button.style.transform =
+            "translateY(0)";
+    }
+);
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,6335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ZENORA YOGA — Admin Dashboard</title>
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =========================================================
+         FONT AWESOME
+    ========================================================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================== */
+
+        :root {
+
+            --forest: #12382d;
+            --forest-dark: #0a281f;
+            --forest-deep: #071f18;
+            --forest-soft: #1d4a3b;
+
+            --sage: #a9c4aa;
+            --sage-light: #dce9d9;
+
+            --cream: #f4f1e8;
+            --cream-soft: #eef4eb;
+            --white: #ffffff;
+
+            --olive: #657d58;
+            --terracotta: #c97858;
+            --gold: #c7a56a;
+
+            --text: #1b2923;
+            --muted: #748078;
+            --border: #dfe7dc;
+
+            --success: #4f936d;
+            --warning: #c99a51;
+            --danger: #c96b63;
+            --blue: #658fa0;
+
+            --shadow:
+                0 18px 45px rgba(27, 57, 45, 0.08);
+
+            --shadow-soft:
+                0 8px 25px rgba(27, 57, 45, 0.06);
+
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+
+            --sidebar-width: 280px;
+            --topbar-height: 82px;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--cream-soft);
+            color: var(--text);
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+
+        button {
+            border: 0;
+            cursor: pointer;
+        }
+
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+
+        /* =========================================================
+           APP SHELL
+        ========================================================== */
+
+        .app-shell {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            background: var(--cream-soft);
+        }
+
+
+        /* =========================================================
+           SIDEBAR
+        ========================================================== */
+
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            flex: 0 0 var(--sidebar-width);
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(169,196,170,.12),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    160deg,
+                    var(--forest) 0%,
+                    var(--forest-dark) 100%
+                );
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+
+        .sidebar::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 50%;
+            right: -100px;
+            bottom: 100px;
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           BRAND
+        ========================================================== */
+
+        .brand {
+            min-height: 104px;
+            padding: 24px 24px 18px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+
+        .brand-mark {
+            width: 45px;
+            height: 45px;
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.12);
+            color: #d8ead4;
+            font-size: 20px;
+        }
+
+
+        .brand-copy strong {
+            display: block;
+            font-family: "Manrope", sans-serif;
+            font-size: 17px;
+            letter-spacing: .13em;
+            font-weight: 800;
+        }
+
+
+        .brand-copy span {
+            display: block;
+            margin-top: 3px;
+            color: rgba(255,255,255,.55);
+            font-size: 9px;
+            letter-spacing: .17em;
+            font-weight: 600;
+        }
+
+
+        .sidebar-label {
+            padding: 10px 25px;
+            color: rgba(255,255,255,.38);
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================== */
+
+        .sidebar-nav {
+            padding: 4px 14px;
+        }
+
+
+        .nav-item {
+            width: 100%;
+            min-height: 52px;
+            padding: 0 14px;
+            margin-bottom: 6px;
+            border-radius: 14px;
+            background: transparent;
+            color: rgba(255,255,255,.66);
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            text-align: left;
+            position: relative;
+            transition:
+                background .25s ease,
+                color .25s ease,
+                transform .25s ease;
+        }
+
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+
+        .nav-item span {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+        .nav-item:hover {
+            background: rgba(255,255,255,.07);
+            color: #fff;
+            transform: translateX(2px);
+        }
+
+
+        .nav-item.active {
+            background: rgba(202,226,198,.13);
+            color: #fff;
+        }
+
+
+        .nav-item.active::before {
+            content: "";
+            position: absolute;
+            left: -14px;
+            top: 10px;
+            width: 3px;
+            height: 32px;
+            border-radius: 0 5px 5px 0;
+            background: #bdd7b9;
+        }
+
+
+        .nav-item.active i {
+            color: #c9dfc5;
+        }
+
+
+        /* =========================================================
+           SIDEBAR BOTTOM
+        ========================================================== */
+
+        .sidebar-bottom {
+            margin-top: auto;
+            padding: 15px 14px 20px;
+        }
+
+
+        .admin-profile {
+            padding: 14px;
+            border-radius: 17px;
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+
+        .admin-avatar {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            border-radius: 13px;
+            object-fit: cover;
+        }
+
+
+        .admin-profile strong {
+            display: block;
+            font-size: 12px;
+            color: #fff;
+        }
+
+
+        .admin-profile span {
+            display: block;
+            margin-top: 3px;
+            color: rgba(255,255,255,.48);
+            font-size: 10px;
+        }
+
+
+        .logout-link {
+            width: 100%;
+            margin-top: 9px;
+            min-height: 43px;
+            border-radius: 12px;
+            color: rgba(255,255,255,.56);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            transition: .25s ease;
+        }
+
+
+        .logout-link:hover {
+            color: #fff;
+            background: rgba(255,255,255,.06);
+        }
+
+
+        /* =========================================================
+           MAIN AREA
+        ========================================================== */
+
+        .main-area {
+            min-width: 0;
+            flex: 1;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* =========================================================
+           TOPBAR
+        ========================================================== */
+
+        .topbar {
+            height: var(--topbar-height);
+            flex: 0 0 var(--topbar-height);
+            padding: 0 30px;
+            background: rgba(255,255,255,.88);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 20;
+        }
+
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .mobile-menu-btn {
+            width: 42px;
+            height: 42px;
+            display: none;
+            place-items: center;
+            background: var(--forest);
+            color: #fff;
+            border-radius: 12px;
+        }
+
+
+        .page-context small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+
+        .page-context h1 {
+            margin-top: 3px;
+            font-family: "Manrope", sans-serif;
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--forest-dark);
+        }
+
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .top-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #f3f6f1;
+            border: 1px solid var(--border);
+            color: var(--forest);
+            display: grid;
+            place-items: center;
+            transition: .25s ease;
+        }
+
+
+        .top-icon:hover {
+            background: var(--forest);
+            color: #fff;
+        }
+
+
+        .top-profile {
+            margin-left: 7px;
+            padding-left: 13px;
+            border-left: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .top-profile img {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+        }
+
+
+        .top-profile strong {
+            display: block;
+            font-size: 11px;
+        }
+
+
+        .top-profile span {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            margin-top: 2px;
+        }
+
+
+        /* =========================================================
+           VIEW WRAPPER
+        ========================================================== */
+
+        .views {
+            height: calc(100vh - var(--topbar-height));
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .view-panel {
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 28px 30px 45px;
+            display: none;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+
+        .view-panel.active {
+            display: block;
+            animation: panelIn .35s ease forwards;
+        }
+
+
+        @keyframes panelIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .view-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+
+        .view-panel::-webkit-scrollbar-thumb {
+            background: #cbd8c9;
+            border-radius: 10px;
+        }
+
+
+        /* =========================================================
+           SECTION HEADER
+        ========================================================== */
+
+        .section-heading {
+            margin-bottom: 22px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+
+        .section-heading h2 {
+            font-family: "Manrope", sans-serif;
+            color: var(--forest-dark);
+            font-size: clamp(22px, 2vw, 30px);
+            font-weight: 800;
+            letter-spacing: -.035em;
+        }
+
+
+        .section-heading p {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+
+        .date-badge {
+            padding: 10px 14px;
+            border-radius: 11px;
+            background: #fff;
+            border: 1px solid var(--border);
+            color: var(--forest);
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           BUTTONS
+        ========================================================== */
+
+        .primary-btn {
+            min-height: 42px;
+            padding: 0 16px;
+            border-radius: 11px;
+            background: var(--forest);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            transition: .25s ease;
+        }
+
+
+        .primary-btn:hover {
+            background: var(--forest-dark);
+            transform: translateY(-2px);
+        }
+
+
+        .secondary-btn {
+            min-height: 42px;
+            padding: 0 16px;
+            border-radius: 11px;
+            background: #fff;
+            color: var(--forest);
+            border: 1px solid var(--border);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            transition: .25s ease;
+        }
+
+
+        .secondary-btn:hover {
+            border-color: var(--forest);
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           STAT CARDS
+        ========================================================== */
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+
+        .stat-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .stat-card::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            right: -32px;
+            top: -35px;
+            background: var(--sage-light);
+            opacity: .6;
+        }
+
+
+        .stat-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .stat-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            background: #edf5ea;
+            color: var(--forest);
+            font-size: 14px;
+        }
+
+
+        .trend {
+            font-size: 9px;
+            font-weight: 700;
+            padding: 5px 7px;
+            border-radius: 7px;
+        }
+
+
+        .trend.up {
+            background: #e8f4eb;
+            color: var(--success);
+        }
+
+
+        .trend.down {
+            background: #f9eae6;
+            color: var(--danger);
+        }
+
+
+        .stat-card h3 {
+            margin-top: 17px;
+            font-family: "Manrope", sans-serif;
+            font-size: 25px;
+            color: var(--forest-dark);
+        }
+
+
+        .stat-card p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+
+        .stat-bottom {
+            margin-top: 14px;
+            height: 4px;
+            background: #edf1ec;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+
+        .stat-bottom span {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--forest);
+        }
+
+
+        /* =========================================================
+           CARD
+        ========================================================== */
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+        }
+
+
+        .card-head {
+            padding: 18px 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+
+        .card-head h3 {
+            font-family: "Manrope", sans-serif;
+            color: var(--forest-dark);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+
+        .card-head p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+
+        .card-link {
+            color: var(--olive);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           DASHBOARD HERO
+        ========================================================== */
+
+        .admin-hero {
+            min-height: 220px;
+            margin-bottom: 20px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            background: var(--forest);
+            color: #fff;
+        }
+
+
+        .admin-hero-image {
+            position: absolute;
+            inset: 0;
+        }
+
+
+        .admin-hero-image img {
+            height: 100%;
+            opacity: .32;
+        }
+
+
+        .admin-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(7,31,24,.98) 0%,
+                    rgba(7,31,24,.78) 48%,
+                    rgba(7,31,24,.2) 100%
+                );
+        }
+
+
+        .admin-hero-content {
+            min-height: 220px;
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #bfd5b9;
+            font-size: 9px;
+            letter-spacing: .17em;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+
+        .eyebrow i {
+            font-size: 8px;
+        }
+
+
+        .admin-hero h2 {
+            margin-top: 9px;
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(27px, 3vw, 43px);
+            line-height: 1.05;
+            letter-spacing: -.045em;
+        }
+
+
+        .admin-hero p {
+            margin-top: 10px;
+            max-width: 580px;
+            color: rgba(255,255,255,.68);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+
+        .hero-actions {
+            margin-top: 18px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+
+        .hero-actions .primary-btn {
+            background: #d9e9d2;
+            color: var(--forest-dark);
+        }
+
+
+        .hero-actions .secondary-btn {
+            background: rgba(255,255,255,.08);
+            color: #fff;
+            border-color: rgba(255,255,255,.15);
+        }
+
+
+        /* =========================================================
+           TWO COLUMN
+        ========================================================== */
+
+        .two-column {
+            display: grid;
+            grid-template-columns: minmax(0, 1.55fr) minmax(300px, .85fr);
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+
+        .three-column {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================================================
+           REVENUE CHART
+        ========================================================== */
+
+        .chart-area {
+            padding: 20px;
+        }
+
+
+        .chart-summary {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+
+        .chart-summary strong {
+            font-family: "Manrope", sans-serif;
+            font-size: 27px;
+            color: var(--forest-dark);
+        }
+
+
+        .chart-summary span {
+            color: var(--success);
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+
+        .bar-chart {
+            height: 190px;
+            margin-top: 25px;
+            display: flex;
+            align-items: stretch;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .bar-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .bar-track {
+            height: 150px;
+            width: 100%;
+            max-width: 25px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+
+        .bar {
+            width: 100%;
+            border-radius: 8px 8px 2px 2px;
+            background:
+                linear-gradient(
+                    180deg,
+                    #8fac8a,
+                    var(--forest)
+                );
+            transition: height .5s ease;
+        }
+
+
+        .bar-column small {
+            color: var(--muted);
+            font-size: 9px;
+            margin-bottom: -25px;
+        }
+
+
+        /* =========================================================
+           TODAY SESSIONS
+        ========================================================== */
+
+        .session-list {
+            padding: 14px 18px 18px;
+        }
+
+
+        .session-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 0;
+            border-bottom: 1px solid #edf1ed;
+        }
+
+
+        .session-row:last-child {
+            border-bottom: 0;
+        }
+
+
+        .session-time {
+            width: 51px;
+            flex: 0 0 51px;
+            color: var(--forest);
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+
+        .session-dot {
+            width: 8px;
+            height: 8px;
+            flex: 0 0 8px;
+            border-radius: 50%;
+            background: var(--success);
+        }
+
+
+        .session-info {
+            min-width: 0;
+            flex: 1;
+        }
+
+
+        .session-info strong {
+            display: block;
+            color: var(--text);
+            font-size: 11px;
+        }
+
+
+        .session-info span {
+            display: block;
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+
+        .session-status {
+            padding: 5px 7px;
+            border-radius: 7px;
+            background: #edf6ee;
+            color: var(--success);
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           ACTIVITY
+        ========================================================== */
+
+        .activity-list {
+            padding: 15px 20px 20px;
+        }
+
+
+        .activity-item {
+            display: flex;
+            gap: 11px;
+            padding: 11px 0;
+            border-bottom: 1px solid #edf1ed;
+        }
+
+
+        .activity-item:last-child {
+            border-bottom: 0;
+        }
+
+
+        .activity-icon {
+            width: 34px;
+            height: 34px;
+            flex: 0 0 34px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: #edf4ea;
+            color: var(--forest);
+            font-size: 12px;
+        }
+
+
+        .activity-item strong {
+            display: block;
+            font-size: 10px;
+            line-height: 1.45;
+        }
+
+
+        .activity-item span {
+            display: block;
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+
+        /* =========================================================
+           QUICK ACTIONS
+        ========================================================== */
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            padding: 17px 20px 20px;
+        }
+
+
+        .quick-action {
+            min-height: 80px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: #fafcf9;
+            padding: 13px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: .25s ease;
+        }
+
+
+        .quick-action:hover {
+            transform: translateY(-3px);
+            border-color: #bfd2bc;
+            box-shadow: var(--shadow-soft);
+        }
+
+
+        .quick-action i {
+            color: var(--forest);
+            font-size: 15px;
+        }
+
+
+        .quick-action strong {
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           INSTRUCTOR SPOTLIGHT
+        ========================================================== */
+
+        .instructor-card {
+            padding: 14px 18px 18px;
+        }
+
+
+        .instructor-main {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+
+        .instructor-main img {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+        }
+
+
+        .instructor-main strong {
+            display: block;
+            font-family: "Manrope", sans-serif;
+            font-size: 13px;
+        }
+
+
+        .instructor-main span {
+            display: block;
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+
+        .rating {
+            margin-top: 4px;
+            color: var(--gold);
+            font-size: 9px;
+        }
+
+
+        .instructor-stats {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--border);
+            padding-top: 13px;
+        }
+
+
+        .instructor-stats div {
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+
+        .instructor-stats div:last-child {
+            border-right: 0;
+        }
+
+
+        .instructor-stats strong {
+            display: block;
+            font-size: 13px;
+        }
+
+
+        .instructor-stats span {
+            display: block;
+            color: var(--muted);
+            font-size: 8px;
+            margin-top: 3px;
+        }
+
+
+        /* =========================================================
+           TABLE
+        ========================================================== */
+
+        .table-card {
+            overflow: hidden;
+        }
+
+
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            padding: 15px 18px 20px;
+        }
+
+
+        .data-table {
+            width: 100%;
+            min-width: 720px;
+            border-collapse: collapse;
+        }
+
+
+        .data-table th {
+            padding: 11px 10px;
+            background: #f5f8f3;
+            color: var(--muted);
+            font-size: 8px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            text-align: left;
+            font-weight: 800;
+        }
+
+
+        .data-table th:first-child {
+            border-radius: 9px 0 0 9px;
+        }
+
+
+        .data-table th:last-child {
+            border-radius: 0 9px 9px 0;
+        }
+
+
+        .data-table td {
+            padding: 13px 10px;
+            border-bottom: 1px solid #edf1ed;
+            font-size: 9px;
+            color: var(--text);
+        }
+
+
+        .data-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+
+        .member-cell {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+
+        .member-cell img {
+            width: 31px;
+            height: 31px;
+            border-radius: 10px;
+        }
+
+
+        .member-cell strong {
+            display: block;
+            font-size: 9px;
+        }
+
+
+        .member-cell span {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+
+        .status {
+            display: inline-flex;
+            padding: 5px 8px;
+            border-radius: 7px;
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+
+        .status.active {
+            background: #e9f5eb;
+            color: var(--success);
+        }
+
+
+        .status.pending {
+            background: #fbf3e4;
+            color: var(--warning);
+        }
+
+
+        .status.cancelled {
+            background: #faeae7;
+            color: var(--danger);
+        }
+
+
+        .status.premium {
+            background: #f3eee3;
+            color: #99763c;
+        }
+
+
+        .table-action {
+            color: var(--forest);
+            font-weight: 800;
+            font-size: 9px;
+        }
+
+
+        /* =========================================================
+           FILTER BAR
+        ========================================================== */
+
+        .filter-bar {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 13px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+
+        .search-box {
+            flex: 1 1 220px;
+            min-height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #f9fbf8;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 0 12px;
+        }
+
+
+        .search-box i {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+
+        .search-box input {
+            width: 100%;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            font-size: 10px;
+            color: var(--text);
+        }
+
+
+        .filter-select {
+            min-height: 40px;
+            padding: 0 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #f9fbf8;
+            color: var(--text);
+            outline: none;
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           CLASS MANAGEMENT CARDS
+        ========================================================== */
+
+        .class-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+
+        .class-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: .25s ease;
+        }
+
+
+        .class-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+
+        .class-image {
+            height: 155px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .class-image img {
+            height: 100%;
+            transition: transform .5s ease;
+        }
+
+
+        .class-card:hover .class-image img {
+            transform: scale(1.04);
+        }
+
+
+        .class-badge {
+            position: absolute;
+            left: 11px;
+            top: 11px;
+            padding: 6px 8px;
+            border-radius: 7px;
+            background: rgba(255,255,255,.9);
+            color: var(--forest);
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+
+        .class-card-body {
+            padding: 14px;
+        }
+
+
+        .class-card-body h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: var(--forest-dark);
+        }
+
+
+        .class-instructor {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+
+        .class-meta {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+
+        .class-meta span {
+            padding: 5px 7px;
+            border-radius: 7px;
+            background: #f1f5ef;
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+
+        .class-footer {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .class-capacity {
+            font-size: 9px;
+            color: var(--muted);
+        }
+
+
+        .class-footer a {
+            color: var(--forest);
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           MINI ANALYTICS
+        ========================================================== */
+
+        .mini-bars {
+            padding: 20px;
+            display: flex;
+            align-items: flex-end;
+            height: 190px;
+            gap: 8px;
+        }
+
+
+        .mini-bar-col {
+            flex: 1;
+            height: 145px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 7px;
+        }
+
+
+        .mini-bar-col .fill {
+            width: 100%;
+            max-width: 30px;
+            border-radius: 7px 7px 2px 2px;
+            background: #94af91;
+        }
+
+
+        .mini-bar-col small {
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+
+        /* =========================================================
+           PROGRESS ROW
+        ========================================================== */
+
+        .progress-list {
+            padding: 15px 20px 20px;
+        }
+
+
+        .progress-row {
+            margin-bottom: 15px;
+        }
+
+
+        .progress-row:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .progress-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+
+        .progress-label span {
+            font-size: 9px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+
+        .progress-label strong {
+            font-size: 9px;
+            color: var(--forest);
+        }
+
+
+        .progress-track {
+            height: 6px;
+            background: #edf1eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+
+        .progress-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: var(--forest);
+        }
+
+
+        /* =========================================================
+           SESSION MANAGEMENT
+        ========================================================== */
+
+        .session-management-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+
+        .session-stat {
+            padding: 18px;
+        }
+
+
+        .session-stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .session-stat i {
+            width: 37px;
+            height: 37px;
+            display: grid;
+            place-items: center;
+            background: #edf5ea;
+            color: var(--forest);
+            border-radius: 11px;
+            font-size: 13px;
+        }
+
+
+        .session-stat strong {
+            display: block;
+            margin-top: 15px;
+            font-family: "Manrope", sans-serif;
+            font-size: 24px;
+        }
+
+
+        .session-stat p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+
+        /* =========================================================
+           CALENDAR STRIP
+        ========================================================== */
+
+        .calendar-strip {
+            padding: 17px 20px 20px;
+            display: grid;
+            grid-template-columns:
+                repeat(7, minmax(70px, 1fr));
+            gap: 8px;
+        }
+
+
+        .calendar-day {
+            min-height: 83px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: #fafcf9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+
+        .calendar-day.today {
+            background: var(--forest);
+            color: #fff;
+            border-color: var(--forest);
+        }
+
+
+        .calendar-day span {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            opacity: .65;
+        }
+
+
+        .calendar-day strong {
+            font-size: 15px;
+        }
+
+
+        .calendar-day small {
+            font-size: 8px;
+            color: var(--success);
+        }
+
+
+        .calendar-day.today small {
+            color: #cfe6cb;
+        }
+
+
+        /* =========================================================
+           WELLNESS ANALYTICS
+        ========================================================== */
+
+        .analytics-score {
+            min-height: 230px;
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+
+        .score-ring {
+            width: 145px;
+            height: 145px;
+            flex: 0 0 145px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            position: relative;
+            background:
+                conic-gradient(
+                    var(--forest) 0 82%,
+                    #e7eee4 82% 100%
+                );
+        }
+
+
+        .score-ring::after {
+            content: "";
+            position: absolute;
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+
+        .score-ring-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+
+        .score-ring strong {
+            display: block;
+            font-family: "Manrope", sans-serif;
+            font-size: 31px;
+            color: var(--forest-dark);
+        }
+
+
+        .score-ring span {
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+
+        .analytics-score h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 19px;
+        }
+
+
+        .analytics-score p {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+
+        .score-tags {
+            margin-top: 13px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+
+        .score-tags span {
+            padding: 6px 8px;
+            background: #eef5eb;
+            color: var(--forest);
+            border-radius: 7px;
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           HEATMAP
+        ========================================================== */
+
+        .heatmap {
+            padding: 17px 20px 20px;
+        }
+
+
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(14, minmax(9px, 1fr));
+            gap: 5px;
+            margin-top: 14px;
+        }
+
+
+        .heat {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            background: #edf2eb;
+        }
+
+
+        .heat.l1 {
+            background: #d6e4d3;
+        }
+
+
+        .heat.l2 {
+            background: #a8c4a4;
+        }
+
+
+        .heat.l3 {
+            background: #6e9670;
+        }
+
+
+        .heat.l4 {
+            background: var(--forest);
+        }
+
+
+        .heat-legend {
+            margin-top: 12px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 4px;
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+
+        .heat-legend i {
+            width: 9px;
+            height: 9px;
+            border-radius: 3px;
+            background: #edf2eb;
+        }
+
+
+        .heat-legend i:nth-child(2) {
+            background: #d6e4d3;
+        }
+
+
+        .heat-legend i:nth-child(3) {
+            background: #a8c4a4;
+        }
+
+
+        .heat-legend i:nth-child(4) {
+            background: #6e9670;
+        }
+
+
+        .heat-legend i:nth-child(5) {
+            background: var(--forest);
+        }
+
+
+        /* =========================================================
+           ANALYTICS METRICS
+        ========================================================== */
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+            gap: 13px;
+        }
+
+
+        .metric-box {
+            padding: 16px;
+            background: #fafcf9;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+
+        .metric-box span {
+            color: var(--muted);
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+
+        .metric-box strong {
+            display: block;
+            margin-top: 7px;
+            font-family: "Manrope", sans-serif;
+            font-size: 21px;
+            color: var(--forest-dark);
+        }
+
+
+        .metric-box small {
+            display: block;
+            margin-top: 3px;
+            color: var(--success);
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           MEMBERS
+        ========================================================== */
+
+        .member-summary {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+
+        .member-summary-card {
+            padding: 17px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+
+        .member-summary-card i {
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
+            background: #edf5ea;
+            color: var(--forest);
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+        }
+
+
+        .member-summary-card strong {
+            display: block;
+            margin-top: 13px;
+            font-family: "Manrope", sans-serif;
+            font-size: 22px;
+        }
+
+
+        .member-summary-card span {
+            display: block;
+            color: var(--muted);
+            margin-top: 3px;
+            font-size: 9px;
+        }
+
+
+        /* =========================================================
+           MEMBER MINI PROFILE
+        ========================================================== */
+
+        .member-mini {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+
+        .member-mini img {
+            width: 31px;
+            height: 31px;
+            border-radius: 9px;
+        }
+
+
+        .member-mini strong {
+            display: block;
+            font-size: 9px;
+        }
+
+
+        .member-mini span {
+            display: block;
+            color: var(--muted);
+            font-size: 8px;
+            margin-top: 2px;
+        }
+
+
+        /* =========================================================
+           MEMBER INSIGHT
+        ========================================================== */
+
+        .member-insight {
+            padding: 19px;
+        }
+
+
+        .member-insight-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            background: #edf5ea;
+            color: var(--forest);
+        }
+
+
+        .member-insight h3 {
+            margin-top: 13px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+        }
+
+
+        .member-insight p {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 9px;
+            line-height: 1.65;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================== */
+
+        @media (max-width: 1250px) {
+
+            .sidebar {
+                width: 245px;
+                flex-basis: 245px;
+            }
+
+            .stat-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .class-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .member-summary {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .metric-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 1000px) {
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .three-column {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .session-management-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+            .view-panel {
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+
+            .topbar {
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                transform: translateX(-105%);
+                width: min(320px, 88vw);
+                flex-basis: auto;
+                box-shadow: 20px 0 50px rgba(0,0,0,.2);
+                transition: transform .35s ease;
+            }
+
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+
+            .mobile-menu-btn {
+                display: grid;
+            }
+
+
+            .mobile-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(4,20,15,.48);
+                z-index: 90;
+                opacity: 0;
+                visibility: hidden;
+                transition: .3s ease;
+            }
+
+
+            .mobile-overlay.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+
+            .sidebar-close {
+                display: grid !important;
+            }
+
+
+            .main-area {
+                width: 100%;
+            }
+
+
+            .top-profile-copy {
+                display: none;
+            }
+
+
+            .top-profile {
+                border-left: 0;
+                padding-left: 2px;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            :root {
+                --topbar-height: 70px;
+            }
+
+
+            .topbar {
+                height: 70px;
+                padding: 0 14px;
+            }
+
+
+            .page-context h1 {
+                font-size: 15px;
+            }
+
+
+            .page-context small {
+                font-size: 8px;
+            }
+
+
+            .top-icon {
+                width: 37px;
+                height: 37px;
+            }
+
+
+            .top-profile img {
+                width: 36px;
+                height: 36px;
+            }
+
+
+            .view-panel {
+                padding: 19px 14px 35px;
+            }
+
+
+            .stat-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+
+            .stat-card {
+                padding: 14px;
+            }
+
+
+            .stat-card h3 {
+                font-size: 21px;
+            }
+
+
+            .stat-card p {
+                font-size: 9px;
+            }
+
+
+            .admin-hero,
+            .admin-hero-content {
+                min-height: 270px;
+            }
+
+
+            .admin-hero-content {
+                padding: 23px;
+            }
+
+
+            .admin-hero h2 {
+                font-size: 29px;
+            }
+
+
+            .three-column,
+            .class-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .quick-actions {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .session-management-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .calendar-strip {
+                overflow-x: auto;
+                grid-template-columns:
+                    repeat(7, 72px);
+            }
+
+
+            .analytics-score {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+
+            .date-badge {
+                align-self: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .member-summary {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .metric-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .session-management-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .topbar-right .top-icon:first-child {
+                display: none;
+            }
+
+
+            .admin-hero h2 {
+                font-size: 26px;
+            }
+
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================================================
+           SIDEBAR CLOSE
+        ========================================================== */
+
+        .sidebar-close {
+            display: none;
+            position: absolute;
+            right: 17px;
+            top: 22px;
+            width: 35px;
+            height: 35px;
+            place-items: center;
+            border-radius: 10px;
+            background: rgba(255,255,255,.08);
+            color: #fff;
+        }
+
+
+        /* =========================================================
+           SMALL UTILITY
+        ========================================================== */
+
+        .muted-note {
+            color: var(--muted);
+            font-size: 9px;
+            line-height: 1.65;
+        }
+
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 8px;
+            border-radius: 7px;
+            background: #edf5ea;
+            color: var(--forest);
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+
+        .empty-note {
+            padding: 25px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+    <!-- =========================================================
+         MOBILE OVERLAY
+    ========================================================== -->
+
+    <div
+        class="mobile-overlay"
+        id="mobileOverlay"
+    ></div>
+
+
+    <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <button
+            class="sidebar-close"
+            id="sidebarClose"
+            aria-label="Close navigation"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                <i class="fa-solid fa-spa"></i>
+            </div>
+
+            <div class="brand-copy">
+                <strong>ZENORA</strong>
+                <span>YOGA ADMIN</span>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-label">
+            Management
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+            <button
+                class="nav-item active"
+                data-view="dashboard"
+                type="button"
+            >
+                <i class="fa-solid fa-grid-2"></i>
+                <span>Dashboard</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-view="classes"
+                type="button"
+            >
+                <i class="fa-solid fa-person-praying"></i>
+                <span>Manage Classes</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-view="sessions"
+                type="button"
+            >
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Manage Sessions</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-view="analytics"
+                type="button"
+            >
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Wellness Analytics</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-view="members"
+                type="button"
+            >
+                <i class="fa-solid fa-users"></i>
+                <span>Members</span>
+            </button>
+
+        </nav>
+
+
+        <!-- SIDEBAR PROFILE -->
+
+        <div class="sidebar-bottom">
+
+            <div class="admin-profile">
+
+                <img
+                    class="admin-avatar"
+                    src="https://i.pravatar.cc/100?img=12"
+                    alt="Zenora administrator"
+                    loading="lazy"
+                >
+
+                <div>
+                    <strong>Zenora Admin</strong>
+                    <span>Center Administrator</span>
+                </div>
+
+            </div>
+
+
+            <a
+                href="404.html"
+                class="logout-link"
+            >
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Sign Out
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================================
+         MAIN AREA
+    ========================================================== -->
+
+    <main class="main-area">
+
+
+        <!-- =====================================================
+             TOPBAR
+        ====================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                    aria-label="Open navigation"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+
+                <div class="page-context">
+
+                    <small>
+                        Zenora Yoga Wellness Center
+                    </small>
+
+                    <h1 id="topbarTitle">
+                        Admin Dashboard
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <a
+                    href="404.html"
+                    class="top-icon"
+                    aria-label="Search"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+
+                <a
+                    href="404.html"
+                    class="top-icon"
+                    aria-label="Notifications"
+                >
+                    <i class="fa-regular fa-bell"></i>
+                </a>
+
+
+                <a
+                    href="404.html"
+                    class="top-profile"
+                >
+
+                    <img
+                        src="https://i.pravatar.cc/100?img=12"
+                        alt="Zenora Admin"
+                        loading="lazy"
+                    >
+
+                    <div class="top-profile-copy">
+                        <strong>Zenora Admin</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             VIEWS
+        ====================================================== -->
+
+        <div class="views">
+
+
+            <!-- =================================================
+                 VIEW 01 — DASHBOARD
+            ================================================== -->
+
+            <section
+                class="view-panel active"
+                id="dashboard"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Good Morning, Admin 🌿</h2>
+                        <p>
+                            Here's what is happening across Zenora Yoga today.
+                        </p>
+                    </div>
+
+                    <div class="date-badge">
+                        <i class="fa-regular fa-calendar"></i>
+                        &nbsp; 06 October 2026
+                    </div>
+
+                </div>
+
+
+                <!-- HERO -->
+
+                <div class="admin-hero">
+
+                    <div class="admin-hero-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1600&q=85"
+                            alt="Yoga instructor leading a peaceful yoga practice"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="admin-hero-overlay"></div>
+
+
+                    <div class="admin-hero-content">
+
+                        <div class="eyebrow">
+                            <i class="fa-solid fa-circle"></i>
+                            CENTER OVERVIEW
+                        </div>
+
+                        <h2>
+                            Move the center.<br>
+                            Move the community.
+                        </h2>
+
+                        <p>
+                            Manage classes, instructors, sessions and
+                            member wellness from one calm and focused
+                            workspace.
+                        </p>
+
+                        <div class="hero-actions">
+
+                            <a
+                                href="404.html"
+                                class="primary-btn"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                                Add New Class
+                            </a>
+
+                            <a
+                                href="404.html"
+                                class="secondary-btn"
+                            >
+                                View Schedule
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="stat-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <span class="trend up">
+                                +8.4%
+                            </span>
+
+                        </div>
+
+                        <h3>1,284</h3>
+                        <p>Total Active Members</p>
+
+                        <div class="stat-bottom">
+                            <span style="width:82%"></span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-person-praying"></i>
+                            </div>
+
+                            <span class="trend up">
+                                +12.2%
+                            </span>
+
+                        </div>
+
+                        <h3>48</h3>
+                        <p>Active Yoga Classes</p>
+
+                        <div class="stat-bottom">
+                            <span style="width:74%"></span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+
+                            <span class="trend up">
+                                +5.8%
+                            </span>
+
+                        </div>
+
+                        <h3>18</h3>
+                        <p>Sessions Today</p>
+
+                        <div class="stat-bottom">
+                            <span style="width:68%"></span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-indian-rupee-sign"></i>
+                            </div>
+
+                            <span class="trend up">
+                                +14.6%
+                            </span>
+
+                        </div>
+
+                        <h3>₹8.42L</h3>
+                        <p>Monthly Revenue</p>
+
+                        <div class="stat-bottom">
+                            <span style="width:88%"></span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- REVENUE + TODAY -->
+
+                <div class="two-column">
+
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Revenue Overview</h3>
+                                <p>Monthly performance across Zenora</p>
+                            </div>
+
+                            <a
+                                href="404.html"
+                                class="card-link"
+                            >
+                                Full Report →
+                            </a>
+
+                        </div>
+
+
+                        <div class="chart-area">
+
+                            <div class="chart-summary">
+                                <strong>₹8.42L</strong>
+                                <span>
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                    14.6%
+                                </span>
+                            </div>
+
+
+                            <div class="bar-chart">
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:48%"></div>
+                                    </div>
+                                    <small>Jan</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:57%"></div>
+                                    </div>
+                                    <small>Feb</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:52%"></div>
+                                    </div>
+                                    <small>Mar</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:66%"></div>
+                                    </div>
+                                    <small>Apr</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:73%"></div>
+                                    </div>
+                                    <small>May</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:81%"></div>
+                                    </div>
+                                    <small>Jun</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:91%"></div>
+                                    </div>
+                                    <small>Jul</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:96%"></div>
+                                    </div>
+                                    <small>Aug</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:88%"></div>
+                                    </div>
+                                    <small>Sep</small>
+                                </div>
+
+                                <div class="bar-column">
+                                    <div class="bar-track">
+                                        <div class="bar" style="height:100%"></div>
+                                    </div>
+                                    <small>Oct</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Today's Sessions</h3>
+                                <p>Live center schedule</p>
+                            </div>
+
+                            <span class="pill">
+                                18 Total
+                            </span>
+
+                        </div>
+
+
+                        <div class="session-list">
+
+                            <div class="session-row">
+
+                                <span class="session-time">
+                                    06:00
+                                </span>
+
+                                <span class="session-dot"></span>
+
+                                <div class="session-info">
+                                    <strong>Sunrise Vinyasa</strong>
+                                    <span>Ananya Sharma · Room 01</span>
+                                </div>
+
+                                <span class="session-status">
+                                    Live
+                                </span>
+
+                            </div>
+
+
+                            <div class="session-row">
+
+                                <span class="session-time">
+                                    07:00
+                                </span>
+
+                                <span class="session-dot"></span>
+
+                                <div class="session-info">
+                                    <strong>Morning Hatha</strong>
+                                    <span>Meera Nair · Room 02</span>
+                                </div>
+
+                                <span class="session-status">
+                                    Booked
+                                </span>
+
+                            </div>
+
+
+                            <div class="session-row">
+
+                                <span class="session-time">
+                                    09:30
+                                </span>
+
+                                <span class="session-dot"></span>
+
+                                <div class="session-info">
+                                    <strong>Mindful Meditation</strong>
+                                    <span>Priya Nair · Studio B</span>
+                                </div>
+
+                                <span class="session-status">
+                                    Booked
+                                </span>
+
+                            </div>
+
+
+                            <div class="session-row">
+
+                                <span class="session-time">
+                                    18:00
+                                </span>
+
+                                <span class="session-dot"></span>
+
+                                <div class="session-info">
+                                    <strong>Power Yoga</strong>
+                                    <span>Rahul Menon · Room 03</span>
+                                </div>
+
+                                <span class="session-status">
+                                    Upcoming
+                                </span>
+
+                            </div>
+
+
+                            <div class="session-row">
+
+                                <span class="session-time">
+                                    19:30
+                                </span>
+
+                                <span class="session-dot"></span>
+
+                                <div class="session-info">
+                                    <strong>Yin Relaxation</strong>
+                                    <span>Divya Rao · Studio A</span>
+                                </div>
+
+                                <span class="session-status">
+                                    Upcoming
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <article class="card" style="margin-bottom:20px;">
+
+                    <div class="card-head">
+
+                        <div>
+                            <h3>Quick Actions</h3>
+                            <p>Frequently used center controls</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <a
+                            href="404.html"
+                            class="quick-action"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            <strong>Create Class</strong>
+                        </a>
+
+
+                        <a
+                            href="404.html"
+                            class="quick-action"
+                        >
+                            <i class="fa-solid fa-calendar-plus"></i>
+                            <strong>Schedule Session</strong>
+                        </a>
+
+
+                        <a
+                            href="404.html"
+                            class="quick-action"
+                        >
+                            <i class="fa-solid fa-user-plus"></i>
+                            <strong>Add Member</strong>
+                        </a>
+
+
+                        <a
+                            href="404.html"
+                            class="quick-action"
+                        >
+                            <i class="fa-solid fa-file-export"></i>
+                            <strong>Export Report</strong>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- LOWER GRID -->
+
+                <div class="three-column">
+
+
+                    <!-- INSTRUCTOR -->
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Instructor Spotlight</h3>
+                                <p>Top performing instructor</p>
+                            </div>
+
+                            <i
+                                class="fa-solid fa-award"
+                                style="color:var(--gold)"
+                            ></i>
+
+                        </div>
+
+
+                        <div class="instructor-card">
+
+                            <div class="instructor-main">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=85"
+                                    alt="Ananya Sharma yoga instructor"
+                                    loading="lazy"
+                                >
+
+                                <div>
+
+                                    <strong>
+                                        Ananya Sharma
+                                    </strong>
+
+                                    <span>
+                                        Vinyasa & Breathwork
+                                    </span>
+
+                                    <div class="rating">
+                                        ★★★★★
+                                        <span style="color:var(--muted)">
+                                            4.9
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="instructor-stats">
+
+                                <div>
+                                    <strong>142</strong>
+                                    <span>Sessions</span>
+                                </div>
+
+                                <div>
+                                    <strong>96%</strong>
+                                    <span>Rating</span>
+                                </div>
+
+                                <div>
+                                    <strong>38</strong>
+                                    <span>Members</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- WELLNESS TIP -->
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Wellness Tip</h3>
+                                <p>Today's center focus</p>
+                            </div>
+
+                        </div>
+
+
+                        <div style="padding:18px 20px 22px;">
+
+                            <div
+                                style="
+                                    width:43px;
+                                    height:43px;
+                                    border-radius:13px;
+                                    display:grid;
+                                    place-items:center;
+                                    background:#edf5ea;
+                                    color:var(--forest);
+                                "
+                            >
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+
+                            <h3
+                                style="
+                                    margin-top:13px;
+                                    font-family:Manrope,sans-serif;
+                                    font-size:14px;
+                                "
+                            >
+                                Create space to breathe.
+                            </h3>
+
+                            <p
+                                class="muted-note"
+                                style="margin-top:7px;"
+                            >
+                                Encourage members to spend five quiet
+                                minutes before each practice focusing
+                                on slow, conscious breathing.
+                            </p>
+
+                            <a
+                                href="404.html"
+                                class="card-link"
+                                style="
+                                    display:inline-block;
+                                    margin-top:14px;
+                                "
+                            >
+                                View Wellness Guide →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CONSISTENCY -->
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Center Consistency</h3>
+                                <p>Weekly attendance health</p>
+                            </div>
+
+                            <span class="trend up">
+                                +9.3%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-list">
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Morning Classes</span>
+                                    <strong>91%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:91%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Evening Classes</span>
+                                    <strong>84%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:84%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Weekend Classes</span>
+                                    <strong>76%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:76%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Meditation</span>
+                                    <strong>68%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:68%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- RECENT ACTIVITY -->
+
+                <article class="card">
+
+                    <div class="card-head">
+
+                        <div>
+                            <h3>Recent Activity</h3>
+                            <p>Latest actions across the center</p>
+                        </div>
+
+                        <a
+                            href="404.html"
+                            class="card-link"
+                        >
+                            View All →
+                        </a>
+
+                    </div>
+
+
+                    <div class="activity-list">
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+
+                            <div>
+                                <strong>
+                                    New Premium member joined Zenora
+                                </strong>
+
+                                <span>
+                                    Kavya Menon · 8 minutes ago
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Morning Vinyasa reached full capacity
+                                </strong>
+
+                                <span>
+                                    Room 01 · 24 / 24 seats · 22 minutes ago
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Ananya Sharma received a 5-star review
+                                </strong>
+
+                                <span>
+                                    From Ajith Kumar · 47 minutes ago
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </div>
+
+                            <div>
+                                <strong>
+                                    October membership report generated
+                                </strong>
+
+                                <span>
+                                    System report · 1 hour ago
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 VIEW 02 — MANAGE CLASSES
+            ================================================== -->
+
+            <section
+                class="view-panel"
+                id="classes"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Manage Classes</h2>
+                        <p>
+                            Organize Zenora's yoga practices and class library.
+                        </p>
+                    </div>
+
+                    <a
+                        href="404.html"
+                        class="primary-btn"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        Create Class
+                    </a>
+
+                </div>
+
+
+                <!-- FILTER -->
+
+                <div class="filter-bar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Search classes..."
+                        >
+
+                    </div>
+
+
+                    <select class="filter-select">
+
+                        <option>All Levels</option>
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+
+                    </select>
+
+
+                    <select class="filter-select">
+
+                        <option>All Types</option>
+                        <option>Vinyasa</option>
+                        <option>Hatha</option>
+                        <option>Power Yoga</option>
+                        <option>Meditation</option>
+
+                    </select>
+
+
+                    <a
+                        href="404.html"
+                        class="secondary-btn"
+                    >
+                        <i class="fa-solid fa-sliders"></i>
+                        Filters
+                    </a>
+
+                </div>
+
+
+                <!-- CLASS STATS -->
+
+                <div class="stat-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                            <span class="trend up">+4</span>
+                        </div>
+
+                        <h3>48</h3>
+                        <p>Total Classes</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <span class="trend up">94%</span>
+                        </div>
+
+                        <h3>42</h3>
+                        <p>Active Classes</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-user-group"></i>
+                            </div>
+                            <span class="trend up">+8%</span>
+                        </div>
+
+                        <h3>864</h3>
+                        <p>Class Enrollments</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="trend up">+0.2</span>
+                        </div>
+
+                        <h3>4.8</h3>
+                        <p>Average Class Rating</p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- CLASS GRID -->
+
+                <div class="class-grid">
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&w=1000&q=85"
+                                alt="Vinyasa yoga class"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                VINYASA
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Morning Vinyasa Flow
+                            </h3>
+
+                            <p class="class-instructor">
+                                Ananya Sharma
+                            </p>
+
+                            <div class="class-meta">
+                                <span>60 min</span>
+                                <span>Intermediate</span>
+                                <span>7:00 AM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    24 / 24 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1000&q=85"
+                                alt="Hatha yoga practice"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                HATHA
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Gentle Hatha Flow
+                            </h3>
+
+                            <p class="class-instructor">
+                                Meera Nair
+                            </p>
+
+                            <div class="class-meta">
+                                <span>60 min</span>
+                                <span>Beginner</span>
+                                <span>8:30 AM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    18 / 24 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=1000&q=85"
+                                alt="Yoga meditation session"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                MEDITATION
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Mindful Meditation
+                            </h3>
+
+                            <p class="class-instructor">
+                                Priya Nair
+                            </p>
+
+                            <div class="class-meta">
+                                <span>30 min</span>
+                                <span>Beginner</span>
+                                <span>9:30 AM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    16 / 20 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=1000&q=85"
+                                alt="Yoga stretching practice"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                YIN YOGA
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Deep Yin Stretch
+                            </h3>
+
+                            <p class="class-instructor">
+                                Divya Rao
+                            </p>
+
+                            <div class="class-meta">
+                                <span>50 min</span>
+                                <span>Beginner</span>
+                                <span>11:00 AM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    12 / 20 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=1000&q=85"
+                                alt="Power yoga session"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                POWER
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Power Yoga Burn
+                            </h3>
+
+                            <p class="class-instructor">
+                                Rahul Menon
+                            </p>
+
+                            <div class="class-meta">
+                                <span>45 min</span>
+                                <span>Advanced</span>
+                                <span>6:00 PM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    22 / 24 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=1000&q=85"
+                                alt="Restorative yoga practice"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                RESTORATIVE
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Evening Restoration
+                            </h3>
+
+                            <p class="class-instructor">
+                                Meera Nair
+                            </p>
+
+                            <div class="class-meta">
+                                <span>60 min</span>
+                                <span>Beginner</span>
+                                <span>7:30 PM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    15 / 20 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=85"
+                                alt="Breathwork yoga practice"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                PRANAYAMA
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Breath & Balance
+                            </h3>
+
+                            <p class="class-instructor">
+                                Ananya Sharma
+                            </p>
+
+                            <div class="class-meta">
+                                <span>40 min</span>
+                                <span>Intermediate</span>
+                                <span>8:00 AM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    14 / 18 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=1000&q=85"
+                                alt="Relaxation yoga class"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                RELAXATION
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Evening Relaxation
+                            </h3>
+
+                            <p class="class-instructor">
+                                Priya Nair
+                            </p>
+
+                            <div class="class-meta">
+                                <span>45 min</span>
+                                <span>Beginner</span>
+                                <span>8:15 PM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    11 / 18 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1000&q=85"
+                                alt="Morning yoga class"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                VINYASA
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Sunrise Energy Flow
+                            </h3>
+
+                            <p class="class-instructor">
+                                Arjun Dev
+                            </p>
+
+                            <div class="class-meta">
+                                <span>55 min</span>
+                                <span>Intermediate</span>
+                                <span>6:30 AM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    19 / 22 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1000&q=85"
+                                alt="Meditation and mindfulness class"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                MINDFULNESS
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Stillness Practice
+                            </h3>
+
+                            <p class="class-instructor">
+                                Priya Nair
+                            </p>
+
+                            <div class="class-meta">
+                                <span>35 min</span>
+                                <span>All Levels</span>
+                                <span>10:30 AM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    9 / 20 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=1000&q=85"
+                                alt="Advanced yoga practice"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                ADVANCED
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Athletic Power Flow
+                            </h3>
+
+                            <p class="class-instructor">
+                                Rahul Menon
+                            </p>
+
+                            <div class="class-meta">
+                                <span>50 min</span>
+                                <span>Advanced</span>
+                                <span>5:30 PM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    20 / 24 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1000&q=85"
+                                alt="Gentle yoga session"
+                                loading="lazy"
+                            >
+
+                            <span class="class-badge">
+                                HATHA
+                            </span>
+
+                        </div>
+
+                        <div class="class-card-body">
+
+                            <h3>
+                                Gentle Mobility
+                            </h3>
+
+                            <p class="class-instructor">
+                                Divya Rao
+                            </p>
+
+                            <div class="class-meta">
+                                <span>45 min</span>
+                                <span>Beginner</span>
+                                <span>4:30 PM</span>
+                            </div>
+
+                            <div class="class-footer">
+
+                                <span class="class-capacity">
+                                    13 / 18 booked
+                                </span>
+
+                                <a href="404.html">
+                                    Manage →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VIEW 03 — MANAGE SESSIONS
+            ================================================== -->
+
+            <section
+                class="view-panel"
+                id="sessions"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Manage Sessions</h2>
+                        <p>
+                            Monitor bookings, attendance and daily schedules.
+                        </p>
+                    </div>
+
+                    <a
+                        href="404.html"
+                        class="primary-btn"
+                    >
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        Schedule Session
+                    </a>
+
+                </div>
+
+
+                <!-- SESSION STATS -->
+
+                <div class="session-management-grid">
+
+                    <article class="card session-stat">
+
+                        <div class="session-stat-top">
+
+                            <i class="fa-solid fa-calendar-day"></i>
+
+                            <span class="trend up">
+                                Today
+                            </span>
+
+                        </div>
+
+                        <strong>18</strong>
+                        <p>Scheduled Sessions</p>
+
+                    </article>
+
+
+                    <article class="card session-stat">
+
+                        <div class="session-stat-top">
+
+                            <i class="fa-solid fa-user-check"></i>
+
+                            <span class="trend up">
+                                91%
+                            </span>
+
+                        </div>
+
+                        <strong>286</strong>
+                        <p>Total Bookings</p>
+
+                    </article>
+
+
+                    <article class="card session-stat">
+
+                        <div class="session-stat-top">
+
+                            <i class="fa-solid fa-chart-simple"></i>
+
+                            <span class="trend up">
+                                +7%
+                            </span>
+
+                        </div>
+
+                        <strong>87%</strong>
+                        <p>Average Attendance</p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- WEEKLY SCHEDULE -->
+
+                <article class="card" style="margin-bottom:20px;">
+
+                    <div class="card-head">
+
+                        <div>
+                            <h3>This Week</h3>
+                            <p>Session distribution by day</p>
+                        </div>
+
+                        <span class="pill">
+                            84 Sessions
+                        </span>
+
+                    </div>
+
+
+                    <div class="calendar-strip">
+
+                        <div class="calendar-day">
+
+                            <span>Mon</span>
+                            <strong>05</strong>
+                            <small>12 sessions</small>
+
+                        </div>
+
+
+                        <div class="calendar-day today">
+
+                            <span>Tue</span>
+                            <strong>06</strong>
+                            <small>18 sessions</small>
+
+                        </div>
+
+
+                        <div class="calendar-day">
+
+                            <span>Wed</span>
+                            <strong>07</strong>
+                            <small>14 sessions</small>
+
+                        </div>
+
+
+                        <div class="calendar-day">
+
+                            <span>Thu</span>
+                            <strong>08</strong>
+                            <small>13 sessions</small>
+
+                        </div>
+
+
+                        <div class="calendar-day">
+
+                            <span>Fri</span>
+                            <strong>09</strong>
+                            <small>15 sessions</small>
+
+                        </div>
+
+
+                        <div class="calendar-day">
+
+                            <span>Sat</span>
+                            <strong>10</strong>
+                            <small>16 sessions</small>
+
+                        </div>
+
+
+                        <div class="calendar-day">
+
+                            <span>Sun</span>
+                            <strong>11</strong>
+                            <small>8 sessions</small>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FILTER -->
+
+                <div class="filter-bar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Search sessions or instructors..."
+                        >
+
+                    </div>
+
+
+                    <select class="filter-select">
+
+                        <option>All Status</option>
+                        <option>Upcoming</option>
+                        <option>Live</option>
+                        <option>Completed</option>
+                        <option>Cancelled</option>
+
+                    </select>
+
+
+                    <select class="filter-select">
+
+                        <option>All Rooms</option>
+                        <option>Room 01</option>
+                        <option>Room 02</option>
+                        <option>Room 03</option>
+                        <option>Studio A</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SESSION TABLE -->
+
+                <article class="card table-card">
+
+                    <div class="card-head">
+
+                        <div>
+                            <h3>Session Schedule</h3>
+                            <p>Upcoming and live sessions</p>
+                        </div>
+
+                        <a
+                            href="404.html"
+                            class="card-link"
+                        >
+                            Export →
+                        </a>
+
+                    </div>
+
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Session</th>
+                                    <th>Instructor</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Room</th>
+                                    <th>Bookings</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Morning Vinyasa
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Ananya Sharma
+                                    </td>
+
+                                    <td>
+                                        06 Oct 2026
+                                    </td>
+
+                                    <td>
+                                        07:00 AM
+                                    </td>
+
+                                    <td>
+                                        Room 01
+                                    </td>
+
+                                    <td>
+                                        24 / 24
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Live
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a
+                                            href="404.html"
+                                            class="table-action"
+                                        >
+                                            Manage
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Morning Hatha
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Meera Nair
+                                    </td>
+
+                                    <td>
+                                        06 Oct 2026
+                                    </td>
+
+                                    <td>
+                                        08:30 AM
+                                    </td>
+
+                                    <td>
+                                        Room 02
+                                    </td>
+
+                                    <td>
+                                        18 / 24
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Booked
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Manage
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Mindful Meditation
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Priya Nair
+                                    </td>
+
+                                    <td>
+                                        06 Oct 2026
+                                    </td>
+
+                                    <td>
+                                        09:30 AM
+                                    </td>
+
+                                    <td>
+                                        Studio B
+                                    </td>
+
+                                    <td>
+                                        16 / 20
+                                    </td>
+
+                                    <td>
+                                        <span class="status pending">
+                                            Upcoming
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Manage
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Power Yoga
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Rahul Menon
+                                    </td>
+
+                                    <td>
+                                        06 Oct 2026
+                                    </td>
+
+                                    <td>
+                                        06:00 PM
+                                    </td>
+
+                                    <td>
+                                        Room 03
+                                    </td>
+
+                                    <td>
+                                        22 / 24
+                                    </td>
+
+                                    <td>
+                                        <span class="status pending">
+                                            Upcoming
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Manage
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Evening Relaxation
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Divya Rao
+                                    </td>
+
+                                    <td>
+                                        06 Oct 2026
+                                    </td>
+
+                                    <td>
+                                        07:30 PM
+                                    </td>
+
+                                    <td>
+                                        Studio A
+                                    </td>
+
+                                    <td>
+                                        15 / 20
+                                    </td>
+
+                                    <td>
+                                        <span class="status pending">
+                                            Upcoming
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Manage
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            Breath & Balance
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        Ananya Sharma
+                                    </td>
+
+                                    <td>
+                                        07 Oct 2026
+                                    </td>
+
+                                    <td>
+                                        08:00 AM
+                                    </td>
+
+                                    <td>
+                                        Room 02
+                                    </td>
+
+                                    <td>
+                                        14 / 18
+                                    </td>
+
+                                    <td>
+                                        <span class="status pending">
+                                            Upcoming
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Manage
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ATTENDANCE + CANCELLATIONS -->
+
+                <div class="two-column" style="margin-top:20px;">
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Attendance Performance</h3>
+                                <p>Current weekly average</p>
+                            </div>
+
+                            <strong
+                                style="
+                                    color:var(--forest);
+                                    font-size:18px;
+                                "
+                            >
+                                87%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-list">
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Vinyasa</span>
+                                    <strong>94%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:94%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Hatha</span>
+                                    <strong>88%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:88%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Power Yoga</span>
+                                    <strong>91%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:91%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Meditation</span>
+                                    <strong>73%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:73%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Booking Health</h3>
+                                <p>Today's reservation activity</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric-grid" style="padding:18px 20px 20px;">
+
+                            <div class="metric-box">
+                                <span>Booked</span>
+                                <strong>286</strong>
+                                <small>+8.2%</small>
+                            </div>
+
+                            <div class="metric-box">
+                                <span>Checked In</span>
+                                <strong>241</strong>
+                                <small>84.3%</small>
+                            </div>
+
+                            <div class="metric-box">
+                                <span>Waitlist</span>
+                                <strong>18</strong>
+                                <small>+4.1%</small>
+                            </div>
+
+                            <div class="metric-box">
+                                <span>Cancelled</span>
+                                <strong>12</strong>
+                                <small>−2.4%</small>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VIEW 04 — WELLNESS ANALYTICS
+            ================================================== -->
+
+            <section
+                class="view-panel"
+                id="analytics"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Wellness Analytics</h2>
+                        <p>
+                            Understand member engagement, consistency and wellness growth.
+                        </p>
+                    </div>
+
+                    <a
+                        href="404.html"
+                        class="secondary-btn"
+                    >
+                        <i class="fa-solid fa-download"></i>
+                        Download Report
+                    </a>
+
+                </div>
+
+
+                <!-- METRICS -->
+
+                <div class="metric-grid" style="margin-bottom:20px;">
+
+                    <article class="metric-box card">
+                        <span>Avg Wellness Score</span>
+                        <strong>86%</strong>
+                        <small>↑ 6.8% this month</small>
+                    </article>
+
+
+                    <article class="metric-box card">
+                        <span>Practice Minutes</span>
+                        <strong>42.8K</strong>
+                        <small>↑ 11.4% this month</small>
+                    </article>
+
+
+                    <article class="metric-box card">
+                        <span>Active Streaks</span>
+                        <strong>638</strong>
+                        <small>↑ 9.7% this month</small>
+                    </article>
+
+
+                    <article class="metric-box card">
+                        <span>Member Retention</span>
+                        <strong>94.2%</strong>
+                        <small>↑ 2.1% this month</small>
+                    </article>
+
+                </div>
+
+
+                <!-- SCORE + MONTHLY -->
+
+                <div class="two-column">
+
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Center Wellness Score</h3>
+                                <p>Overall member wellness index</p>
+                            </div>
+
+                            <span class="status active">
+                                Excellent
+                            </span>
+
+                        </div>
+
+
+                        <div class="analytics-score">
+
+                            <div class="score-ring">
+
+                                <div class="score-ring-content">
+                                    <strong>86%</strong>
+                                    <span>WELLNESS</span>
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Strong community health
+                                </h3>
+
+                                <p>
+                                    Members are maintaining a healthy
+                                    balance between practice frequency,
+                                    meditation, flexibility and consistency.
+                                </p>
+
+
+                                <div class="score-tags">
+                                    <span>Consistency 91%</span>
+                                    <span>Breathwork 84%</span>
+                                    <span>Flexibility 79%</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Monthly Practice</h3>
+                                <p>Total sessions completed</p>
+                            </div>
+
+                            <span class="trend up">
+                                +18.4%
+                            </span>
+
+                        </div>
+
+
+                        <div class="mini-bars">
+
+                            <div class="mini-bar-col">
+                                <div class="fill" style="height:55%"></div>
+                                <small>May</small>
+                            </div>
+
+                            <div class="mini-bar-col">
+                                <div class="fill" style="height:64%"></div>
+                                <small>Jun</small>
+                            </div>
+
+                            <div class="mini-bar-col">
+                                <div class="fill" style="height:70%"></div>
+                                <small>Jul</small>
+                            </div>
+
+                            <div class="mini-bar-col">
+                                <div class="fill" style="height:77%"></div>
+                                <small>Aug</small>
+                            </div>
+
+                            <div class="mini-bar-col">
+                                <div class="fill" style="height:87%"></div>
+                                <small>Sep</small>
+                            </div>
+
+                            <div class="mini-bar-col">
+                                <div
+                                    class="fill"
+                                    style="
+                                        height:100%;
+                                        background:var(--forest);
+                                    "
+                                ></div>
+                                <small>Oct</small>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- MEMBER CONSISTENCY HEATMAP -->
+
+                <article class="card" style="margin-bottom:20px;">
+
+                    <div class="card-head">
+
+                        <div>
+                            <h3>Member Practice Consistency</h3>
+                            <p>Daily practice activity across the last 14 days</p>
+                        </div>
+
+                        <span class="pill">
+                            1,284 Members
+                        </span>
+
+                    </div>
+
+
+                    <div class="heatmap">
+
+                        <div class="heatmap-grid">
+
+                            <span class="heat l1"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat"></span>
+                            <span class="heat l1"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l1"></span>
+                            <span class="heat l2"></span>
+
+                            <span class="heat l2"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat"></span>
+                            <span class="heat l1"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l1"></span>
+
+                            <span class="heat"></span>
+                            <span class="heat l1"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l1"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l3"></span>
+
+                            <span class="heat l3"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l1"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l3"></span>
+                            <span class="heat l4"></span>
+                            <span class="heat l2"></span>
+                            <span class="heat l1"></span>
+
+                        </div>
+
+
+                        <div class="heat-legend">
+                            Less
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            More
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ANALYTICS DETAIL -->
+
+                <div class="three-column">
+
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Practice Types</h3>
+                                <p>Most popular member practices</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-list">
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Vinyasa</span>
+                                    <strong>38%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:38%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Hatha</span>
+                                    <strong>24%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:24%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Meditation</span>
+                                    <strong>18%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:18%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Power Yoga</span>
+                                    <strong>12%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:12%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-head">
+
+                            <div>
+                                <h3>Member Goals</h3>
+                                <p>Goal completion rates</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-list">
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Weekly Practice</span>
+                                    <strong>82%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:82%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Flexibility</span>
+                                    <strong>74%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:74%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Stress Reduction</span>
+                                    <strong>88%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:88%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-row">
+
+                                <div class="progress-label">
+                                    <span>Mindfulness</span>
+                                    <strong>91%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <div
+                                        class="progress-fill"
+                                        style="width:91%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card member-insight">
+
+                        <div class="member-insight-icon">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+
+                        <h3>
+                            Monthly Insight
+                        </h3>
+
+                        <p>
+                            Early morning Vinyasa continues to be the
+                            strongest retention driver. Members attending
+                            three or more morning practices each week show
+                            higher long-term consistency.
+                        </p>
+
+                        <a
+                            href="404.html"
+                            class="card-link"
+                            style="
+                                display:inline-block;
+                                margin-top:15px;
+                            "
+                        >
+                            View Insights →
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VIEW 05 — MEMBERS
+            ================================================== -->
+
+            <section
+                class="view-panel"
+                id="members"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Members</h2>
+                        <p>
+                            Manage Zenora's growing wellness community.
+                        </p>
+                    </div>
+
+                    <a
+                        href="404.html"
+                        class="primary-btn"
+                    >
+                        <i class="fa-solid fa-user-plus"></i>
+                        Add Member
+                    </a>
+
+                </div>
+
+
+                <!-- MEMBER SUMMARY -->
+
+                <div class="member-summary">
+
+                    <article class="member-summary-card">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <strong>1,284</strong>
+
+                        <span>
+                            Total Members
+                        </span>
+
+                    </article>
+
+
+                    <article class="member-summary-card">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <strong>1,126</strong>
+
+                        <span>
+                            Active Members
+                        </span>
+
+                    </article>
+
+
+                    <article class="member-summary-card">
+
+                        <i class="fa-solid fa-crown"></i>
+
+                        <strong>382</strong>
+
+                        <span>
+                            Premium Members
+                        </span>
+
+                    </article>
+
+
+                    <article class="member-summary-card">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        <strong>74</strong>
+
+                        <span>
+                            New This Month
+                        </span>
+
+                    </article>
+
+                </div>
+
+
+                <!-- MEMBER FILTER -->
+
+                <div class="filter-bar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Search member name or email..."
+                        >
+
+                    </div>
+
+
+                    <select class="filter-select">
+
+                        <option>All Memberships</option>
+                        <option>Premium</option>
+                        <option>Standard</option>
+                        <option>Trial</option>
+
+                    </select>
+
+
+                    <select class="filter-select">
+
+                        <option>All Status</option>
+                        <option>Active</option>
+                        <option>Pending</option>
+                        <option>Cancelled</option>
+
+                    </select>
+
+
+                    <a
+                        href="404.html"
+                        class="secondary-btn"
+                    >
+                        Export
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- MEMBER TABLE -->
+
+                <article class="card table-card">
+
+                    <div class="card-head">
+
+                        <div>
+                            <h3>Member Directory</h3>
+                            <p>Recently active members</p>
+                        </div>
+
+                        <span class="pill">
+                            1,284 records
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Membership</th>
+                                    <th>Joined</th>
+                                    <th>Sessions</th>
+                                    <th>Streak</th>
+                                    <th>Wellness</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="member-mini">
+
+                                            <img
+                                                src="https://i.pravatar.cc/100?img=12"
+                                                alt="Ajith Kumar"
+                                                loading="lazy"
+                                            >
+
+                                            <div>
+                                                <strong>
+                                                    Ajith Kumar
+                                                </strong>
+
+                                                <span>
+                                                    ajith@example.com
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <span class="status premium">
+                                            Premium
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        Jan 2026
+                                    </td>
+
+                                    <td>
+                                        36
+                                    </td>
+
+                                    <td>
+                                        8 days
+                                    </td>
+
+                                    <td>
+                                        92%
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a
+                                            href="404.html"
+                                            class="table-action"
+                                        >
+                                            View
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="member-mini">
+
+                                            <img
+                                                src="https://i.pravatar.cc/100?img=32"
+                                                alt="Kavya Menon"
+                                                loading="lazy"
+                                            >
+
+                                            <div>
+                                                <strong>
+                                                    Kavya Menon
+                                                </strong>
+
+                                                <span>
+                                                    kavya@example.com
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <span class="status premium">
+                                            Premium
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        Mar 2026
+                                    </td>
+
+                                    <td>
+                                        42
+                                    </td>
+
+                                    <td>
+                                        14 days
+                                    </td>
+
+                                    <td>
+                                        95%
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            View
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="member-mini">
+
+                                            <img
+                                                src="https://i.pravatar.cc/100?img=47"
+                                                alt="Rohan Kumar"
+                                                loading="lazy"
+                                            >
+
+                                            <div>
+                                                <strong>
+                                                    Rohan Kumar
+                                                </strong>
+
+                                                <span>
+                                                    rohan@example.com
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Standard
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        May 2026
+                                    </td>
+
+                                    <td>
+                                        24
+                                    </td>
+
+                                    <td>
+                                        6 days
+                                    </td>
+
+                                    <td>
+                                        81%
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            View
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="member-mini">
+
+                                            <img
+                                                src="https://i.pravatar.cc/100?img=44"
+                                                alt="Nithya Ravi"
+                                                loading="lazy"
+                                            >
+
+                                            <div>
+                                                <strong>
+                                                    Nithya Ravi
+                                                </strong>
+
+                                                <span>
+                                                    nithya@example.com
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <span class="status premium">
+                                            Premium
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        Feb 2026
+                                    </td>
+
+                                    <td>
+                                        51
+                                    </td>
+
+                                    <td>
+                                        21 days
+                                    </td>
+
+                                    <td>
+                                        97%
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            View
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="member-mini">
+
+                                            <img
+                                                src="https://i.pravatar.cc/100?img=25"
+                                                alt="Aravind Raj"
+                                                loading="lazy"
+                                            >
+
+                                            <div>
+                                                <strong>
+                                                    Aravind Raj
+                                                </strong>
+
+                                                <span>
+                                                    aravind@example.com
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Standard
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        Jun 2026
+                                    </td>
+
+                                    <td>
+                                        19
+                                    </td>
+
+                                    <td>
+                                        4 days
+                                    </td>
+
+                                    <td>
+                                        76%
+                                    </td>
+
+                                    <td>
+                                        <span class="status pending">
+                                            Pending
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            View
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="member-mini">
+
+                                            <img
+                                                src="https://i.pravatar.cc/100?img=49"
+                                                alt="Sneha Iyer"
+                                                loading="lazy"
+                                            >
+
+                                            <div>
+                                                <strong>
+                                                    Sneha Iyer
+                                                </strong>
+
+                                                <span>
+                                                    sneha@example.com
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <span class="status premium">
+                                            Premium
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        Apr 2026
+                                    </td>
+
+                                    <td>
+                                        38
+                                    </td>
+
+                                    <td>
+                                        11 days
+                                    </td>
+
+                                    <td>
+                                        89%
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            View
+                                        </a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MEMBER INSIGHTS -->
+
+                <div class="three-column" style="margin-top:20px;">
+
+
+                    <article class="card member-insight">
+
+                        <div class="member-insight-icon">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+
+                        <h3>
+                            Premium Community
+                        </h3>
+
+                        <p>
+                            Premium members currently contribute the
+                            strongest session retention and workshop
+                            participation across the center.
+                        </p>
+
+                        <a
+                            href="404.html"
+                            class="card-link"
+                            style="display:inline-block;margin-top:14px;"
+                        >
+                            View Premium Members →
+                        </a>
+
+                    </article>
+
+
+                    <article class="card member-insight">
+
+                        <div class="member-insight-icon">
+                            <i class="fa-solid fa-user-clock"></i>
+                        </div>
+
+                        <h3>
+                            At-Risk Members
+                        </h3>
+
+                        <p>
+                            42 members have not attended a class in the
+                            last 14 days. A gentle wellness reminder may
+                            help them return to practice.
+                        </p>
+
+                        <a
+                            href="404.html"
+                            class="card-link"
+                            style="display:inline-block;margin-top:14px;"
+                        >
+                            Review Members →
+                        </a>
+
+                    </article>
+
+
+                    <article class="card member-insight">
+
+                        <div class="member-insight-icon">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+
+                        <h3>
+                            New Member Growth
+                        </h3>
+
+                        <p>
+                            Zenora welcomed 74 new members this month,
+                            with morning Vinyasa currently being the
+                            most selected first class.
+                        </p>
+
+                        <a
+                            href="404.html"
+                            class="card-link"
+                            style="display:inline-block;margin-top:14px;"
+                        >
+                            Growth Report →
+                        </a>
+
+                    </article>
+
+                </div>
+
+
+                <!-- MEMBERSHIP DISTRIBUTION -->
+
+                <article class="card" style="margin-top:20px;">
+
+                    <div class="card-head">
+
+                        <div>
+                            <h3>Membership Distribution</h3>
+                            <p>Current member plan composition</p>
+                        </div>
+
+                        <a
+                            href="404.html"
+                            class="card-link"
+                        >
+                            Manage Plans →
+                        </a>
+
+                    </div>
+
+
+                    <div class="progress-list">
+
+                        <div class="progress-row">
+
+                            <div class="progress-label">
+                                <span>Premium Members</span>
+                                <strong>30%</strong>
+                            </div>
+
+                            <div class="progress-track">
+                                <div
+                                    class="progress-fill"
+                                    style="width:30%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-row">
+
+                            <div class="progress-label">
+                                <span>Standard Members</span>
+                                <strong>51%</strong>
+                            </div>
+
+                            <div class="progress-track">
+                                <div
+                                    class="progress-fill"
+                                    style="width:51%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-row">
+
+                            <div class="progress-label">
+                                <span>Trial Members</span>
+                                <strong>12%</strong>
+                            </div>
+
+                            <div class="progress-track">
+                                <div
+                                    class="progress-fill"
+                                    style="width:12%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-row">
+
+                            <div class="progress-label">
+                                <span>Workshop / Drop-in</span>
+                                <strong>7%</strong>
+                            </div>
+
+                            <div class="progress-track">
+                                <div
+                                    class="progress-fill"
+                                    style="width:7%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    /* =========================================================
+       VIEW SWITCHING
+    ========================================================== */
+
+    const navItems = document.querySelectorAll(".nav-item");
+    const viewPanels = document.querySelectorAll(".view-panel");
+    const topbarTitle = document.getElementById("topbarTitle");
+
+
+    const pageTitles = {
+
+        dashboard: "Admin Dashboard",
+        classes: "Manage Classes",
+        sessions: "Manage Sessions",
+        analytics: "Wellness Analytics",
+        members: "Members"
+
+    };
+
+
+    function openView(viewName) {
+
+        navItems.forEach(function(item) {
+
+            item.classList.toggle(
+                "active",
+                item.dataset.view === viewName
+            );
+
+        });
+
+
+        viewPanels.forEach(function(panel) {
+
+            panel.classList.remove("active");
+
+        });
+
+
+        const targetPanel =
+            document.getElementById(viewName);
+
+
+        if (targetPanel) {
+
+            targetPanel.classList.add("active");
+
+            targetPanel.scrollTop = 0;
+
+        }
+
+
+        if (pageTitles[viewName]) {
+
+            topbarTitle.textContent =
+                pageTitles[viewName];
+
+        }
+
+
+        closeMobileSidebar();
+
+    }
+
+
+    navItems.forEach(function(item) {
+
+        item.addEventListener("click", function() {
+
+            openView(item.dataset.view);
+
+        });
+
+    });
+
+
+    /* =========================================================
+       MOBILE DRAWER
+    ========================================================== */
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const mobileMenuBtn =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebarClose =
+        document.getElementById("sidebarClose");
+
+    const mobileOverlay =
+        document.getElementById("mobileOverlay");
+
+
+    function openMobileSidebar() {
+
+        sidebar.classList.add("open");
+
+        mobileOverlay.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeMobileSidebar() {
+
+        sidebar.classList.remove("open");
+
+        mobileOverlay.classList.remove("show");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    mobileMenuBtn.addEventListener(
+        "click",
+        openMobileSidebar
+    );
+
+
+    sidebarClose.addEventListener(
+        "click",
+        closeMobileSidebar
+    );
+
+
+    mobileOverlay.addEventListener(
+        "click",
+        closeMobileSidebar
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                closeMobileSidebar();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       PREVENT MOBILE DRAWER FROM STAYING OPEN ON RESIZE
+    ========================================================== */
+
+    window.addEventListener(
+        "resize",
+        function() {
+
+            if (window.innerWidth > 800) {
+
+                closeMobileSidebar();
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

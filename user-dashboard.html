@@ -1,0 +1,5869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZENORA YOGA — User Dashboard</title>
+
+    <meta
+        name="description"
+        content="ZENORA YOGA premium wellness and yoga member dashboard."
+    >
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================== */
+
+        :root {
+            --deep-green: #102f27;
+            --deep-green-2: #163c32;
+            --forest: #1f4d3f;
+            --sage: #8eaa92;
+            --sage-light: #dce8d9;
+            --mint: #eaf3e7;
+            --cream: #f7f5ed;
+            --warm-white: #fffdf8;
+            --beige: #e9dfce;
+            --terracotta: #c9795d;
+            --gold: #c8a96b;
+            --text: #20342d;
+            --muted: #718078;
+            --border: rgba(32, 52, 45, .10);
+            --shadow: 0 18px 50px rgba(25, 56, 44, .09);
+            --radius: 22px;
+            --sidebar-width: 275px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--mint);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* =========================================================
+           APP
+        ========================================================== */
+
+        .app {
+            min-height: 100vh;
+        }
+
+        /* =========================================================
+           SIDEBAR
+        ========================================================== */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: var(--sidebar-width);
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(255,255,255,.07),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #0c2a22 0%,
+                    #12362c 50%,
+                    #0c2921 100%
+                );
+            color: #fff;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 28px 18px 20px;
+            border-right: 1px solid rgba(255,255,255,.05);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 12px 26px;
+        }
+
+        .brand-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: rgba(255,255,255,.09);
+            border: 1px solid rgba(255,255,255,.10);
+            color: #dce8d9;
+            font-size: 21px;
+        }
+
+        .brand-text strong {
+            display: block;
+            font-family: "Manrope", sans-serif;
+            font-size: 16px;
+            letter-spacing: .12em;
+            font-weight: 800;
+        }
+
+        .brand-text span {
+            display: block;
+            margin-top: 3px;
+            color: #9fb6aa;
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .sidebar-profile {
+            padding: 16px 13px;
+            margin-bottom: 22px;
+            background: rgba(255,255,255,.055);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 19px;
+        }
+
+        .sidebar-user {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .sidebar-user img {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,.18);
+        }
+
+        .sidebar-user strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .sidebar-user span {
+            display: block;
+            margin-top: 3px;
+            font-size: 10px;
+            color: #a8beb3;
+        }
+
+        .sidebar-label {
+            padding: 0 12px;
+            margin-bottom: 10px;
+            font-size: 9px;
+            color: #78968a;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 13px;
+            border-radius: 15px;
+            color: #a8beb4;
+            font-size: 12px;
+            font-weight: 600;
+            transition: .3s ease;
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,.055);
+            color: #fff;
+        }
+
+        .nav-link.active {
+            background: #dce8d9;
+            color: #163a30;
+            box-shadow: 0 10px 25px rgba(0,0,0,.10);
+        }
+
+        .nav-link.active::before {
+            content: "";
+            position: absolute;
+            left: -18px;
+            top: 9px;
+            bottom: 9px;
+            width: 3px;
+            border-radius: 10px;
+            background: var(--gold);
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+
+        .sidebar-plan {
+            padding: 14px;
+            border-radius: 18px;
+            background: rgba(255,255,255,.045);
+            border: 1px solid rgba(255,255,255,.06);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-plan small {
+            display: block;
+            color: #78968a;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+        }
+
+        .sidebar-plan strong {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #eef5ed;
+        }
+
+        .logout {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 0;
+            background: transparent;
+            color: #a8beb4;
+            padding: 12px 13px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .logout:hover {
+            background: rgba(255,255,255,.05);
+            color: #fff;
+        }
+
+        /* =========================================================
+           MAIN
+        ========================================================== */
+
+        .main {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            padding: 0;
+            background:
+                radial-gradient(
+                    circle at 80% 0%,
+                    rgba(255,255,255,.70),
+                    transparent 26%
+                ),
+                var(--mint);
+        }
+
+        .topbar {
+            height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 38px;
+            background: rgba(247,250,244,.76);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .mobile-menu {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 13px;
+            background: var(--deep-green);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .topbar-left h1 {
+            font-family: "Manrope", sans-serif;
+            font-size: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .topbar-left p {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .top-action {
+            width: 39px;
+            height: 39px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.70);
+            color: var(--text);
+            font-size: 13px;
+            transition: .3s;
+        }
+
+        .top-action:hover {
+            background: var(--deep-green);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .top-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 13px;
+            overflow: hidden;
+            margin-left: 5px;
+            border: 2px solid #fff;
+            box-shadow: 0 5px 18px rgba(0,0,0,.08);
+        }
+
+        .top-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* =========================================================
+           PAGE AREA
+        ========================================================== */
+
+        .page-area {
+            padding: 34px 38px 55px;
+        }
+
+        .dashboard-view {
+            display: none;
+            animation: pageIn .5s ease both;
+        }
+
+        .dashboard-view.active {
+            display: block;
+        }
+
+        @keyframes pageIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .eyebrow {
+            color: #789285;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            font-size: 9px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(24px, 3vw, 34px);
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -.04em;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* =========================================================
+           COMMON BUTTONS
+        ========================================================== */
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 17px;
+            border-radius: 13px;
+            background: var(--deep-green);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .btn-main:hover {
+            background: var(--forest);
+            transform: translateY(-2px);
+        }
+
+        .btn-light {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 16px;
+            border-radius: 13px;
+            background: #fff;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .btn-light:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(0,0,0,.06);
+        }
+
+        /* =========================================================
+           DASHBOARD HERO
+        ========================================================== */
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1.5fr .85fr;
+            gap: 22px;
+            margin-bottom: 24px;
+        }
+
+        .hero-card {
+            min-height: 320px;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            color: #fff;
+            background: #17382f;
+            isolation: isolate;
+        }
+
+        .hero-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(10,37,29,.94),
+                    rgba(10,37,29,.63) 55%,
+                    rgba(10,37,29,.20)
+                );
+            z-index: -1;
+        }
+
+        .hero-content {
+            padding: 37px;
+            max-width: 650px;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            padding: 7px 10px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 30px;
+            color: #d8e7d9;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(31px, 4vw, 50px);
+            line-height: .98;
+            letter-spacing: -.055em;
+            max-width: 470px;
+        }
+
+        .hero-content p {
+            max-width: 480px;
+            margin-top: 15px;
+            color: #c3d4c9;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 25px;
+        }
+
+        .hero-buttons .btn-main {
+            background: #e2eadc;
+            color: #17382f;
+        }
+
+        .hero-buttons .btn-light {
+            background: rgba(255,255,255,.10);
+            color: #fff;
+            border-color: rgba(255,255,255,.15);
+        }
+
+        .daily-quote {
+            border-radius: 28px;
+            padding: 30px;
+            background:
+                linear-gradient(
+                    145deg,
+                    #e2eadc,
+                    #cadbc9
+                );
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-symbol {
+            font-size: 36px;
+            color: #6d8875;
+        }
+
+        .daily-quote h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 21px;
+            line-height: 1.4;
+            letter-spacing: -.03em;
+            max-width: 310px;
+        }
+
+        .daily-quote p {
+            color: #60766a;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            font-weight: 800;
+        }
+
+        .quote-circle {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(39,78,61,.12);
+            border-radius: 50%;
+            right: -55px;
+            bottom: -65px;
+        }
+
+        .quote-circle::before {
+            content: "";
+            position: absolute;
+            inset: 24px;
+            border: 1px solid rgba(39,78,61,.10);
+            border-radius: 50%;
+        }
+
+        /* =========================================================
+           STAT CARDS
+        ========================================================== */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,.75);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 19px;
+            box-shadow: 0 8px 30px rgba(30,70,54,.04);
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-icon {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            background: var(--sage-light);
+            color: var(--forest);
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        .stat-tag {
+            font-size: 9px;
+            color: #789285;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-weight: 700;
+        }
+
+        .stat-number {
+            font-family: "Manrope", sans-serif;
+            font-size: 29px;
+            font-weight: 800;
+            margin-top: 17px;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        .progress-track {
+            height: 5px;
+            background: #e1e9df;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 14px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: var(--forest);
+        }
+
+        /* =========================================================
+           TODAY PRACTICE
+        ========================================================== */
+
+        .today-card {
+            display: grid;
+            grid-template-columns: 270px 1fr;
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 23px;
+            overflow: hidden;
+            margin-bottom: 27px;
+            box-shadow: var(--shadow);
+        }
+
+        .today-image {
+            min-height: 260px;
+        }
+
+        .today-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .today-content {
+            padding: 27px 29px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 9px;
+            border-radius: 20px;
+            background: #e4f0e5;
+            color: #36714e;
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .status::before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            background: #49a768;
+            border-radius: 50%;
+        }
+
+        .today-content h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 25px;
+            margin-top: 15px;
+            letter-spacing: -.035em;
+        }
+
+        .instructor {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .detail-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 19px;
+        }
+
+        .detail-pill {
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: var(--mint);
+            color: #4f655b;
+            font-size: 10px;
+        }
+
+        .today-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 21px;
+        }
+
+        /* =========================================================
+           SECTION TITLE
+        ========================================================== */
+
+        .content-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .content-title h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 17px;
+            letter-spacing: -.03em;
+        }
+
+        .content-title a {
+            color: #60776b;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           UPCOMING CARDS
+        ========================================================== */
+
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .class-card {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .class-image {
+            height: 145px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .class-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s ease;
+        }
+
+        .class-card:hover .class-image img {
+            transform: scale(1.05);
+        }
+
+        .image-badge {
+            position: absolute;
+            top: 11px;
+            left: 11px;
+            padding: 6px 8px;
+            border-radius: 9px;
+            background: rgba(15,45,36,.83);
+            color: #fff;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-weight: 800;
+        }
+
+        .class-body {
+            padding: 15px;
+        }
+
+        .class-body h4 {
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+        }
+
+        .class-body p {
+            color: var(--muted);
+            font-size: 9px;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+
+        .class-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+            margin-top: 12px;
+            color: #63766d;
+            font-size: 9px;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 13px;
+        }
+
+        .booked {
+            font-size: 8px;
+            font-weight: 800;
+            color: #49805c;
+            background: #e6f0e4;
+            padding: 5px 7px;
+            border-radius: 8px;
+        }
+
+        .available {
+            font-size: 8px;
+            font-weight: 800;
+            color: #9b6249;
+            background: #f5e5db;
+            padding: 5px 7px;
+            border-radius: 8px;
+        }
+
+        .mini-link {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--forest);
+        }
+
+        /* =========================================================
+           CLASSES PAGE
+        ========================================================== */
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            padding: 15px;
+            background: rgba(255,255,255,.70);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            flex: 1 1 280px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0 13px;
+        }
+
+        .search-box i {
+            color: #83948b;
+            font-size: 12px;
+        }
+
+        .search-box input {
+            width: 100%;
+            border: 0;
+            outline: 0;
+            padding: 11px 0;
+            color: var(--text);
+            background: transparent;
+            font-size: 11px;
+        }
+
+        .filter-select {
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text);
+            padding: 0 12px;
+            border-radius: 12px;
+            min-width: 120px;
+            font-size: 10px;
+            outline: none;
+        }
+
+        .category-row {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 22px;
+        }
+
+        .category-row::-webkit-scrollbar {
+            height: 3px;
+        }
+
+        .category-chip {
+            flex: 0 0 auto;
+            padding: 9px 13px;
+            border-radius: 30px;
+            background: #fff;
+            border: 1px solid var(--border);
+            color: #65776e;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .featured-card {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 21px;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .featured-image {
+            height: 195px;
+            position: relative;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-type {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            background: rgba(14,45,36,.88);
+            color: #fff;
+            border-radius: 9px;
+            padding: 6px 9px;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .rating {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            background: rgba(255,253,248,.93);
+            color: #a27735;
+            padding: 6px 8px;
+            border-radius: 9px;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        .featured-body {
+            padding: 17px;
+        }
+
+        .featured-body h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 17px;
+            letter-spacing: -.025em;
+        }
+
+        .featured-instructor {
+            margin-top: 5px;
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .featured-description {
+            margin-top: 12px;
+            color: #718078;
+            font-size: 10px;
+            line-height: 1.65;
+        }
+
+        .featured-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .feature-detail {
+            padding: 8px;
+            border-radius: 9px;
+            background: var(--mint);
+            text-align: center;
+            font-size: 8px;
+            color: #60756b;
+        }
+
+        .featured-actions {
+            display: flex;
+            gap: 7px;
+            margin-top: 14px;
+        }
+
+        .featured-actions a {
+            flex: 1;
+        }
+
+        /* =========================================================
+           CATEGORY CARDS
+        ========================================================== */
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .category-icon {
+            flex: 0 0 50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            background: var(--sage-light);
+            color: var(--forest);
+            font-size: 17px;
+        }
+
+        .category-card h4 {
+            font-family: "Manrope", sans-serif;
+            font-size: 13px;
+        }
+
+        .category-card p {
+            color: var(--muted);
+            font-size: 9px;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        .category-card a {
+            display: inline-block;
+            margin-top: 7px;
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--forest);
+        }
+
+        /* =========================================================
+           SESSION PAGE
+        ========================================================== */
+
+        .session-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 19px;
+        }
+
+        .session-tab {
+            padding: 9px 13px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            color: #6c7e75;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .session-tab.active {
+            background: var(--deep-green);
+            color: #fff;
+            border-color: var(--deep-green);
+        }
+
+        .session-feature {
+            display: grid;
+            grid-template-columns: 290px 1fr;
+            background: #fffdf8;
+            border-radius: 23px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 26px;
+        }
+
+        .session-feature-image {
+            min-height: 280px;
+        }
+
+        .session-feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .session-feature-body {
+            padding: 28px;
+        }
+
+        .session-feature-body h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 27px;
+            margin-top: 13px;
+            letter-spacing: -.04em;
+        }
+
+        .session-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px;
+            margin-top: 22px;
+        }
+
+        .session-info {
+            padding: 11px;
+            background: var(--mint);
+            border-radius: 12px;
+        }
+
+        .session-info small {
+            display: block;
+            color: #809087;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .session-info strong {
+            display: block;
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        .session-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .table-card {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 21px;
+            overflow-x: auto;
+        }
+
+        .session-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .session-table th {
+            text-align: left;
+            padding: 14px 17px;
+            background: #f0f5ed;
+            color: #778880;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .session-table td {
+            padding: 15px 17px;
+            border-top: 1px solid var(--border);
+            font-size: 10px;
+        }
+
+        .session-table td:first-child {
+            font-weight: 700;
+        }
+
+        .completed-badge {
+            color: #39724d;
+            background: #e2efe2;
+            padding: 5px 8px;
+            border-radius: 8px;
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           PROGRESS PAGE
+        ========================================================== */
+
+        .progress-overview {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .score-card {
+            background: var(--deep-green);
+            color: #fff;
+            border-radius: 23px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-card::after {
+            content: "";
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 50%;
+            right: -65px;
+            top: -65px;
+        }
+
+        .score-card h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 17px;
+        }
+
+        .score-ring {
+            width: 175px;
+            height: 175px;
+            margin: 25px auto 20px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background:
+                conic-gradient(
+                    #dce8d9 0 92%,
+                    rgba(255,255,255,.10) 92% 100%
+                );
+            position: relative;
+        }
+
+        .score-ring::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            background: var(--deep-green);
+            border-radius: 50%;
+        }
+
+        .score-ring-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .score-ring strong {
+            display: block;
+            font-family: "Manrope", sans-serif;
+            font-size: 38px;
+        }
+
+        .score-ring span {
+            font-size: 8px;
+            color: #a7bbb0;
+            text-transform: uppercase;
+            letter-spacing: .13em;
+        }
+
+        .score-description {
+            text-align: center;
+            color: #aec1b7;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .progress-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+        }
+
+        .progress-stat {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 19px;
+            padding: 19px;
+        }
+
+        .progress-stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            background: var(--sage-light);
+            color: var(--forest);
+            font-size: 12px;
+        }
+
+        .progress-stat strong {
+            display: block;
+            font-family: "Manrope", sans-serif;
+            font-size: 24px;
+            margin-top: 13px;
+        }
+
+        .progress-stat span {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            margin-top: 3px;
+        }
+
+        /* =========================================================
+           CHARTS
+        ========================================================== */
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 17px;
+            margin-bottom: 18px;
+        }
+
+        .chart-card {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 21px;
+            padding: 22px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .chart-header h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 15px;
+        }
+
+        .chart-header span {
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+        .bar-chart {
+            height: 215px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            gap: 8px;
+            padding-top: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bar-item {
+            flex: 1;
+            max-width: 55px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .bar {
+            width: 100%;
+            min-height: 10px;
+            border-radius: 8px 8px 2px 2px;
+            background: linear-gradient(
+                180deg,
+                #72927d,
+                #afc6ad
+            );
+        }
+
+        .bar-value {
+            font-size: 8px;
+            color: #74867d;
+        }
+
+        .bar-day {
+            font-size: 8px;
+            color: #8b9992;
+        }
+
+        .month-list {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .month-row {
+            display: grid;
+            grid-template-columns: 70px 1fr 35px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .month-row span {
+            font-size: 9px;
+            color: #75857d;
+        }
+
+        .month-progress {
+            height: 8px;
+            background: #e5ebe3;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .month-progress div {
+            height: 100%;
+            background: #76947f;
+            border-radius: inherit;
+        }
+
+        .month-row strong {
+            font-size: 9px;
+            text-align: right;
+        }
+
+        /* =========================================================
+           ACHIEVEMENTS
+        ========================================================== */
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 13px;
+            margin-bottom: 22px;
+        }
+
+        .achievement-card {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 19px;
+            padding: 18px;
+        }
+
+        .achievement-top {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .achievement-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: #f0e6d4;
+            color: #a37c3e;
+        }
+
+        .achievement-card h4 {
+            font-family: "Manrope", sans-serif;
+            font-size: 11px;
+        }
+
+        .achievement-card p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 8px;
+            line-height: 1.5;
+        }
+
+        .achievement-progress {
+            height: 5px;
+            background: #e5ebe3;
+            margin-top: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .achievement-progress div {
+            height: 100%;
+            background: var(--forest);
+            border-radius: inherit;
+        }
+
+        /* =========================================================
+           GOALS
+        ========================================================== */
+
+        .goals-card {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 21px;
+            padding: 22px;
+        }
+
+        .goal-row {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .goal-row:last-child {
+            border-bottom: 0;
+        }
+
+        .goal-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .goal-top strong {
+            font-size: 11px;
+        }
+
+        .goal-top span {
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+        .goal-bar {
+            height: 7px;
+            background: #e5ebe3;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .goal-bar div {
+            height: 100%;
+            background: var(--forest);
+            border-radius: inherit;
+        }
+
+        /* =========================================================
+           PROFILE
+        ========================================================== */
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: .72fr 1.28fr;
+            gap: 18px;
+        }
+
+        .profile-main-card {
+            background: var(--deep-green);
+            color: #fff;
+            border-radius: 23px;
+            padding: 27px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-main-card::before {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 50%;
+            right: -90px;
+            bottom: -90px;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,.15);
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-main-card h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 23px;
+            margin-top: 19px;
+        }
+
+        .profile-main-card .email {
+            color: #a9beb4;
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        .premium-badge {
+            display: inline-flex;
+            padding: 7px 9px;
+            background: rgba(200,169,107,.15);
+            border: 1px solid rgba(200,169,107,.25);
+            color: #dfc487;
+            border-radius: 10px;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin-top: 18px;
+        }
+
+        .profile-member {
+            margin-top: 21px;
+            padding-top: 17px;
+            border-top: 1px solid rgba(255,255,255,.09);
+        }
+
+        .profile-member small {
+            color: #78968a;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .profile-member strong {
+            display: block;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .profile-actions a {
+            background: rgba(255,255,255,.09);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.09);
+        }
+
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            gap: 17px;
+        }
+
+        .info-card {
+            background: #fffdf8;
+            border: 1px solid var(--border);
+            border-radius: 21px;
+            padding: 22px;
+        }
+
+        .info-card h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .info-item small {
+            display: block;
+            color: #87948d;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .info-item strong {
+            display: block;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+
+        .preference-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .preference-tag {
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: var(--sage-light);
+            color: #466154;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .membership-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    #193e32,
+                    #315b4b
+                );
+            color: #fff;
+            border-radius: 21px;
+            padding: 23px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .membership-card::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            right: -70px;
+            top: -75px;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 50%;
+        }
+
+        .membership-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .membership-top span {
+            font-size: 8px;
+            letter-spacing: .15em;
+            color: #b5c9bf;
+        }
+
+        .membership-top strong {
+            padding: 6px 8px;
+            background: rgba(255,255,255,.09);
+            border-radius: 8px;
+            font-size: 8px;
+            color: #dce8d9;
+        }
+
+        .membership-card h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 23px;
+            margin-top: 24px;
+        }
+
+        .membership-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px;
+            margin-top: 20px;
+        }
+
+        .membership-detail {
+            padding: 10px;
+            background: rgba(255,255,255,.06);
+            border-radius: 10px;
+        }
+
+        .membership-detail small {
+            color: #92ada0;
+            font-size: 7px;
+        }
+
+        .membership-detail strong {
+            display: block;
+            font-size: 9px;
+            margin-top: 4px;
+        }
+
+        .membership-card a {
+            display: inline-flex;
+            margin-top: 17px;
+            padding: 10px 13px;
+            background: #e2eadc;
+            color: #17382f;
+            border-radius: 11px;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           NOTIFICATIONS
+        ========================================================== */
+
+        .notification-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 13px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .notification-item:last-child {
+            border-bottom: 0;
+        }
+
+        .notification-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification-icon {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            background: var(--mint);
+            border-radius: 10px;
+            color: var(--forest);
+            font-size: 11px;
+        }
+
+        .notification-info strong {
+            display: block;
+            font-size: 10px;
+        }
+
+        .notification-info span {
+            display: block;
+            color: var(--muted);
+            font-size: 8px;
+            margin-top: 3px;
+        }
+
+        .toggle {
+            width: 36px;
+            height: 20px;
+            border-radius: 20px;
+            background: #5e876d;
+            padding: 3px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .toggle.off {
+            background: #c9d2cc;
+            justify-content: flex-start;
+        }
+
+        .toggle span {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        /* =========================================================
+           MOBILE OVERLAY
+        ========================================================== */
+
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5,28,21,.50);
+            z-index: 900;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s;
+        }
+
+        .mobile-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer-close {
+            display: none;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================== */
+
+        @media (max-width: 1250px) {
+
+            .welcome-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .upcoming-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .progress-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 900px) {
+
+            :root {
+                --sidebar-width: 260px;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform .35s ease;
+                box-shadow: 20px 0 50px rgba(0,0,0,.16);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .drawer-close {
+                display: grid;
+                place-items: center;
+                position: absolute;
+                right: 15px;
+                top: 17px;
+                width: 34px;
+                height: 34px;
+                border: 0;
+                border-radius: 10px;
+                background: rgba(255,255,255,.07);
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .mobile-menu {
+                display: grid;
+                place-items: center;
+            }
+
+            .topbar {
+                padding: 0 20px;
+                gap: 12px;
+            }
+
+            .topbar-left {
+                flex: 1;
+            }
+
+            .topbar-left h1 {
+                font-size: 16px;
+            }
+
+            .topbar-left p {
+                display: none;
+            }
+
+            .page-area {
+                padding: 25px 20px 40px;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar-right .top-action:first-child {
+                display: none;
+            }
+
+            .topbar-right {
+                gap: 5px;
+            }
+
+            .hero-card {
+                min-height: 390px;
+            }
+
+            .hero-content {
+                padding: 27px;
+            }
+
+            .today-card {
+                grid-template-columns: 1fr;
+            }
+
+            .today-image {
+                height: 210px;
+                min-height: 0;
+            }
+
+            .session-feature {
+                grid-template-columns: 1fr;
+            }
+
+            .session-feature-image {
+                height: 220px;
+                min-height: 0;
+            }
+
+            .featured-grid,
+            .category-grid,
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .session-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .page-area {
+                padding: 20px 14px 35px;
+            }
+
+            .topbar {
+                height: 72px;
+                padding: 0 14px;
+            }
+
+            .topbar-left h1 {
+                font-size: 14px;
+            }
+
+            .top-avatar {
+                width: 35px;
+                height: 35px;
+            }
+
+            .top-action {
+                width: 35px;
+                height: 35px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 9px;
+            }
+
+            .stat-card {
+                padding: 14px;
+            }
+
+            .stat-number {
+                font-size: 23px;
+            }
+
+            .hero-card {
+                min-height: 410px;
+            }
+
+            .hero-content h2 {
+                font-size: 34px;
+            }
+
+            .upcoming-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .daily-quote {
+                min-height: 260px;
+            }
+
+            .toolbar {
+                padding: 10px;
+            }
+
+            .filter-select {
+                flex: 1;
+                min-width: 0;
+                height: 40px;
+            }
+
+            .progress-stat-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 9px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .membership-details {
+                grid-template-columns: 1fr;
+            }
+
+            .session-info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+        @media (max-width: 350px) {
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding: 22px;
+            }
+
+            .hero-content h2 {
+                font-size: 31px;
+            }
+
+            .progress-stat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .session-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================================================
+         MOBILE OVERLAY
+    ========================================================== -->
+
+    <div
+        class="mobile-overlay"
+        id="mobileOverlay"
+    ></div>
+
+
+    <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <button
+            class="drawer-close"
+            id="drawerClose"
+            aria-label="Close navigation"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-spa"></i>
+            </div>
+
+            <div class="brand-text">
+                <strong>ZENORA</strong>
+                <span>Yoga & Wellness</span>
+            </div>
+
+        </div>
+
+
+        <!-- USER -->
+
+        <div class="sidebar-profile">
+
+            <div class="sidebar-user">
+
+                <img
+                    src="https://i.pravatar.cc/150?img=12"
+                    alt="Ajith Kumar"
+                    loading="lazy"
+                >
+
+                <div>
+                    <strong>Ajith Kumar</strong>
+                    <span>Premium Member</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-label">
+            Wellness Space
+        </div>
+
+
+        <!-- EXACTLY 5 SECTIONS -->
+
+        <nav class="nav">
+
+            <a
+                href="#dashboard"
+                class="nav-link active"
+                data-view="dashboard"
+            >
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a
+                href="#classes"
+                class="nav-link"
+                data-view="classes"
+            >
+                <i class="fa-solid fa-person-praying"></i>
+                <span>Yoga Classes</span>
+            </a>
+
+            <a
+                href="#sessions"
+                class="nav-link"
+                data-view="sessions"
+            >
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>My Sessions</span>
+            </a>
+
+            <a
+                href="#progress"
+                class="nav-link"
+                data-view="progress"
+            >
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Wellness Progress</span>
+            </a>
+
+            <a
+                href="#profile"
+                class="nav-link"
+                data-view="profile"
+            >
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-plan">
+
+                <small>Current Membership</small>
+
+                <strong>
+                    ZENORA Premium Plan
+                </strong>
+
+            </div>
+
+            <a
+                href="404.html"
+                class="logout"
+            >
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main class="main">
+
+
+        <!-- =====================================================
+             TOPBAR
+        ====================================================== -->
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu"
+                id="mobileMenu"
+                aria-label="Open navigation"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <div class="topbar-left">
+
+                <h1 id="topTitle">
+                    Good Morning, Ajith 🧘
+                </h1>
+
+                <p id="topSubtitle">
+                    Take a moment to breathe, move and reconnect with yourself.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <a
+                    href="404.html"
+                    class="top-action"
+                    aria-label="Search"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+                <a
+                    href="404.html"
+                    class="top-action"
+                    aria-label="Notifications"
+                >
+                    <i class="fa-regular fa-bell"></i>
+                </a>
+
+                <a
+                    href="404.html"
+                    class="top-avatar"
+                    aria-label="Open profile"
+                >
+                    <img
+                        src="https://i.pravatar.cc/150?img=12"
+                        alt="Ajith Kumar"
+                        loading="lazy"
+                    >
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             PAGE AREA
+        ====================================================== -->
+
+        <div class="page-area">
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <section
+                class="dashboard-view active"
+                id="dashboard"
+                data-title="Good Morning, Ajith 🧘"
+                data-subtitle="Take a moment to breathe, move and reconnect with yourself."
+            >
+
+                <div class="welcome-grid">
+
+                    <!-- HERO -->
+
+                    <article class="hero-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1600&q=85"
+                            alt="Woman practicing yoga"
+                            loading="lazy"
+                        >
+
+                        <div class="hero-content">
+
+                            <span class="hero-kicker">
+                                Your wellness journey
+                            </span>
+
+                            <h2>
+                                Find Your Balance.
+                            </h2>
+
+                            <p>
+                                Begin your day with mindful movement,
+                                conscious breathing and peaceful energy.
+                                Create a practice that supports both
+                                your body and your mind.
+                            </p>
+
+                            <div class="hero-buttons">
+
+                                <a
+                                    href="404.html"
+                                    class="btn-main"
+                                >
+                                    Explore Classes
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+
+                                <a
+                                    href="404.html"
+                                    class="btn-light"
+                                >
+                                    Book a Session
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- QUOTE -->
+
+                    <article class="daily-quote">
+
+                        <div class="quote-symbol">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+
+                        <h3>
+                            “Yoga is the journey of the self,
+                            through the self, to the self.”
+                        </h3>
+
+                        <p>
+                            Daily Mindfulness
+                        </p>
+
+                        <div class="quote-circle"></div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-person-running"></i>
+                            </div>
+
+                            <span class="stat-tag">
+                                This Month
+                            </span>
+
+                        </div>
+
+                        <div class="stat-number">
+                            36
+                        </div>
+
+                        <div class="stat-label">
+                            Yoga Sessions
+                        </div>
+
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill"
+                                style="width:72%"
+                            ></div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-fire"></i>
+                            </div>
+
+                            <span class="stat-tag">
+                                Consistency
+                            </span>
+
+                        </div>
+
+                        <div class="stat-number">
+                            8
+                        </div>
+
+                        <div class="stat-label">
+                            Days Practice Streak
+                        </div>
+
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill"
+                                style="width:80%"
+                            ></div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+
+                            <span class="stat-tag">
+                                Wellness
+                            </span>
+
+                        </div>
+
+                        <div class="stat-number">
+                            92%
+                        </div>
+
+                        <div class="stat-label">
+                            Wellness Score
+                        </div>
+
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill"
+                                style="width:92%"
+                            ></div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+
+                            <span class="stat-tag">
+                                Practice Time
+                            </span>
+
+                        </div>
+
+                        <div class="stat-number">
+                            2,160
+                        </div>
+
+                        <div class="stat-label">
+                            Minutes Practiced
+                        </div>
+
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill"
+                                style="width:68%"
+                            ></div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- TODAY -->
+
+                <div class="content-title">
+
+                    <h3>
+                        Today's Practice
+                    </h3>
+
+                    <a href="404.html">
+                        View Schedule →
+                    </a>
+
+                </div>
+
+
+                <article class="today-card">
+
+                    <div class="today-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=85"
+                            alt="Morning yoga practice"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="today-content">
+
+                        <span class="status">
+                            Upcoming
+                        </span>
+
+                        <h3>
+                            Morning Vinyasa Flow
+                        </h3>
+
+                        <p class="instructor">
+                            With Ananya Sharma
+                        </p>
+
+
+                        <div class="detail-row">
+
+                            <span class="detail-pill">
+                                <i class="fa-regular fa-clock"></i>
+                                7:00 AM – 8:00 AM
+                            </span>
+
+                            <span class="detail-pill">
+                                Intermediate
+                            </span>
+
+                            <span class="detail-pill">
+                                60 Minutes
+                            </span>
+
+                            <span class="detail-pill">
+                                Zenora Studio — Room 02
+                            </span>
+
+                        </div>
+
+
+                        <div class="today-actions">
+
+                            <a
+                                href="404.html"
+                                class="btn-main"
+                            >
+                                Join Session
+                            </a>
+
+                            <a
+                                href="404.html"
+                                class="btn-light"
+                            >
+                                View Details
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- UPCOMING -->
+
+                <div class="content-title">
+
+                    <h3>
+                        Upcoming Classes
+                    </h3>
+
+                    <a href="404.html">
+                        View All →
+                    </a>
+
+                </div>
+
+
+                <div class="upcoming-grid">
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1000&q=85"
+                                alt="Vinyasa yoga class"
+                                loading="lazy"
+                            >
+
+                            <span class="image-badge">
+                                Vinyasa
+                            </span>
+
+                        </div>
+
+                        <div class="class-body">
+
+                            <h4>
+                                Morning Vinyasa
+                            </h4>
+
+                            <p>
+                                Oct 07, 2026 · 7:00 AM
+                            </p>
+
+                            <div class="class-meta">
+                                <span>Intermediate</span>
+                                <span>60 min</span>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="booked">
+                                    Booked
+                                </span>
+
+                                <a
+                                    href="404.html"
+                                    class="mini-link"
+                                >
+                                    View Class
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1000&q=85"
+                                alt="Meditation session"
+                                loading="lazy"
+                            >
+
+                            <span class="image-badge">
+                                Meditation
+                            </span>
+
+                        </div>
+
+                        <div class="class-body">
+
+                            <h4>
+                                Mindful Meditation
+                            </h4>
+
+                            <p>
+                                Oct 08, 2026 · 6:30 AM
+                            </p>
+
+                            <div class="class-meta">
+                                <span>Beginner</span>
+                                <span>45 min</span>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="booked">
+                                    Booked
+                                </span>
+
+                                <a
+                                    href="404.html"
+                                    class="mini-link"
+                                >
+                                    View Class
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=1000&q=85"
+                                alt="Power yoga practice"
+                                loading="lazy"
+                            >
+
+                            <span class="image-badge">
+                                Power Yoga
+                            </span>
+
+                        </div>
+
+                        <div class="class-body">
+
+                            <h4>
+                                Power Yoga
+                            </h4>
+
+                            <p>
+                                Oct 09, 2026 · 6:00 PM
+                            </p>
+
+                            <div class="class-meta">
+                                <span>Advanced</span>
+                                <span>60 min</span>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="booked">
+                                    Booked
+                                </span>
+
+                                <a
+                                    href="404.html"
+                                    class="mini-link"
+                                >
+                                    View Class
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=1000&q=85"
+                                alt="Relaxation yoga"
+                                loading="lazy"
+                            >
+
+                            <span class="image-badge">
+                                Relaxation
+                            </span>
+
+                        </div>
+
+                        <div class="class-body">
+
+                            <h4>
+                                Evening Relaxation
+                            </h4>
+
+                            <p>
+                                Oct 10, 2026 · 7:00 PM
+                            </p>
+
+                            <div class="class-meta">
+                                <span>Beginner</span>
+                                <span>45 min</span>
+                            </div>
+
+                            <div class="card-bottom">
+                                <span class="available">
+                                    Available
+                                </span>
+
+                                <a
+                                    href="404.html"
+                                    class="mini-link"
+                                >
+                                    Book Now
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- EXTRA DASHBOARD INSIGHTS -->
+
+                <div class="content-title">
+
+                    <h3>
+                        Your Wellness Snapshot
+                    </h3>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <span class="stat-tag">
+                                Favorite
+                            </span>
+                        </div>
+
+                        <div class="stat-number">
+                            Vinyasa
+                        </div>
+
+                        <div class="stat-label">
+                            Most practiced style
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-sun"></i>
+                            </div>
+                            <span class="stat-tag">
+                                Preferred
+                            </span>
+                        </div>
+
+                        <div class="stat-number">
+                            Morning
+                        </div>
+
+                        <div class="stat-label">
+                            Your ideal practice time
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <span class="stat-tag">
+                                Achievement
+                            </span>
+                        </div>
+
+                        <div class="stat-number">
+                            6
+                        </div>
+
+                        <div class="stat-label">
+                            Wellness achievements
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <span class="stat-tag">
+                                October
+                            </span>
+                        </div>
+
+                        <div class="stat-number">
+                            12
+                        </div>
+
+                        <div class="stat-label">
+                            Classes scheduled
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 YOGA CLASSES
+            ================================================== -->
+
+            <section
+                class="dashboard-view"
+                id="classes"
+                data-title="Explore Yoga Classes"
+                data-subtitle="Find the practice that feels right for you."
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="eyebrow">
+                            Explore Your Practice
+                        </div>
+
+                        <h2>
+                            Explore Yoga Classes
+                        </h2>
+
+                        <p>
+                            Find a practice designed around your energy,
+                            experience and wellness goals.
+                        </p>
+                    </div>
+
+                    <a
+                        href="404.html"
+                        class="btn-main"
+                    >
+                        View Full Schedule
+                    </a>
+
+                </div>
+
+
+                <!-- TOOLBAR -->
+
+                <div class="toolbar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Search yoga classes..."
+                        >
+
+                    </div>
+
+                    <a
+                        href="404.html"
+                        class="btn-main"
+                    >
+                        Search
+                    </a>
+
+                    <select class="filter-select">
+                        <option>Level</option>
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+
+                    <select class="filter-select">
+                        <option>Duration</option>
+                        <option>30 Minutes</option>
+                        <option>45 Minutes</option>
+                        <option>60 Minutes</option>
+                    </select>
+
+                    <select class="filter-select">
+                        <option>Instructor</option>
+                        <option>Ananya Sharma</option>
+                        <option>Meera Nair</option>
+                        <option>Rahul Menon</option>
+                        <option>Priya Nair</option>
+                    </select>
+
+                    <select class="filter-select">
+                        <option>Class Type</option>
+                        <option>Vinyasa</option>
+                        <option>Hatha</option>
+                        <option>Power Yoga</option>
+                        <option>Meditation</option>
+                    </select>
+
+                </div>
+
+
+                <!-- CATEGORIES -->
+
+                <div class="category-row">
+
+                    <a
+                        href="404.html"
+                        class="category-chip"
+                    >All Classes</a>
+
+                    <a
+                        href="404.html"
+                        class="category-chip"
+                    >Vinyasa</a>
+
+                    <a
+                        href="404.html"
+                        class="category-chip"
+                    >Hatha</a>
+
+                    <a
+                        href="404.html"
+                        class="category-chip"
+                    >Power Yoga</a>
+
+                    <a
+                        href="404.html"
+                        class="category-chip"
+                    >Yin Yoga</a>
+
+                    <a
+                        href="404.html"
+                        class="category-chip"
+                    >Meditation</a>
+
+                    <a
+                        href="404.html"
+                        class="category-chip"
+                    >Pranayama</a>
+
+                    <a
+                        href="404.html"
+                        class="category-chip"
+                    >Restorative</a>
+
+                </div>
+
+
+                <div class="content-title">
+
+                    <h3>
+                        Featured Classes
+                    </h3>
+
+                    <span style="font-size:9px;color:#829087;">
+                        12 curated practices
+                    </span>
+
+                </div>
+
+
+                <div class="featured-grid">
+
+
+                    <!-- 01 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&w=1000&q=85"
+                                alt="Yoga pose"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Vinyasa
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.9
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Sunrise Vinyasa
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Ananya Sharma · 60 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                Wake your body gently with flowing
+                                sequences, mindful transitions and breathwork.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Intermediate</div>
+                                <div class="feature-detail">7:00 AM</div>
+                                <div class="feature-detail">60 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a
+                                    href="404.html"
+                                    class="btn-light"
+                                >
+                                    View Class
+                                </a>
+
+                                <a
+                                    href="404.html"
+                                    class="btn-main"
+                                >
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 02 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1000&q=85"
+                                alt="Yoga practice"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Hatha
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.8
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Grounded Hatha
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Meera Nair · 60 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                Build stability and body awareness through
+                                intentional poses and steady breathing.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Beginner</div>
+                                <div class="feature-detail">8:00 AM</div>
+                                <div class="feature-detail">60 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 03 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=1000&q=85"
+                                alt="Yoga meditation"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Meditation
+                            </span>
+
+                            <span class="rating">
+                                ★ 5.0
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Deep Mindfulness
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Priya Nair · 30 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                Slow down, settle your thoughts and develop
+                                a calmer relationship with your breath.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Beginner</div>
+                                <div class="feature-detail">6:30 AM</div>
+                                <div class="feature-detail">30 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 04 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=1000&q=85"
+                                alt="Yoga stretching"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Yin Yoga
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.9
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Evening Yin Reset
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Meera Nair · 45 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                Release tension with longer-held postures
+                                and quiet, restorative breathing.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Beginner</div>
+                                <div class="feature-detail">7:30 PM</div>
+                                <div class="feature-detail">45 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 05 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=1000&q=85"
+                                alt="Yoga session"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Power
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.7
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Power Flow
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Rahul Menon · 60 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                A dynamic sequence for strength, stamina
+                                and confident movement.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Advanced</div>
+                                <div class="feature-detail">6:00 PM</div>
+                                <div class="feature-detail">60 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 06 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=1000&q=85"
+                                alt="Wellness yoga"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Restorative
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.9
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Rest & Restore
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Priya Nair · 45 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                A gentle practice focused on relaxation,
+                                mobility and complete recovery.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Beginner</div>
+                                <div class="feature-detail">8:00 PM</div>
+                                <div class="feature-detail">45 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 07 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=85"
+                                alt="Morning meditation"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Pranayama
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.8
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Breath & Balance
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Ananya Sharma · 30 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                Learn simple breathing techniques to improve
+                                focus, calmness and daily energy.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Intermediate</div>
+                                <div class="feature-detail">7:30 AM</div>
+                                <div class="feature-detail">30 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 08 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1510894347719-fc3c8f9e1d2a?auto=format&fit=crop&w=1000&q=85"
+                                alt="Hatha yoga practice"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Hatha
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.8
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Strong Foundations
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Meera Nair · 60 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                Improve alignment and build confidence with
+                                a carefully paced traditional practice.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Intermediate</div>
+                                <div class="feature-detail">9:00 AM</div>
+                                <div class="feature-detail">60 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 09 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=1000&q=85"
+                                alt="Relaxing yoga practice"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Relaxation
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.9
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Slow Sunday
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Priya Nair · 45 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                Finish the week with gentle mobility,
+                                breathing and long restorative holds.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Beginner</div>
+                                <div class="feature-detail">8:00 AM</div>
+                                <div class="feature-detail">45 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 10 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1000&q=85"
+                                alt="Vinyasa yoga flow"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Vinyasa
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.9
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Dynamic Flow
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Ananya Sharma · 75 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                A longer flowing practice combining mobility,
+                                strength and mindful transitions.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Advanced</div>
+                                <div class="feature-detail">6:30 AM</div>
+                                <div class="feature-detail">75 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 11 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=1000&q=85"
+                                alt="Meditation practice"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Meditation
+                            </span>
+
+                            <span class="rating">
+                                ★ 5.0
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Quiet Mind
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Priya Nair · 30 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                A peaceful guided session designed to create
+                                clarity before a busy day.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Beginner</div>
+                                <div class="feature-detail">6:30 AM</div>
+                                <div class="feature-detail">30 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 12 -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=1000&q=85"
+                                alt="Yoga flexibility practice"
+                                loading="lazy"
+                            >
+
+                            <span class="featured-type">
+                                Mobility
+                            </span>
+
+                            <span class="rating">
+                                ★ 4.8
+                            </span>
+
+                        </div>
+
+                        <div class="featured-body">
+
+                            <h3>
+                                Flexible Body
+                            </h3>
+
+                            <div class="featured-instructor">
+                                Rahul Menon · 45 Minutes
+                            </div>
+
+                            <p class="featured-description">
+                                Improve range of motion and release stiffness
+                                through controlled mobility work.
+                            </p>
+
+                            <div class="featured-details">
+                                <div class="feature-detail">Intermediate</div>
+                                <div class="feature-detail">5:30 PM</div>
+                                <div class="feature-detail">45 Min</div>
+                            </div>
+
+                            <div class="featured-actions">
+
+                                <a href="404.html" class="btn-light">
+                                    View Class
+                                </a>
+
+                                <a href="404.html" class="btn-main">
+                                    Book Now
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- CLASS TYPES -->
+
+                <div class="content-title" style="margin-top:34px;">
+
+                    <h3>
+                        Practice Categories
+                    </h3>
+
+                </div>
+
+
+                <div class="category-grid">
+
+                    <article class="category-card">
+
+                        <div class="category-icon">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+
+                        <div>
+                            <h4>Vinyasa Flow</h4>
+
+                            <p>
+                                Breath-led movement for energy and mobility.
+                            </p>
+
+                            <a href="404.html">
+                                24 Classes →
+                            </a>
+                        </div>
+
+                    </article>
+
+
+                    <article class="category-card">
+
+                        <div class="category-icon">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                        </div>
+
+                        <div>
+                            <h4>Hatha Yoga</h4>
+
+                            <p>
+                                Balanced postures with mindful alignment.
+                            </p>
+
+                            <a href="404.html">
+                                18 Classes →
+                            </a>
+                        </div>
+
+                    </article>
+
+
+                    <article class="category-card">
+
+                        <div class="category-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+
+                        <div>
+                            <h4>Power Yoga</h4>
+
+                            <p>
+                                Dynamic strength-focused movement.
+                            </p>
+
+                            <a href="404.html">
+                                14 Classes →
+                            </a>
+                        </div>
+
+                    </article>
+
+
+                    <article class="category-card">
+
+                        <div class="category-icon">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+
+                        <div>
+                            <h4>Yin Yoga</h4>
+
+                            <p>
+                                Deep release through slow, longer holds.
+                            </p>
+
+                            <a href="404.html">
+                                12 Classes →
+                            </a>
+                        </div>
+
+                    </article>
+
+
+                    <article class="category-card">
+
+                        <div class="category-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+
+                        <div>
+                            <h4>Meditation</h4>
+
+                            <p>
+                                Create stillness, awareness and calm.
+                            </p>
+
+                            <a href="404.html">
+                                16 Classes →
+                            </a>
+                        </div>
+
+                    </article>
+
+
+                    <article class="category-card">
+
+                        <div class="category-icon">
+                            <i class="fa-solid fa-lungs"></i>
+                        </div>
+
+                        <div>
+                            <h4>Pranayama</h4>
+
+                            <p>
+                                Conscious breathing for focus and balance.
+                            </p>
+
+                            <a href="404.html">
+                                10 Classes →
+                            </a>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MY SESSIONS
+            ================================================== -->
+
+            <section
+                class="dashboard-view"
+                id="sessions"
+                data-title="My Sessions"
+                data-subtitle="Manage your upcoming and completed yoga practices."
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            Your Practice Calendar
+                        </div>
+
+                        <h2>
+                            My Sessions
+                        </h2>
+
+                        <p>
+                            Manage your upcoming and completed yoga practices.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="404.html"
+                        class="btn-main"
+                    >
+                        Book New Session
+                    </a>
+
+                </div>
+
+
+                <div class="session-tabs">
+
+                    <a
+                        href="404.html"
+                        class="session-tab active"
+                    >
+                        Upcoming · 4
+                    </a>
+
+                    <a
+                        href="404.html"
+                        class="session-tab"
+                    >
+                        Completed · 18
+                    </a>
+
+                    <a
+                        href="404.html"
+                        class="session-tab"
+                    >
+                        Cancelled · 2
+                    </a>
+
+                </div>
+
+
+                <!-- FEATURED SESSION -->
+
+                <article class="session-feature">
+
+                    <div class="session-feature-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1200&q=85"
+                            alt="Morning Vinyasa Flow"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="session-feature-body">
+
+                        <span class="status">
+                            Confirmed
+                        </span>
+
+                        <h3>
+                            Morning Vinyasa Flow
+                        </h3>
+
+                        <p class="instructor">
+                            Instructor · Ananya Sharma
+                        </p>
+
+
+                        <div class="session-info-grid">
+
+                            <div class="session-info">
+                                <small>Date</small>
+                                <strong>07 Oct 2026</strong>
+                            </div>
+
+                            <div class="session-info">
+                                <small>Time</small>
+                                <strong>7:00 AM</strong>
+                            </div>
+
+                            <div class="session-info">
+                                <small>Duration</small>
+                                <strong>60 Minutes</strong>
+                            </div>
+
+                            <div class="session-info">
+                                <small>Level</small>
+                                <strong>Intermediate</strong>
+                            </div>
+
+                            <div class="session-info">
+                                <small>Studio</small>
+                                <strong>Zenora Studio</strong>
+                            </div>
+
+                            <div class="session-info">
+                                <small>Room</small>
+                                <strong>Room 02</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="session-actions">
+
+                            <a
+                                href="404.html"
+                                class="btn-main"
+                            >
+                                Join Session
+                            </a>
+
+                            <a
+                                href="404.html"
+                                class="btn-light"
+                            >
+                                View Details
+                            </a>
+
+                            <a
+                                href="404.html"
+                                class="btn-light"
+                            >
+                                Cancel Booking
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- OTHER UPCOMING -->
+
+                <div class="content-title">
+
+                    <h3>
+                        Next Sessions
+                    </h3>
+
+                </div>
+
+
+                <div class="upcoming-grid">
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1000&q=85"
+                                alt="Mindful Meditation"
+                                loading="lazy"
+                            >
+
+                            <span class="image-badge">
+                                Oct 08
+                            </span>
+
+                        </div>
+
+                        <div class="class-body">
+
+                            <h4>Mindful Meditation</h4>
+
+                            <p>Meera Nair · 6:30 AM</p>
+
+                            <div class="class-meta">
+                                <span>Beginner</span>
+                                <span>45 min</span>
+                            </div>
+
+                            <div class="card-bottom">
+
+                                <span class="booked">
+                                    Confirmed
+                                </span>
+
+                                <a
+                                    href="404.html"
+                                    class="mini-link"
+                                >
+                                    Details
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=1000&q=85"
+                                alt="Power Yoga"
+                                loading="lazy"
+                            >
+
+                            <span class="image-badge">
+                                Oct 09
+                            </span>
+
+                        </div>
+
+                        <div class="class-body">
+
+                            <h4>Power Yoga</h4>
+
+                            <p>Rahul Menon · 6:00 PM</p>
+
+                            <div class="class-meta">
+                                <span>Advanced</span>
+                                <span>60 min</span>
+                            </div>
+
+                            <div class="card-bottom">
+
+                                <span class="booked">
+                                    Confirmed
+                                </span>
+
+                                <a
+                                    href="404.html"
+                                    class="mini-link"
+                                >
+                                    Details
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="class-card">
+
+                        <div class="class-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=1000&q=85"
+                                alt="Evening Relaxation"
+                                loading="lazy"
+                            >
+
+                            <span class="image-badge">
+                                Oct 10
+                            </span>
+
+                        </div>
+
+                        <div class="class-body">
+
+                            <h4>Evening Relaxation</h4>
+
+                            <p>Priya Nair · 7:00 PM</p>
+
+                            <div class="class-meta">
+                                <span>Beginner</span>
+                                <span>45 min</span>
+                            </div>
+
+                            <div class="card-bottom">
+
+                                <span class="available">
+                                    Available
+                                </span>
+
+                                <a
+                                    href="404.html"
+                                    class="mini-link"
+                                >
+                                    Book
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- HISTORY -->
+
+                <div class="content-title">
+
+                    <h3>
+                        Session History
+                    </h3>
+
+                    <a href="404.html">
+                        View Complete History →
+                    </a>
+
+                </div>
+
+
+                <div class="table-card">
+
+                    <table class="session-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Session</th>
+                                <th>Instructor</th>
+                                <th>Date</th>
+                                <th>Duration</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Morning Hatha</td>
+                                <td>Meera Nair</td>
+                                <td>02 Oct 2026</td>
+                                <td>60 min</td>
+                                <td>Hatha</td>
+                                <td>
+                                    <span class="completed-badge">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="404.html">View →</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Power Yoga</td>
+                                <td>Rahul Menon</td>
+                                <td>29 Sep 2026</td>
+                                <td>45 min</td>
+                                <td>Power</td>
+                                <td>
+                                    <span class="completed-badge">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="404.html">View →</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Meditation Flow</td>
+                                <td>Priya Nair</td>
+                                <td>26 Sep 2026</td>
+                                <td>30 min</td>
+                                <td>Meditation</td>
+                                <td>
+                                    <span class="completed-badge">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="404.html">View →</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Sunrise Vinyasa</td>
+                                <td>Ananya Sharma</td>
+                                <td>22 Sep 2026</td>
+                                <td>60 min</td>
+                                <td>Vinyasa</td>
+                                <td>
+                                    <span class="completed-badge">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="404.html">View →</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Breath & Balance</td>
+                                <td>Ananya Sharma</td>
+                                <td>19 Sep 2026</td>
+                                <td>30 min</td>
+                                <td>Pranayama</td>
+                                <td>
+                                    <span class="completed-badge">
+                                        Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="404.html">View →</a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 WELLNESS PROGRESS
+            ================================================== -->
+
+            <section
+                class="dashboard-view"
+                id="progress"
+                data-title="Your Wellness Progress"
+                data-subtitle="Track your consistency, practice and personal growth."
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            Personal Growth
+                        </div>
+
+                        <h2>
+                            Your Wellness Progress
+                        </h2>
+
+                        <p>
+                            Track your consistency, practice and personal growth.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="404.html"
+                        class="btn-main"
+                    >
+                        View Wellness Report
+                    </a>
+
+                </div>
+
+
+                <div class="progress-overview">
+
+                    <!-- SCORE -->
+
+                    <article class="score-card">
+
+                        <h3>
+                            Wellness Score
+                        </h3>
+
+                        <div class="score-ring">
+
+                            <div class="score-ring-content">
+
+                                <strong>92%</strong>
+
+                                <span>
+                                    Excellent
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <p class="score-description">
+                            You're building a strong and consistent practice.
+                            Keep showing up for yourself.
+                        </p>
+
+                    </article>
+
+
+                    <!-- STATS -->
+
+                    <div class="progress-stat-grid">
+
+                        <article class="progress-stat">
+
+                            <div class="progress-stat-icon">
+                                <i class="fa-solid fa-person-praying"></i>
+                            </div>
+
+                            <strong>
+                                36
+                            </strong>
+
+                            <span>
+                                Total Sessions
+                            </span>
+
+                        </article>
+
+
+                        <article class="progress-stat">
+
+                            <div class="progress-stat-icon">
+                                <i class="fa-solid fa-stopwatch"></i>
+                            </div>
+
+                            <strong>
+                                2,160
+                            </strong>
+
+                            <span>
+                                Minutes Practiced
+                            </span>
+
+                        </article>
+
+
+                        <article class="progress-stat">
+
+                            <div class="progress-stat-icon">
+                                <i class="fa-solid fa-fire"></i>
+                            </div>
+
+                            <strong>
+                                8 Days
+                            </strong>
+
+                            <span>
+                                Current Streak
+                            </span>
+
+                        </article>
+
+
+                        <article class="progress-stat">
+
+                            <div class="progress-stat-icon">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+
+                            <strong>
+                                21 Days
+                            </strong>
+
+                            <span>
+                                Longest Streak
+                            </span>
+
+                        </article>
+
+
+                        <article class="progress-stat">
+
+                            <div class="progress-stat-icon">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+
+                            <strong>
+                                Vinyasa
+                            </strong>
+
+                            <span>
+                                Favorite Practice
+                            </span>
+
+                        </article>
+
+
+                        <article class="progress-stat">
+
+                            <div class="progress-stat-icon">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+
+                            <strong>
+                                4 / 5
+                            </strong>
+
+                            <span>
+                                Weekly Goal
+                            </span>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CHARTS -->
+
+                <div class="chart-grid">
+
+                    <article class="chart-card">
+
+                        <div class="chart-header">
+
+                            <h3>
+                                Weekly Practice
+                            </h3>
+
+                            <span>
+                                Minutes practiced
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar-chart">
+
+                            <div class="bar-item">
+
+                                <span class="bar-value">45</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:60%;"
+                                ></div>
+
+                                <span class="bar-day">Mon</span>
+
+                            </div>
+
+
+                            <div class="bar-item">
+
+                                <span class="bar-value">30</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:40%;"
+                                ></div>
+
+                                <span class="bar-day">Tue</span>
+
+                            </div>
+
+
+                            <div class="bar-item">
+
+                                <span class="bar-value">60</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:80%;"
+                                ></div>
+
+                                <span class="bar-day">Wed</span>
+
+                            </div>
+
+
+                            <div class="bar-item">
+
+                                <span class="bar-value">40</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:53%;"
+                                ></div>
+
+                                <span class="bar-day">Thu</span>
+
+                            </div>
+
+
+                            <div class="bar-item">
+
+                                <span class="bar-value">50</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:67%;"
+                                ></div>
+
+                                <span class="bar-day">Fri</span>
+
+                            </div>
+
+
+                            <div class="bar-item">
+
+                                <span class="bar-value">75</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:100%;"
+                                ></div>
+
+                                <span class="bar-day">Sat</span>
+
+                            </div>
+
+
+                            <div class="bar-item">
+
+                                <span class="bar-value">30</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:40%;"
+                                ></div>
+
+                                <span class="bar-day">Sun</span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="chart-card">
+
+                        <div class="chart-header">
+
+                            <h3>
+                                Monthly Progress
+                            </h3>
+
+                            <span>
+                                Sessions
+                            </span>
+
+                        </div>
+
+
+                        <div class="month-list">
+
+                            <div class="month-row">
+                                <span>January</span>
+                                <div class="month-progress">
+                                    <div style="width:50%"></div>
+                                </div>
+                                <strong>18</strong>
+                            </div>
+
+                            <div class="month-row">
+                                <span>February</span>
+                                <div class="month-progress">
+                                    <div style="width:58%"></div>
+                                </div>
+                                <strong>21</strong>
+                            </div>
+
+                            <div class="month-row">
+                                <span>March</span>
+                                <div class="month-progress">
+                                    <div style="width:67%"></div>
+                                </div>
+                                <strong>24</strong>
+                            </div>
+
+                            <div class="month-row">
+                                <span>April</span>
+                                <div class="month-progress">
+                                    <div style="width:78%"></div>
+                                </div>
+                                <strong>28</strong>
+                            </div>
+
+                            <div class="month-row">
+                                <span>May</span>
+                                <div class="month-progress">
+                                    <div style="width:86%"></div>
+                                </div>
+                                <strong>31</strong>
+                            </div>
+
+                            <div class="month-row">
+                                <span>June</span>
+                                <div class="month-progress">
+                                    <div style="width:100%"></div>
+                                </div>
+                                <strong>36</strong>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ACHIEVEMENTS -->
+
+                <div class="content-title">
+
+                    <h3>
+                        Achievements
+                    </h3>
+
+                    <span style="font-size:9px;color:#829087;">
+                        6 unlocked milestones
+                    </span>
+
+                </div>
+
+
+                <div class="achievement-grid">
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-top">
+
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-fire"></i>
+                            </div>
+
+                            <div>
+                                <h4>7 Day Streak</h4>
+                                <p>
+                                    Practiced consistently for one week.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="achievement-progress">
+                            <div style="width:100%"></div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-top">
+
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+
+                            <div>
+                                <h4>First 10 Sessions</h4>
+                                <p>
+                                    Completed your first ten practices.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="achievement-progress">
+                            <div style="width:100%"></div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-top">
+
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-spa"></i>
+                            </div>
+
+                            <div>
+                                <h4>Mindful Beginner</h4>
+                                <p>
+                                    Explored meditation and breathwork.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="achievement-progress">
+                            <div style="width:100%"></div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-top">
+
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+
+                            <div>
+                                <h4>30 Day Practice</h4>
+                                <p>
+                                    Built a consistent monthly rhythm.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="achievement-progress">
+                            <div style="width:100%"></div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-top">
+
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                            </div>
+
+                            <div>
+                                <h4>1000 Minutes</h4>
+                                <p>
+                                    Crossed your first major practice milestone.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="achievement-progress">
+                            <div style="width:100%"></div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-top">
+
+                            <div class="achievement-icon">
+                                <i class="fa-solid fa-crown"></i>
+                            </div>
+
+                            <div>
+                                <h4>Consistency Champion</h4>
+                                <p>
+                                    Maintain your practice and unlock this badge.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="achievement-progress">
+                            <div style="width:72%"></div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- GOALS -->
+
+                <div class="content-title">
+
+                    <h3>
+                        Wellness Goals
+                    </h3>
+
+                    <a href="404.html">
+                        Update Goals →
+                    </a>
+
+                </div>
+
+
+                <article class="goals-card">
+
+
+                    <div class="goal-row">
+
+                        <div class="goal-top">
+
+                            <strong>
+                                Weekly Goal
+                            </strong>
+
+                            <span>
+                                4 / 5 Sessions
+                            </span>
+
+                        </div>
+
+                        <div class="goal-bar">
+                            <div style="width:80%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="goal-row">
+
+                        <div class="goal-top">
+
+                            <strong>
+                                Meditation Goal
+                            </strong>
+
+                            <span>
+                                90 / 120 Minutes
+                            </span>
+
+                        </div>
+
+                        <div class="goal-bar">
+                            <div style="width:75%"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="goal-row">
+
+                        <div class="goal-top">
+
+                            <strong>
+                                Flexibility Goal
+                            </strong>
+
+                            <span>
+                                2 / 3 Sessions
+                            </span>
+
+                        </div>
+
+                        <div class="goal-bar">
+                            <div style="width:67%"></div>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROFILE
+            ================================================== -->
+
+            <section
+                class="dashboard-view"
+                id="profile"
+                data-title="My Profile"
+                data-subtitle="Manage your personal details and wellness preferences."
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            Your Zenora Account
+                        </div>
+
+                        <h2>
+                            My Profile
+                        </h2>
+
+                        <p>
+                            Manage your personal details and wellness preferences.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-grid">
+
+
+                    <!-- PROFILE LEFT -->
+
+                    <article class="profile-main-card">
+
+                        <div class="profile-picture">
+
+                            <img
+                                src="https://i.pravatar.cc/300?img=12"
+                                alt="Ajith Kumar profile"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+                        <h3>
+                            Ajith Kumar
+                        </h3>
+
+                        <p class="email">
+                            ajith@example.com
+                        </p>
+
+                        <span class="premium-badge">
+                            Premium Member
+                        </span>
+
+
+                        <div class="profile-member">
+
+                            <small>
+                                Member Since
+                            </small>
+
+                            <strong>
+                                January 2026
+                            </strong>
+
+                        </div>
+
+
+                        <div class="profile-actions">
+
+                            <a
+                                href="404.html"
+                                class="btn-light"
+                            >
+                                Edit Profile
+                            </a>
+
+                            <a
+                                href="404.html"
+                                class="btn-light"
+                            >
+                                Account Settings
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PROFILE RIGHT -->
+
+                    <div class="profile-content">
+
+
+                        <!-- PERSONAL INFO -->
+
+                        <article class="info-card">
+
+                            <h3>
+                                Personal Information
+                            </h3>
+
+                            <div class="info-grid">
+
+                                <div class="info-item">
+                                    <small>Full Name</small>
+                                    <strong>Ajith Kumar</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <small>Email</small>
+                                    <strong>ajith@example.com</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <small>Phone</small>
+                                    <strong>+91 98765 43210</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <small>Location</small>
+                                    <strong>Bengaluru, India</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <small>Preferred Language</small>
+                                    <strong>English</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <small>Experience Level</small>
+                                    <strong>Intermediate</strong>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- PREFERENCES -->
+
+                        <article class="info-card">
+
+                            <h3>
+                                Yoga Preferences
+                            </h3>
+
+                            <div class="preference-tags">
+
+                                <span class="preference-tag">
+                                    Vinyasa
+                                </span>
+
+                                <span class="preference-tag">
+                                    Hatha
+                                </span>
+
+                                <span class="preference-tag">
+                                    Meditation
+                                </span>
+
+                                <span class="preference-tag">
+                                    Pranayama
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="info-grid"
+                                style="margin-top:20px;"
+                            >
+
+                                <div class="info-item">
+                                    <small>Preferred Session</small>
+                                    <strong>Morning</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <small>Preferred Duration</small>
+                                    <strong>60 Minutes</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <small>Preferred Instructor</small>
+                                    <strong>Ananya Sharma</strong>
+                                </div>
+
+                                <div class="info-item">
+                                    <small>Practice Goal</small>
+                                    <strong>Strength & Balance</strong>
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="404.html"
+                                class="btn-main"
+                                style="margin-top:20px;"
+                            >
+                                Update Preferences
+                            </a>
+
+                        </article>
+
+
+                        <!-- MEMBERSHIP -->
+
+                        <article class="membership-card">
+
+                            <div class="membership-top">
+
+                                <span>
+                                    ZENORA PREMIUM
+                                </span>
+
+                                <strong>
+                                    ACTIVE
+                                </strong>
+
+                            </div>
+
+                            <h3>
+                                Premium Wellness
+                            </h3>
+
+
+                            <div class="membership-details">
+
+                                <div class="membership-detail">
+
+                                    <small>
+                                        Monthly Sessions
+                                    </small>
+
+                                    <strong>
+                                        Unlimited
+                                    </strong>
+
+                                </div>
+
+                                <div class="membership-detail">
+
+                                    <small>
+                                        Private Sessions
+                                    </small>
+
+                                    <strong>
+                                        2 / Month
+                                    </strong>
+
+                                </div>
+
+                                <div class="membership-detail">
+
+                                    <small>
+                                        Wellness Workshops
+                                    </small>
+
+                                    <strong>
+                                        Included
+                                    </strong>
+
+                                </div>
+
+                                <div class="membership-detail">
+
+                                    <small>
+                                        Valid Until
+                                    </small>
+
+                                    <strong>
+                                        31 Dec 2026
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="404.html">
+                                Manage Membership →
+                            </a>
+
+                        </article>
+
+
+                        <!-- NOTIFICATIONS -->
+
+                        <article class="info-card">
+
+                            <h3>
+                                Notification Settings
+                            </h3>
+
+
+                            <div class="notification-list">
+
+
+                                <div class="notification-item">
+
+                                    <div class="notification-info">
+
+                                        <div class="notification-icon">
+                                            <i class="fa-regular fa-clock"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Class Reminders
+                                            </strong>
+
+                                            <span>
+                                                Get reminders before your classes.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="toggle">
+                                        <span></span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="notification-item">
+
+                                    <div class="notification-info">
+
+                                        <div class="notification-icon">
+                                            <i class="fa-solid fa-calendar-check"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Session Updates
+                                            </strong>
+
+                                            <span>
+                                                Booking and schedule updates.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="toggle">
+                                        <span></span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="notification-item">
+
+                                    <div class="notification-info">
+
+                                        <div class="notification-icon">
+                                            <i class="fa-solid fa-leaf"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Wellness Tips
+                                            </strong>
+
+                                            <span>
+                                                Receive mindful practice tips.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="toggle">
+                                        <span></span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="notification-item">
+
+                                    <div class="notification-info">
+
+                                        <div class="notification-icon">
+                                            <i class="fa-solid fa-sparkles"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                New Class Alerts
+                                            </strong>
+
+                                            <span>
+                                                Discover newly added sessions.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="toggle">
+                                        <span></span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="notification-item">
+
+                                    <div class="notification-info">
+
+                                        <div class="notification-icon">
+                                            <i class="fa-solid fa-tag"></i>
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Promotional Offers
+                                            </strong>
+
+                                            <span>
+                                                Special offers and promotions.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="toggle off">
+                                        <span></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="404.html"
+                                class="btn-main"
+                                style="margin-top:18px;"
+                            >
+                                Save Settings
+                            </a>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    /* =========================================================
+       ELEMENTS
+    ========================================================== */
+
+    const navLinks = document.querySelectorAll(".nav-link");
+    const views = document.querySelectorAll(".dashboard-view");
+
+    const topTitle = document.getElementById("topTitle");
+    const topSubtitle = document.getElementById("topSubtitle");
+
+    const sidebar = document.getElementById("sidebar");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const drawerClose = document.getElementById("drawerClose");
+    const mobileOverlay = document.getElementById("mobileOverlay");
+
+
+    /* =========================================================
+       VIEW SWITCHING
+    ========================================================== */
+
+    function openView(viewName) {
+
+        views.forEach(view => {
+            view.classList.remove("active");
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+        });
+
+
+        const targetView = document.getElementById(viewName);
+
+        const targetLink = document.querySelector(
+            `.nav-link[data-view="${viewName}"]`
+        );
+
+
+        if (targetView) {
+
+            targetView.classList.add("active");
+
+            topTitle.textContent =
+                targetView.dataset.title || "ZENORA YOGA";
+
+            topSubtitle.textContent =
+                targetView.dataset.subtitle || "Move. Breathe. Transform.";
+
+        }
+
+
+        if (targetLink) {
+            targetLink.classList.add("active");
+        }
+
+
+        closeDrawer();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* =========================================================
+       SIDEBAR NAV
+    ========================================================== */
+
+    navLinks.forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            event.preventDefault();
+
+            const viewName =
+                link.dataset.view;
+
+            openView(viewName);
+
+            history.replaceState(
+                null,
+                "",
+                "#" + viewName
+            );
+
+        });
+
+    });
+
+
+    /* =========================================================
+       INITIAL HASH
+    ========================================================== */
+
+    const initialHash =
+        window.location.hash.replace("#", "");
+
+    if (
+        initialHash &&
+        document.getElementById(initialHash)
+    ) {
+
+        openView(initialHash);
+
+    }
+
+
+    /* =========================================================
+       MOBILE DRAWER
+    ========================================================== */
+
+    function openDrawer() {
+
+        sidebar.classList.add("open");
+        mobileOverlay.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeDrawer() {
+
+        sidebar.classList.remove("open");
+        mobileOverlay.classList.remove("show");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    mobileMenu.addEventListener(
+        "click",
+        openDrawer
+    );
+
+
+    drawerClose.addEventListener(
+        "click",
+        closeDrawer
+    );
+
+
+    mobileOverlay.addEventListener(
+        "click",
+        closeDrawer
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+                closeDrawer();
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       PREVENT ACCIDENTAL FORM SUBMISSION
+    ========================================================== */
+
+    document.querySelectorAll("select").forEach(select => {
+
+        select.addEventListener("change", () => {
+
+            window.location.href = "404.html";
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
