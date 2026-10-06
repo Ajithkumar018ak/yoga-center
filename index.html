@@ -1,0 +1,2742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AURA Yoga — Breathe. Move. Become. A premium yoga and wellness studio."
+    >
+
+    <title>AURA YOGA — Breathe. Move. Become.</title>
+
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================================
+         FONT AWESOME
+    ========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <!-- =========================================================
+         MAIN CSS
+    ========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     PAGE LOADER
+========================================================== -->
+
+<div
+    class="page-loader"
+    id="pageLoader"
+    aria-hidden="true"
+>
+
+    <div class="loader-noise"></div>
+
+    <div class="loader-light"></div>
+
+
+    <!-- LEFT DOOR -->
+
+    <div class="loader-door loader-door-left">
+
+        <div class="door-panel">
+
+            <span class="door-line"></span>
+
+            <span class="door-line"></span>
+
+            <span class="door-handle"></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT DOOR -->
+
+    <div class="loader-door loader-door-right">
+
+        <div class="door-panel">
+
+            <span class="door-line"></span>
+
+            <span class="door-line"></span>
+
+            <span class="door-handle"></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- YOGA FIGURE -->
+
+    <div class="loader-yoga-scene">
+
+        <div class="loader-aura"></div>
+
+
+        <img
+            src="assets/p1.png"
+            alt="Yoga meditation pose"
+            class="loader-pose active"
+        >
+
+        <img
+            src="assets/p2.webp"
+            alt="Yoga warrior pose"
+            class="loader-pose"
+        >
+
+        <img
+            src="assets/p3.webp"
+            alt="Yoga lotus pose"
+            class="loader-pose"
+        >
+
+
+        <div class="loader-floor"></div>
+
+    </div>
+
+
+    <!-- LOADER CONTENT -->
+
+    <div class="loader-content">
+
+        <div class="loader-brand">
+
+            Stackly
+
+            <span>
+                YOGA CENTER
+            </span>
+
+        </div>
+
+
+        <p class="loader-caption">
+            PREPARING YOUR SPACE
+        </p>
+
+
+        <div class="loader-progress">
+
+            <span
+                id="loaderProgress"
+                class="loader-progress-bar"
+            ></span>
+
+        </div>
+
+
+        <div class="loader-number">
+
+            <span id="loaderPercent">
+                00
+            </span>
+
+            <small>
+                %
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     SCROLL PROGRESS
+========================================================== -->
+
+<div
+    class="scroll-progress"
+    id="scrollProgress"
+></div>
+
+
+
+<!-- =========================================================
+     CUSTOM CURSOR
+========================================================== -->
+
+<div
+    class="custom-cursor"
+    id="customCursor"
+>
+
+    <span></span>
+
+</div>
+
+
+
+<!-- =========================================================
+     SITE HEADER
+========================================================== -->
+
+<header
+    class="site-header"
+    id="siteHeader"
+>
+
+    <div class="header-inner">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="index.html"
+            class="site-logo"
+            aria-label="AURA Yoga Home"
+        >
+
+            <span class="logo-mark">
+                A
+            </span>
+
+            <span class="logo-text">
+
+                AURA
+
+                <small>
+                    YOGA
+                </small>
+
+            </span>
+
+        </a>
+
+
+
+        <!-- DESKTOP NAVIGATION -->
+
+        <nav
+            class="desktop-nav"
+            aria-label="Primary navigation"
+        >
+
+            <a
+                href="index.html"
+                class="active"
+            >
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="classes.html">
+                Classes
+            </a>
+
+    
+
+            <a href="instructors.html">
+                Instructors
+            </a>
+
+         
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+
+        <!-- HEADER LOGIN -->
+
+        <a
+            href="#"
+            class="header-cta magnetic"
+            id="headerLoginButton"
+        >
+           LOGIN
+
+            <span>
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-hidden="true"
+>
+
+    <div class="drawer-top">
+
+        <a
+            href="index.html"
+            class="drawer-logo"
+        >
+
+            AURA
+
+            <small>
+                YOGA
+            </small>
+
+        </a>
+
+
+        <button
+            type="button"
+            class="drawer-close"
+            id="drawerClose"
+            aria-label="Close menu"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+
+    <div class="drawer-nav">
+
+        <a
+            href="index.html"
+            class="active"
+        >
+
+            <span>
+                01
+            </span>
+
+            Home
+
+        </a>
+
+
+        <a href="about.html">
+
+            <span>
+                02
+            </span>
+
+            About
+
+        </a>
+
+
+        <a href="classes.html">
+
+            <span>
+                03
+            </span>
+
+            Classes
+
+        </a>
+
+
+
+
+        <a href="instructors.html">
+
+            <span>
+                05
+            </span>
+
+            Instructors
+
+        </a>
+
+
+
+        <a href="contact.html">
+
+            <span>
+                07
+            </span>
+
+            Contact
+
+        </a>
+
+    </div>
+
+
+
+    <div class="drawer-bottom">
+
+        <p>
+
+            BREATHE.
+            <br>
+
+            MOVE.
+            <br>
+
+            BECOME.
+
+        </p>
+
+
+        <a
+            href="#"
+            id="drawerLoginButton"
+        >
+
+            LOGIN
+
+            <span>
+                ↗
+            </span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     SECTION 01 — CINEMATIC HERO
+========================================================== -->
+
+<section
+    class="hero-section"
+    id="home"
+>
+
+
+    <!-- HERO BACKGROUND -->
+
+    <div class="hero-background">
+
+        <div class="hero-orb orb-one"></div>
+
+        <div class="hero-orb orb-two"></div>
+
+        <div class="hero-grid"></div>
+
+        <div class="hero-glow"></div>
+
+    </div>
+
+
+
+    <!-- HERO TOPLINE -->
+
+    <div class="hero-topline">
+
+        <span>
+            EST. 2016 — CHENNAI
+        </span>
+
+        <span>
+            YOGA • BREATH • WELLNESS
+        </span>
+
+    </div>
+
+
+
+    <!-- HERO LEFT -->
+
+    <div class="hero-side hero-side-left">
+
+        <div class="hero-copy">
+
+            <span class="eyebrow">
+
+                <i></i>
+
+                A PRACTICE FOR LIFE
+
+            </span>
+
+
+            <h1>
+
+                COME BACK
+
+                <em>
+                    TO YOURSELF.
+                </em>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                A slower space for stronger bodies,
+                quieter minds and a deeper connection
+                with the way you live.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="classes.html"
+                    class="button button-primary magnetic"
+                >
+
+                    Explore Classes
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#philosophy"
+                    class="button button-text"
+                >
+
+                    Our Philosophy
+
+                    <span>
+                        ↓
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="hero-mini-note">
+
+            <span class="mini-icon">
+
+                <i class="fa-solid fa-wind"></i>
+
+            </span>
+
+
+            <div>
+
+                <strong>
+                    04 MIN
+                </strong>
+
+                <small>
+                    Daily Breath Reset
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HERO CENTER -->
+
+    <div class="hero-center">
+
+
+        <div class="hero-image-shadow"></div>
+
+
+        <div
+            class="hero-pose-wrapper"
+            id="heroPoseWrapper"
+        >
+
+            <img
+                src="assets/images/yoga-person-01.png"
+                alt="Tree pose yoga"
+                class="hero-pose active"
+                data-pose="0"
+            >
+
+
+            <img
+                src="assets/images/yoga-person-02.png"
+                alt="Warrior yoga pose"
+                class="hero-pose"
+                data-pose="1"
+            >
+
+
+            <img
+                src="assets/images/yoga-person-03.png"
+                alt="Lotus meditation pose"
+                class="hero-pose"
+                data-pose="2"
+            >
+
+
+            <img
+                src="assets/images/yoga-person-04.png"
+                alt="Dancer yoga pose"
+                class="hero-pose"
+                data-pose="3"
+            >
+
+        </div>
+
+
+
+        <div class="pose-ring ring-one"></div>
+
+        <div class="pose-ring ring-two"></div>
+
+        <div class="pose-ring ring-three"></div>
+
+
+        <span class="pose-number">
+            01
+        </span>
+
+
+        <span class="pose-word">
+            BALANCE
+        </span>
+
+    </div>
+
+
+
+    <!-- HERO RIGHT -->
+
+    <div class="hero-side hero-side-right">
+
+        <div class="hero-detail">
+
+            <span
+                class="hero-detail-label"
+                id="poseEyebrow"
+            >
+
+                POSE 01 / TREE
+
+            </span>
+
+
+            <h2 id="poseTitle">
+
+                FIND YOUR
+
+                <em>
+                    BALANCE.
+                </em>
+
+            </h2>
+
+
+            <p id="poseDescription">
+
+                Root down, lift through the crown
+                and discover the stillness hidden
+                inside movement.
+
+            </p>
+
+
+            <div class="pose-meta">
+
+                <div>
+
+                    <span>
+                        FOCUS
+                    </span>
+
+                    <strong id="poseFocus">
+                        BALANCE
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        BREATH
+                    </span>
+
+                    <strong id="poseBreath">
+                        4 — 4
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        LEVEL
+                    </span>
+
+                    <strong id="poseLevel">
+                        BEGINNER
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- HERO CONTROLS -->
+
+        <div class="hero-controls">
+
+            <button
+                type="button"
+                id="heroPrev"
+                aria-label="Previous pose"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </button>
+
+
+            <div class="hero-counter">
+
+                <span id="heroCurrent">
+                    01
+                </span>
+
+                <span class="counter-line"></span>
+
+                <span>
+                    04
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="heroNext"
+                aria-label="Next pose"
+            >
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HERO BOTTOM -->
+
+    <div class="hero-bottom">
+
+        <span>
+            SCROLL TO EXPLORE
+        </span>
+
+        <span class="scroll-arrow">
+            ↓
+        </span>
+
+        <span>
+            01 / 08
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 02 — PHILOSOPHY
+========================================================== -->
+
+<section
+    class="philosophy-section section-padding"
+    id="philosophy"
+>
+
+    <div class="section-container">
+
+
+        <div class="section-heading-row reveal">
+
+            <div>
+
+                <span class="section-kicker">
+                    01 — THE AURA METHOD
+                </span>
+
+                <h2 class="section-title">
+
+                    NOT JUST A
+
+                    <em>
+                        WORKOUT.
+                    </em>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-intro">
+
+                We believe yoga should move beyond
+                the mat. It should change the way
+                you breathe, work, rest, connect
+                and move through the world.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="philosophy-grid">
+
+
+            <div class="philosophy-image reveal">
+
+                <img
+                    src="assets/images/yoga-01.webp"
+                    alt="Woman practicing yoga"
+                    loading="lazy"
+                >
+
+
+                <div class="image-caption">
+
+                    <span>
+                        THE PRACTICE
+                    </span>
+
+                    <strong>
+                        PRESENCE OVER PERFORMANCE
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="philosophy-content reveal">
+
+                <div class="large-number">
+                    01
+                </div>
+
+
+                <p class="philosophy-lead">
+
+                    Your body already knows
+                    how to heal.
+
+                    <br>
+
+                    We simply create the space
+                    for it to remember.
+
+                </p>
+
+
+                <div class="philosophy-points">
+
+
+                    <article>
+
+                        <span>
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                BREATHE
+                            </h3>
+
+                            <p>
+
+                                Learn to use the breath as
+                                your anchor through movement,
+                                stress and stillness.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article>
+
+                        <span>
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                MOVE
+                            </h3>
+
+                            <p>
+
+                                Build strength, mobility and
+                                awareness without turning
+                                practice into competition.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article>
+
+                        <span>
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                BECOME
+                            </h3>
+
+                            <p>
+
+                                Carry the calm, clarity and
+                                confidence of your practice
+                                into everyday life.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <a
+                    href="about.html"
+                    class="inline-link"
+                >
+
+                    Discover Our Philosophy
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 03 — CLASSES
+========================================================== -->
+
+<section
+    class="classes-section section-padding"
+    id="classes"
+>
+
+    <div class="section-container">
+
+
+        <div class="section-heading-row reveal">
+
+            <div>
+
+                <span class="section-kicker">
+                    02 — FIND YOUR FLOW
+                </span>
+
+                <h2 class="section-title">
+
+                    PRACTICE THAT
+
+                    <em>
+                        MEETS YOU.
+                    </em>
+
+                </h2>
+
+            </div>
+
+
+            <div class="section-heading-side">
+
+                <p>
+
+                    From your first breath to your
+                    thousandth flow, find a practice
+                    that feels right for your body
+                    and your season of life.
+
+                </p>
+
+
+                <a
+                    href="classes.html"
+                    class="circle-arrow"
+                    aria-label="View classes"
+                >
+
+                    <i class="fa-solid fa-arrow-up-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="classes-track"
+            id="classesTrack"
+        >
+
+
+            <!-- CLASS 01 -->
+
+            <article
+                class="class-card class-card-large reveal"
+            >
+
+                <div class="class-image">
+
+                    <img
+                        src="assets/images/yoga-02.webp"
+                        alt="Vinyasa yoga class"
+                        loading="lazy"
+                    >
+
+                    <span class="class-index">
+                        01
+                    </span>
+
+                    <span class="class-level">
+                        ALL LEVELS
+                    </span>
+
+                </div>
+
+
+                <div class="class-content">
+
+                    <div>
+
+                        <span>
+                            60 MIN
+                        </span>
+
+                        <h3>
+                            Vinyasa Flow
+                        </h3>
+
+                    </div>
+
+                    <p>
+
+                        Breath-led movement designed
+                        to build heat, strength and flow.
+
+                    </p>
+
+                    <a href="404.html">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-up-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- CLASS 02 -->
+
+            <article
+                class="class-card reveal"
+            >
+
+                <div class="class-image">
+
+                    <img
+                        src="assets/images/yoga-03.webp"
+                        alt="Slow yoga practice"
+                        loading="lazy"
+                    >
+
+                    <span class="class-index">
+                        02
+                    </span>
+
+                    <span class="class-level">
+                        BEGINNER
+                    </span>
+
+                </div>
+
+
+                <div class="class-content">
+
+                    <div>
+
+                        <span>
+                            50 MIN
+                        </span>
+
+                        <h3>
+                            Slow Flow
+                        </h3>
+
+                    </div>
+
+                    <p>
+
+                        Softer sequences for mobility,
+                        nervous-system balance and ease.
+
+                    </p>
+
+                    <a href="404.html">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-up-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- CLASS 03 -->
+
+            <article
+                class="class-card reveal"
+            >
+
+                <div class="class-image">
+
+                    <img
+                        src="assets/images/yoga-04.webp"
+                        alt="Power yoga class"
+                        loading="lazy"
+                    >
+
+                    <span class="class-index">
+                        03
+                    </span>
+
+                    <span class="class-level">
+                        INTERMEDIATE
+                    </span>
+
+                </div>
+
+
+                <div class="class-content">
+
+                    <div>
+
+                        <span>
+                            55 MIN
+                        </span>
+
+                        <h3>
+                            Power Yoga
+                        </h3>
+
+                    </div>
+
+                    <p>
+
+                        A stronger practice built around
+                        stability, control and endurance.
+
+                    </p>
+
+                    <a href="404.html">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-up-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- CLASS 04 -->
+
+            <article
+                class="class-card reveal"
+            >
+
+                <div class="class-image">
+
+                    <img
+                        src="assets/images/yoga-05.webp"
+                        alt="Meditation yoga practice"
+                        loading="lazy"
+                    >
+
+                    <span class="class-index">
+                        04
+                    </span>
+
+                    <span class="class-level">
+                        ALL LEVELS
+                    </span>
+
+                </div>
+
+
+                <div class="class-content">
+
+                    <div>
+
+                        <span>
+                            45 MIN
+                        </span>
+
+                        <h3>
+                            Deep Restore
+                        </h3>
+
+                    </div>
+
+                    <p>
+
+                        Slow down completely with restorative
+                        movement, breathwork and meditation.
+
+                    </p>
+
+                    <a href="404.html">
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-up-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+
+        <div class="carousel-note reveal">
+
+            <span>
+                DRAG TO EXPLORE
+            </span>
+
+            <span class="carousel-line"></span>
+
+            <span>
+                04 PRACTICES
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 04 — EXPERIENCE
+========================================================== -->
+
+<section
+    class="experience-section"
+    id="experience"
+>
+
+    <div class="experience-image">
+
+        <img
+            src="assets/images/yoga-06.webp"
+            alt="AURA Yoga studio experience"
+            loading="lazy"
+        >
+
+    </div>
+
+
+    <div class="experience-overlay"></div>
+
+
+    <div class="experience-content reveal">
+
+        <span class="section-kicker light">
+            03 — THE AURA EXPERIENCE
+        </span>
+
+
+        <h2>
+
+            A SPACE TO
+
+            <em>
+                ARRIVE.
+            </em>
+
+        </h2>
+
+
+        <p>
+
+            Natural textures. Soft light.
+            Intentional silence. Every corner
+            of AURA is designed to help your
+            nervous system exhale before your
+            practice even begins.
+
+        </p>
+
+
+        <a
+            href="404.html"
+            class="button button-light magnetic"
+        >
+
+            Explore The Studio
+
+            <span>
+                ↗
+            </span>
+
+        </a>
+
+    </div>
+
+
+    <div class="experience-stats reveal">
+
+        <div>
+
+            <strong>
+                08
+            </strong>
+
+            <span>
+                PRACTICE SPACES
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                36°
+            </strong>
+
+            <span>
+                WARM ROOM
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                7AM
+            </strong>
+
+            <span>
+                FIRST FLOW
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 05 — JOURNEY
+========================================================== -->
+
+<section
+    class="journey-section section-padding"
+    id="journey"
+>
+
+    <div class="section-container">
+
+
+        <div class="journey-header reveal">
+
+            <span class="section-kicker">
+                04 — YOUR JOURNEY
+            </span>
+
+            <h2 class="section-title">
+
+                START WHERE
+
+                <em>
+                    YOU ARE.
+                </em>
+
+            </h2>
+
+            <p>
+
+                There is no perfect body, perfect pose
+                or perfect starting point. Your practice
+                grows with you.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="journey-list">
+
+
+            <article
+                class="journey-item reveal"
+            >
+
+                <div class="journey-number">
+                    01
+                </div>
+
+                <div class="journey-main">
+
+                    <span>
+                        WEEK 01 — ARRIVE
+                    </span>
+
+                    <h3>
+                        Listen to your body.
+                    </h3>
+
+                </div>
+
+                <p>
+
+                    Learn the foundations, understand
+                    alignment and discover how your
+                    breath can change the practice.
+
+                </p>
+
+                <i class="fa-solid fa-arrow-down"></i>
+
+            </article>
+
+
+
+            <article
+                class="journey-item reveal"
+            >
+
+                <div class="journey-number">
+                    02
+                </div>
+
+                <div class="journey-main">
+
+                    <span>
+                        WEEK 04 — BUILD
+                    </span>
+
+                    <h3>
+                        Find your rhythm.
+                    </h3>
+
+                </div>
+
+                <p>
+
+                    Build strength and mobility while
+                    creating a consistent rhythm that
+                    fits naturally into your lifestyle.
+
+                </p>
+
+                <i class="fa-solid fa-arrow-down"></i>
+
+            </article>
+
+
+
+            <article
+                class="journey-item reveal"
+            >
+
+                <div class="journey-number">
+                    03
+                </div>
+
+                <div class="journey-main">
+
+                    <span>
+                        WEEK 08 — DEEPEN
+                    </span>
+
+                    <h3>
+                        Move with awareness.
+                    </h3>
+
+                </div>
+
+                <p>
+
+                    Go beyond physical movement and
+                    develop a deeper understanding of
+                    your energy, focus and recovery.
+
+                </p>
+
+                <i class="fa-solid fa-arrow-down"></i>
+
+            </article>
+
+
+
+            <article
+                class="journey-item reveal"
+            >
+
+                <div class="journey-number">
+                    04
+                </div>
+
+                <div class="journey-main">
+
+                    <span>
+                        BEYOND THE MAT
+                    </span>
+
+                    <h3>
+                        Take the practice with you.
+                    </h3>
+
+                </div>
+
+                <p>
+
+                    The real transformation begins when
+                    the calm you create on the mat starts
+                    shaping your everyday life.
+
+                </p>
+
+                <i class="fa-solid fa-arrow-up-right"></i>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 06 — INSTRUCTORS
+========================================================== -->
+
+<section
+    class="instructors-section section-padding"
+    id="instructors"
+>
+
+    <div class="section-container">
+
+
+        <div class="section-heading-row reveal">
+
+            <div>
+
+                <span class="section-kicker">
+                    05 — YOUR GUIDES
+                </span>
+
+                <h2 class="section-title">
+
+                    MEET THE
+
+                    <em>
+                        TEACHERS.
+                    </em>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-intro">
+
+                Experienced teachers. Different
+                approaches. One shared belief —
+                your practice should feel personal.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="instructor-grid">
+
+
+            <article
+                class="instructor-card reveal"
+            >
+
+                <div class="instructor-image">
+
+                    <img
+                        src="assets/images/instructor-01.webp"
+                        alt="Maya Krishnan yoga instructor"
+                        loading="lazy"
+                    >
+
+
+                    <div class="instructor-hover">
+
+                        <span>
+                            VIEW PROFILE
+                        </span>
+
+                        <i class="fa-solid fa-arrow-up-right"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="instructor-info">
+
+                    <div>
+
+                        <span>
+                            VINYASA • BREATHWORK
+                        </span>
+
+                        <h3>
+                            Maya Krishnan
+                        </h3>
+
+                    </div>
+
+                    <span class="teacher-number">
+                        01
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <article
+                class="instructor-card reveal"
+            >
+
+                <div class="instructor-image">
+
+                    <img
+                        src="assets/images/instructor-02.webp"
+                        alt="Arjun Raman yoga instructor"
+                        loading="lazy"
+                    >
+
+
+                    <div class="instructor-hover">
+
+                        <span>
+                            VIEW PROFILE
+                        </span>
+
+                        <i class="fa-solid fa-arrow-up-right"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="instructor-info">
+
+                    <div>
+
+                        <span>
+                            POWER • MOBILITY
+                        </span>
+
+                        <h3>
+                            Arjun Raman
+                        </h3>
+
+                    </div>
+
+                    <span class="teacher-number">
+                        02
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <article
+                class="instructor-card reveal"
+            >
+
+                <div class="instructor-image">
+
+                    <img
+                        src="assets/images/instructor-03.webp"
+                        alt="Ananya Mehta yoga instructor"
+                        loading="lazy"
+                    >
+
+
+                    <div class="instructor-hover">
+
+                        <span>
+                            VIEW PROFILE
+                        </span>
+
+                        <i class="fa-solid fa-arrow-up-right"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="instructor-info">
+
+                    <div>
+
+                        <span>
+                            RESTORE • MEDITATION
+                        </span>
+
+                        <h3>
+                            Ananya Mehta
+                        </h3>
+
+                    </div>
+
+                    <span class="teacher-number">
+                        03
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+
+        <div class="center-action reveal">
+
+            <a
+                href="instructors.html"
+                class="button button-outline magnetic"
+            >
+
+                Meet All Instructors
+
+                <span>
+                    ↗
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 07 — RETREATS
+========================================================== -->
+
+<section
+    class="retreat-section section-padding"
+    id="retreats"
+>
+
+    <div class="section-container">
+
+
+        <div class="retreat-layout">
+
+
+            <div class="retreat-copy reveal">
+
+                <span class="section-kicker">
+                    06 — BEYOND THE STUDIO
+                </span>
+
+
+                <h2 class="section-title">
+
+                    GO DEEPER.
+
+                    <em>
+                        GO AWAY.
+                    </em>
+
+                </h2>
+
+
+                <p class="retreat-description">
+
+                    Sometimes the best way to reconnect
+                    with yourself is to change your
+                    surroundings. Join us for intimate
+                    wellness retreats designed around
+                    movement, nature, nourishment
+                    and deep rest.
+
+                </p>
+
+
+                <div class="retreat-meta">
+
+                    <div>
+
+                        <span>
+                            DESTINATIONS
+                        </span>
+
+                        <strong>
+                            06
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            DAYS
+                        </span>
+
+                        <strong>
+                            03 — 07
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            GROUP SIZE
+                        </span>
+
+                        <strong>
+                            12 MAX
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="retreats.html"
+                    class="inline-link"
+                >
+
+                    Discover Retreats
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <div class="retreat-visual reveal">
+
+                <div class="retreat-image-main">
+
+                    <img
+                        src="assets/images/retreat-01.webp"
+                        alt="Yoga retreat in nature"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="retreat-floating-card">
+
+                    <span>
+                        NEXT ESCAPE
+                    </span>
+
+                    <strong>
+                        THE WESTERN GHATS
+                    </strong>
+
+                    <small>
+                        14 — 18 NOV 2026
+                    </small>
+
+                    <a href="404.html">
+
+                        Reserve Your Place
+
+                        <i class="fa-solid fa-arrow-up-right"></i>
+
+                    </a>
+
+                </div>
+
+
+                <span class="retreat-stamp">
+
+                    AURA
+
+                    <br>
+
+                    ESCAPES
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 08 — FINAL CTA
+========================================================== -->
+
+<section
+    class="final-cta-section"
+    id="begin"
+>
+
+    <div class="final-cta-background">
+
+        <div class="cta-orb"></div>
+
+        <div class="cta-lines"></div>
+
+    </div>
+
+
+    <div class="final-cta-content reveal">
+
+        <span class="section-kicker">
+
+            07 — YOUR NEXT CHAPTER
+
+        </span>
+
+
+        <h2>
+
+            YOUR BODY.
+
+            <br>
+
+            YOUR BREATH.
+
+            <br>
+
+            <em>
+                YOUR AURA.
+            </em>
+
+        </h2>
+
+
+        <p>
+
+            You don't need to be flexible.
+            You don't need to know the poses.
+            You only need to begin.
+
+        </p>
+
+
+        <a
+            href="#"
+            id="finalLoginButton"
+            class="button button-light button-large magnetic"
+        >
+
+            Begin Your Practice
+
+            <span>
+                ↗
+            </span>
+
+        </a>
+
+
+        <div class="cta-note">
+
+            <span>
+                FIRST CLASS
+            </span>
+
+            <strong>
+                ₹499
+            </strong>
+
+            <span>
+                •
+            </span>
+
+            <span>
+                ALL LEVELS WELCOME
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="cta-bottom">
+
+        <span>
+            AURA YOGA
+        </span>
+
+        <span>
+            BREATHE • MOVE • BECOME
+        </span>
+
+        <span>
+            CHENNAI / INDIA
+        </span>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-top">
+
+
+        <div class="footer-brand">
+
+            <a
+                href="index.html"
+                class="footer-logo"
+            >
+
+                AURA
+
+                <small>
+                    YOGA
+                </small>
+
+            </a>
+
+            <p>
+
+                A quieter place to move,
+                breathe and reconnect.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <span>
+                EXPLORE
+            </span>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="classes.html">
+                Classes
+            </a>
+
+            <a href="retreats.html">
+                Retreats
+            </a>
+
+            <a href="wellness.html">
+                Wellness
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <span>
+                CONNECT
+            </span>
+
+            <a href="instructors.html">
+                Instructors
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="404.html">
+                Instagram
+            </a>
+
+            <a href="404.html">
+                YouTube
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column footer-contact">
+
+            <span>
+                STUDIO
+            </span>
+
+            <p>
+
+                18 Greenways Road
+                <br>
+
+                Chennai, Tamil Nadu
+                <br>
+
+                India
+
+            </p>
+
+            <a href="404.html">
+                hello@aurayoga.in
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <span>
+
+            © 2026 AURA YOGA.
+            ALL RIGHTS RESERVED.
+
+        </span>
+
+        <span>
+            BREATHE. MOVE. BECOME.
+        </span>
+
+        <a href="404.html">
+            Privacy
+        </a>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     AURA YOGA LOGIN MODAL
+========================================================== -->
+
+<div
+    class="modal-overlay"
+    id="loginModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="login-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="loginTitle"
+    >
+
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            class="modal-close"
+            id="loginModalClose"
+            aria-label="Close login"
+        >
+            ×
+        </button>
+
+
+
+        <!-- =================================================
+             LOGIN VISUAL
+        ================================================== -->
+
+        <div class="login-visual">
+
+            <img
+                src="assets/images/yoga-login.webp"
+                alt="AURA Yoga practice"
+            >
+
+            <div class="login-visual-overlay"></div>
+
+
+            <div class="login-visual-content">
+
+                <span>
+                    AURA YOGA
+                </span>
+
+                <h3>
+
+                    Your journey
+
+                    <br>
+
+                    inward
+
+                    <br>
+
+                    begins here.
+
+                </h3>
+
+
+                <div class="login-practice-badge">
+
+                    <span class="practice-dot"></span>
+
+                    <div>
+
+                        <strong>
+                            BREATHE · MOVE · BECOME
+                        </strong>
+
+                        <small>
+                            Yoga · Breathwork · Wellness
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="login-visual-footer">
+
+                <span>
+                    BREATHE
+                </span>
+
+                <i></i>
+
+                <span>
+                    MOVE
+                </span>
+
+                <i></i>
+
+                <span>
+                    BECOME
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOGIN CONTENT
+        ================================================== -->
+
+        <div class="login-content">
+
+
+            <!-- HEADING -->
+
+            <div class="login-heading">
+
+                <span>
+                    WELCOME TO AURA
+                </span>
+
+                <h2 id="loginTitle">
+                    Begin your practice
+                </h2>
+
+                <p>
+
+                    Sign in to access your classes,
+                    retreats and personal wellness journey.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- TABS -->
+
+            <div class="login-tabs">
+
+                <button
+                    type="button"
+                    class="login-tab active"
+                    data-login-tab="member"
+                >
+                    Member Login
+                </button>
+
+
+                <button
+                    type="button"
+                    class="login-tab"
+                    data-login-tab="studio"
+                >
+                    Studio Login
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MEMBER LOGIN
+            ================================================== -->
+
+            <form
+                class="login-form active"
+                id="memberLoginForm"
+                data-login-form="member"
+            >
+
+                <label for="memberEmail">
+                    Email Address
+                </label>
+
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        @
+                    </span>
+
+                    <input
+                        type="email"
+                        id="memberEmail"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <label for="memberPassword">
+                    Password
+                </label>
+
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        •
+                    </span>
+
+                    <input
+                        type="password"
+                        id="memberPassword"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-password-toggle="memberPassword"
+                        aria-label="Show password"
+                    >
+
+                        <span>
+                            ◉
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="login-options">
+
+                    <label class="remember-option">
+
+                        <input
+                            type="checkbox"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <a href="404.html">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-submit"
+                >
+
+                    <span>
+                        Enter AURA
+                    </span>
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+
+                <p class="login-create">
+
+                    New to AURA?
+
+                    <a href="404.html">
+                        Start your journey
+                    </a>
+
+                </p>
+
+            </form>
+
+
+
+            <!-- =================================================
+                 STUDIO LOGIN
+            ================================================== -->
+
+            <form
+                class="login-form"
+                id="studioLoginForm"
+                data-login-form="studio"
+            >
+
+                <label for="studioEmail">
+                    Studio Email
+                </label>
+
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        @
+                    </span>
+
+                    <input
+                        type="email"
+                        id="studioEmail"
+                        placeholder="studio@aurayoga.in"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <label for="studioPassword">
+                    Studio Password
+                </label>
+
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        #
+                    </span>
+
+                    <input
+                        type="password"
+                        id="studioPassword"
+                        placeholder="Enter studio password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-password-toggle="studioPassword"
+                        aria-label="Show password"
+                    >
+
+                        <span>
+                            ◉
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="login-options">
+
+                    <label class="remember-option">
+
+                        <input
+                            type="checkbox"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <a href="404.html">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-submit studio-submit"
+                >
+
+                    <span>
+                        Open Studio Panel
+                    </span>
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+            </form>
+
+
+
+            <!-- SECURITY -->
+
+            <div class="login-security">
+
+                <span class="security-icon">
+                    ✓
+                </span>
+
+                <span>
+                    Secure AURA session · Your wellness space
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

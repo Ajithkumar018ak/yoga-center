@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About — AURA YOGA</title>
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+</head>
+
+
+<body>
+
+
+
+<!-- =========================================================
+     PAGE LOADER
+========================================================== -->
+
+<div
+    class="page-loader"
+    id="pageLoader"
+    aria-hidden="true"
+>
+
+    <div class="loader-noise"></div>
+
+    <div class="loader-light"></div>
+
+
+    <!-- LEFT DOOR -->
+
+    <div class="loader-door loader-door-left">
+
+        <div class="door-panel">
+
+            <span class="door-line"></span>
+
+            <span class="door-line"></span>
+
+            <span class="door-handle"></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT DOOR -->
+
+    <div class="loader-door loader-door-right">
+
+        <div class="door-panel">
+
+            <span class="door-line"></span>
+
+            <span class="door-line"></span>
+
+            <span class="door-handle"></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- YOGA FIGURE -->
+
+    <div class="loader-yoga-scene">
+
+        <div class="loader-aura"></div>
+
+
+        <img
+            src="assets/p1.png"
+            alt="Yoga meditation pose"
+            class="loader-pose active"
+        >
+
+        <img
+            src="assets/p2.webp"
+            alt="Yoga warrior pose"
+            class="loader-pose"
+        >
+
+        <img
+            src="assets/p3.webp"
+            alt="Yoga lotus pose"
+            class="loader-pose"
+        >
+
+
+        <div class="loader-floor"></div>
+
+    </div>
+
+
+    <!-- LOADER CONTENT -->
+
+    <div class="loader-content">
+
+        <div class="loader-brand">
+
+            Stackly
+
+            <span>
+                YOGA CENTER
+            </span>
+
+        </div>
+
+
+        <p class="loader-caption">
+            PREPARING YOUR SPACE
+        </p>
+
+
+        <div class="loader-progress">
+
+            <span
+                id="loaderProgress"
+                class="loader-progress-bar"
+            ></span>
+
+        </div>
+
+
+        <div class="loader-number">
+
+            <span id="loaderPercent">
+                00
+            </span>
+
+            <small>
+                %
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     SCROLL PROGRESS
+========================================================== -->
+
+<div
+    class="scroll-progress"
+    id="scrollProgress"
+></div>
+
+
+
+<!-- =========================================================
+     CUSTOM CURSOR
+========================================================== -->
+
+<div
+    class="custom-cursor"
+    id="customCursor"
+>
+
+    <span></span>
+
+</div>
+
+
+
+<!-- =========================================================
+     SITE HEADER
+========================================================== -->
+
+<header
+    class="site-header"
+    id="siteHeader"
+>
+
+    <div class="header-inner">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="index.html"
+            class="site-logo"
+            aria-label="AURA Yoga Home"
+        >
+
+            <span class="logo-mark">
+                A
+            </span>
+
+            <span class="logo-text">
+
+                AURA
+
+                <small>
+                    YOGA
+                </small>
+
+            </span>
+
+        </a>
+
+
+
+        <!-- DESKTOP NAVIGATION -->
+
+        <nav
+            class="desktop-nav"
+            aria-label="Primary navigation"
+        >
+
+            <a
+                href="index.html"
+                class="active"
+            >
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="classes.html">
+                Classes
+            </a>
+
+    
+
+            <a href="instructors.html">
+                Instructors
+            </a>
+
+         
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+
+        <!-- HEADER LOGIN -->
+
+        <a
+            href="#"
+            class="header-cta magnetic"
+            id="headerLoginButton"
+        >
+           LOGIN
+
+            <span>
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================== -->
+
+<div
+    class="mobile-overlay"
+    id="mobileOverlay"
+></div>
+
+
+<aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-hidden="true"
+>
+
+    <div class="drawer-top">
+
+        <a
+            href="index.html"
+            class="drawer-logo"
+        >
+
+            AURA
+
+            <small>
+                YOGA
+            </small>
+
+        </a>
+
+
+        <button
+            type="button"
+            class="drawer-close"
+            id="drawerClose"
+            aria-label="Close menu"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+
+    <div class="drawer-nav">
+
+        <a
+            href="index.html"
+            class="active"
+        >
+
+            <span>
+                01
+            </span>
+
+            Home
+
+        </a>
+
+
+        <a href="about.html">
+
+            <span>
+                02
+            </span>
+
+            About
+
+        </a>
+
+
+        <a href="classes.html">
+
+            <span>
+                03
+            </span>
+
+            Classes
+
+        </a>
+
+
+
+
+        <a href="instructors.html">
+
+            <span>
+                05
+            </span>
+
+            Instructors
+
+        </a>
+
+
+
+        <a href="contact.html">
+
+            <span>
+                07
+            </span>
+
+            Contact
+
+        </a>
+
+    </div>
+
+
+
+    <div class="drawer-bottom">
+
+        <p>
+
+            BREATHE.
+            <br>
+
+            MOVE.
+            <br>
+
+            BECOME.
+
+        </p>
+
+
+        <a
+            href="#"
+            id="drawerLoginButton"
+        >
+
+            LOGIN
+
+            <span>
+                ↗
+            </span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<main>
+
+<!-- =========================================================
+     SECTION 01 — ABOUT HERO
+========================================================= -->
+
+<section class="about-hero-section">
+
+    <div class="about-hero-background">
+
+        <img
+            src="assets/images/about-hero.webp"
+            alt="AURA Yoga peaceful studio"
+        >
+
+        <div class="about-hero-overlay"></div>
+
+    </div>
+
+
+    <div class="about-hero-content">
+
+        <div class="about-hero-kicker">
+
+            <span></span>
+
+            OUR STORY
+
+        </div>
+
+
+        <h1>
+
+            A PLACE TO
+            <em>RETURN</em>
+            TO YOURSELF.
+
+        </h1>
+
+
+        <p>
+
+            AURA is a contemporary yoga space created for
+            people who want to slow down, breathe deeper and
+            reconnect with the part of themselves that gets
+            lost in the noise of everyday life.
+
+        </p>
+
+
+        <div class="about-hero-bottom">
+
+            <span>
+                EST. 2018
+            </span>
+
+            <span>
+                CHENNAI · INDIA
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 02 — OUR PHILOSOPHY
+========================================================= -->
+
+<section class="about-philosophy-section section-padding">
+
+    <div class="section-container">
+
+
+        <div class="section-heading-row reveal">
+
+            <div>
+
+                <span class="section-kicker">
+                    01 / PHILOSOPHY
+                </span>
+
+                <h2 class="section-title">
+
+                    YOGA IS NOT
+                    <em>A PERFORMANCE.</em>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-intro">
+
+                It is a conversation between your breath,
+                your body and the quiet space within.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-philosophy-grid">
+
+
+            <div class="about-philosophy-image reveal">
+
+                <img
+                    src="assets/images/about-01.webp"
+                    alt="Woman practicing yoga"
+                >
+
+                <div class="image-caption">
+
+                    <span>01</span>
+
+                    <p>
+                        FIND YOUR RHYTHM
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-philosophy-content reveal">
+
+
+                <div class="large-number">
+                    01
+                </div>
+
+
+                <h3>
+                    WE BELIEVE IN
+                    <span>CONSISTENCY</span>
+                    OVER PERFECTION.
+                </h3>
+
+
+                <p>
+
+                    You do not need to touch your toes,
+                    stand on your head or arrive with years
+                    of experience to belong here.
+
+                </p>
+
+
+                <p>
+
+                    At AURA, yoga begins exactly where you
+                    are. Some days your practice may feel
+                    powerful. Some days it may feel quiet.
+                    Both are valuable.
+
+                </p>
+
+
+                <div class="philosophy-highlight">
+
+                    <span>
+                        OUR BELIEF
+                    </span>
+
+                    <strong>
+                        Small practices create
+                        meaningful changes.
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="classes.html"
+                    class="inline-link"
+                >
+
+                    EXPLORE OUR PRACTICE
+
+                    <span>↗</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 03 — WHY AURA
+========================================================= -->
+
+<section class="about-values-section section-padding">
+
+    <div class="section-container">
+
+
+        <div class="about-values-header reveal">
+
+            <span class="section-kicker">
+                02 / THE AURA WAY
+            </span>
+
+            <h2 class="section-title">
+
+                DESIGNED FOR
+                <em>REAL LIFE.</em>
+
+            </h2>
+
+            <p>
+
+                We created AURA around a simple idea:
+                wellness should not feel like another
+                responsibility on your calendar.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-values-grid">
+
+
+            <article class="about-value-card reveal">
+
+                <span class="value-number">
+                    01
+                </span>
+
+                <div class="value-icon">
+                    <i class="fa-solid fa-wind"></i>
+                </div>
+
+                <h3>
+                    BREATHE
+                </h3>
+
+                <p>
+
+                    Learn to use the breath as an anchor.
+                    Through intentional breathing practices,
+                    you create space between the moment and
+                    your reaction.
+
+                </p>
+
+                <span class="value-line"></span>
+
+            </article>
+
+
+            <article class="about-value-card reveal">
+
+                <span class="value-number">
+                    02
+                </span>
+
+                <div class="value-icon">
+                    <i class="fa-solid fa-person"></i>
+                </div>
+
+                <h3>
+                    MOVE
+                </h3>
+
+                <p>
+
+                    Build strength, mobility and body awareness
+                    through thoughtful movement designed to
+                    support the way you actually live.
+
+                </p>
+
+                <span class="value-line"></span>
+
+            </article>
+
+
+            <article class="about-value-card reveal">
+
+                <span class="value-number">
+                    03
+                </span>
+
+                <div class="value-icon">
+                    <i class="fa-solid fa-sun"></i>
+                </div>
+
+                <h3>
+                    BECOME
+                </h3>
+
+                <p>
+
+                    The practice does not end when you leave
+                    the mat. Carry the awareness, calm and
+                    confidence into everything that follows.
+
+                </p>
+
+                <span class="value-line"></span>
+
+            </article>
+
+        </div>
+
+
+        <div class="about-values-footer reveal">
+
+            <span>
+                AURA / 2018 — 2026
+            </span>
+
+            <p>
+                A PRACTICE FOR EVERY BODY.
+            </p>
+
+            <span>
+                CHENNAI, INDIA
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 04 — OUR SPACE
+========================================================= -->
+
+<section class="about-space-section">
+
+    <div class="about-space-image">
+
+        <img
+            src="assets/images/about-02.webp"
+            alt="AURA Yoga studio interior"
+        >
+
+        <div class="about-space-overlay"></div>
+
+    </div>
+
+
+    <div class="about-space-content reveal">
+
+        <span class="section-kicker light">
+            03 / THE SPACE
+        </span>
+
+
+        <h2>
+
+            LESS NOISE.
+            <br>
+
+            MORE
+            <em>PRESENCE.</em>
+
+        </h2>
+
+
+        <p>
+
+            Every corner of AURA has been intentionally
+            designed to help you transition from the outside
+            world into your practice.
+
+        </p>
+
+
+        <p>
+
+            Natural textures, warm light, open space and
+            quiet details create an environment where you
+            can leave the pace of the city behind.
+
+        </p>
+
+
+        <div class="space-details">
+
+            <div>
+
+                <strong>
+                    01
+                </strong>
+
+                <span>
+                    NATURAL LIGHT
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    02
+                </strong>
+
+                <span>
+                    CALM MATERIALS
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    03
+                </strong>
+
+                <span>
+                    MINDFUL DESIGN
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 05 — OUR JOURNEY
+========================================================= -->
+
+<section class="about-journey-section section-padding">
+
+    <div class="section-container">
+
+
+        <div class="about-journey-heading reveal">
+
+            <div>
+
+                <span class="section-kicker">
+                    04 / OUR JOURNEY
+                </span>
+
+                <h2 class="section-title">
+
+                    FROM ONE
+                    <em>MAT.</em>
+
+                    <br>
+
+                    TO A
+                    <em>COMMUNITY.</em>
+
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                What began as a small room and a handful
+                of students has grown into a community of
+                people choosing to make space for themselves.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-timeline">
+
+
+            <article class="about-timeline-item reveal">
+
+                <div class="timeline-year">
+                    2018
+                </div>
+
+
+                <div class="timeline-marker">
+                    <span></span>
+                </div>
+
+
+                <div class="timeline-content">
+
+                    <span>
+                        THE BEGINNING
+                    </span>
+
+                    <h3>
+                        ONE ROOM.
+                        ONE INTENTION.
+                    </h3>
+
+                    <p>
+
+                        AURA began with a simple studio,
+                        a few mats and a belief that yoga
+                        could become a meaningful part of
+                        modern life.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="about-timeline-item reveal">
+
+                <div class="timeline-year">
+                    2020
+                </div>
+
+
+                <div class="timeline-marker">
+                    <span></span>
+                </div>
+
+
+                <div class="timeline-content">
+
+                    <span>
+                        GOING DEEPER
+                    </span>
+
+                    <h3>
+                        PRACTICE
+                        BEYOND THE STUDIO.
+                    </h3>
+
+                    <p>
+
+                        Our community expanded into guided
+                        breathwork, meditation and workshops
+                        focused on building sustainable
+                        everyday rituals.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="about-timeline-item reveal">
+
+                <div class="timeline-year">
+                    2023
+                </div>
+
+
+                <div class="timeline-marker">
+                    <span></span>
+                </div>
+
+
+                <div class="timeline-content">
+
+                    <span>
+                        THE COMMUNITY
+                    </span>
+
+                    <h3>
+                        MORE PEOPLE.
+                        SAME PURPOSE.
+                    </h3>
+
+                    <p>
+
+                        AURA welcomed new teachers, new
+                        practices and hundreds of people
+                        who wanted to move with intention.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="about-timeline-item reveal">
+
+                <div class="timeline-year">
+                    2026
+                </div>
+
+
+                <div class="timeline-marker">
+                    <span></span>
+                </div>
+
+
+                <div class="timeline-content">
+
+                    <span>
+                        TODAY
+                    </span>
+
+                    <h3>
+                        THE JOURNEY
+                        CONTINUES.
+                    </h3>
+
+                    <p>
+
+                        Today, AURA remains committed to
+                        creating thoughtful spaces where
+                        movement becomes awareness and
+                        practice becomes a way of living.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SECTION 06 — COMMUNITY CTA
+========================================================= -->
+
+<section class="about-community-section">
+
+    <div class="about-community-background">
+
+        <img
+            src="assets/images/about-03.webp"
+            alt="AURA Yoga community"
+        >
+
+        <div class="about-community-overlay"></div>
+
+    </div>
+
+
+    <div class="about-community-content reveal">
+
+        <span class="section-kicker light">
+            05 / OUR COMMUNITY
+        </span>
+
+
+        <h2>
+
+            COME AS
+            <em>YOU ARE.</em>
+
+        </h2>
+
+
+        <p>
+
+            You do not have to be flexible.
+            You do not have to be experienced.
+            You do not have to know exactly what you need.
+
+        </p>
+
+
+        <p>
+
+            Just arrive.
+
+            We will meet you where you are and help you
+            discover what your practice can become.
+
+        </p>
+
+
+        <div class="community-actions">
+
+            <a
+                href="classes.html"
+                class="button button-light magnetic"
+            >
+
+                EXPLORE CLASSES
+
+                <span>↗</span>
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="button button-outline-light magnetic"
+            >
+
+                VISIT AURA
+
+                <span>↗</span>
+
+            </a>
+
+        </div>
+
+
+        <div class="community-note">
+
+            <span>
+                CHENNAI · INDIA
+            </span>
+
+            <span>
+                BREATHE / MOVE / BECOME
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-top">
+
+
+        <div class="footer-brand">
+
+            <a
+                href="index.html"
+                class="footer-logo"
+            >
+
+                AURA
+
+                <small>
+                    YOGA STUDIO
+                </small>
+
+            </a>
+
+
+            <p>
+
+                A quiet place to move,
+                breathe and return to yourself.
+
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <span>
+                EXPLORE
+            </span>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="classes.html">
+                Classes
+            </a>
+
+            <a href="instructors.html">
+                Instructors
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <span>
+                CONNECT
+            </span>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="404.html">
+                Instagram
+            </a>
+
+            <a href="404.html">
+                Journal
+            </a>
+
+            <a href="404.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <div class="footer-column footer-contact">
+
+            <span>
+                VISIT
+            </span>
+
+            <p>
+                Chennai
+                <br>
+                Tamil Nadu
+                <br>
+                India
+            </p>
+
+            <a href="mailto:hello@aurayoga.in">
+                hello@aurayoga.in
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 AURA YOGA
+        </span>
+
+        <span>
+            BREATHE · MOVE · BECOME
+        </span>
+
+        <span>
+            MADE WITH INTENTION
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     AURA YOGA LOGIN MODAL
+========================================================== -->
+
+<div
+    class="modal-overlay"
+    id="loginModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="login-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="loginTitle"
+    >
+
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            class="modal-close"
+            id="loginModalClose"
+            aria-label="Close login"
+        >
+            ×
+        </button>
+
+
+
+        <!-- =================================================
+             LOGIN VISUAL
+        ================================================== -->
+
+        <div class="login-visual">
+
+            <img
+                src="assets/images/yoga-login.webp"
+                alt="AURA Yoga practice"
+            >
+
+            <div class="login-visual-overlay"></div>
+
+
+            <div class="login-visual-content">
+
+                <span>
+                    AURA YOGA
+                </span>
+
+                <h3>
+
+                    Your journey
+
+                    <br>
+
+                    inward
+
+                    <br>
+
+                    begins here.
+
+                </h3>
+
+
+                <div class="login-practice-badge">
+
+                    <span class="practice-dot"></span>
+
+                    <div>
+
+                        <strong>
+                            BREATHE · MOVE · BECOME
+                        </strong>
+
+                        <small>
+                            Yoga · Breathwork · Wellness
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="login-visual-footer">
+
+                <span>
+                    BREATHE
+                </span>
+
+                <i></i>
+
+                <span>
+                    MOVE
+                </span>
+
+                <i></i>
+
+                <span>
+                    BECOME
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOGIN CONTENT
+        ================================================== -->
+
+        <div class="login-content">
+
+
+            <!-- HEADING -->
+
+            <div class="login-heading">
+
+                <span>
+                    WELCOME TO AURA
+                </span>
+
+                <h2 id="loginTitle">
+                    Begin your practice
+                </h2>
+
+                <p>
+
+                    Sign in to access your classes,
+                    retreats and personal wellness journey.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- TABS -->
+
+            <div class="login-tabs">
+
+                <button
+                    type="button"
+                    class="login-tab active"
+                    data-login-tab="member"
+                >
+                    Member Login
+                </button>
+
+
+                <button
+                    type="button"
+                    class="login-tab"
+                    data-login-tab="studio"
+                >
+                    Studio Login
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MEMBER LOGIN
+            ================================================== -->
+
+            <form
+                class="login-form active"
+                id="memberLoginForm"
+                data-login-form="member"
+            >
+
+                <label for="memberEmail">
+                    Email Address
+                </label>
+
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        @
+                    </span>
+
+                    <input
+                        type="email"
+                        id="memberEmail"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <label for="memberPassword">
+                    Password
+                </label>
+
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        •
+                    </span>
+
+                    <input
+                        type="password"
+                        id="memberPassword"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-password-toggle="memberPassword"
+                        aria-label="Show password"
+                    >
+
+                        <span>
+                            ◉
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="login-options">
+
+                    <label class="remember-option">
+
+                        <input
+                            type="checkbox"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <a href="404.html">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-submit"
+                >
+
+                    <span>
+                        Enter AURA
+                    </span>
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+
+                <p class="login-create">
+
+                    New to AURA?
+
+                    <a href="404.html">
+                        Start your journey
+                    </a>
+
+                </p>
+
+            </form>
+
+
+
+            <!-- =================================================
+                 STUDIO LOGIN
+            ================================================== -->
+
+            <form
+                class="login-form"
+                id="studioLoginForm"
+                data-login-form="studio"
+            >
+
+                <label for="studioEmail">
+                    Studio Email
+                </label>
+
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        @
+                    </span>
+
+                    <input
+                        type="email"
+                        id="studioEmail"
+                        placeholder="studio@aurayoga.in"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <label for="studioPassword">
+                    Studio Password
+                </label>
+
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        #
+                    </span>
+
+                    <input
+                        type="password"
+                        id="studioPassword"
+                        placeholder="Enter studio password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-password-toggle="studioPassword"
+                        aria-label="Show password"
+                    >
+
+                        <span>
+                            ◉
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="login-options">
+
+                    <label class="remember-option">
+
+                        <input
+                            type="checkbox"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <a href="404.html">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-submit studio-submit"
+                >
+
+                    <span>
+                        Open Studio Panel
+                    </span>
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+            </form>
+
+
+
+            <!-- SECURITY -->
+
+            <div class="login-security">
+
+                <span class="security-icon">
+                    ✓
+                </span>
+
+                <span>
+                    Secure AURA session · Your wellness space
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
