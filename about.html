@@ -231,26 +231,18 @@
         <!-- LOGO -->
 
         <a
-            href="index.html"
-            class="site-logo"
-            aria-label="AURA Yoga Home"
-        >
+    href="index.html"
+    class="site-logo"
+    aria-label="AURA Yoga Home"
+>
 
-            <span class="logo-mark">
-                A
-            </span>
+    <img
+        src="assets/logo.webp"
+        alt="AURA Yoga"
+        class="site-logo-image"
+    >
 
-            <span class="logo-text">
-
-                AURA
-
-                <small>
-                    YOGA
-                </small>
-
-            </span>
-
-        </a>
+</a>
 
 
 
@@ -263,14 +255,16 @@
 
             <a
                 href="index.html"
-                class="active"
+                
             >
                 Home
             </a>
 
-            <a href="about.html">
+            <a href="about.html"
+            class="active">
                 About
-            </a>
+                </a>
+            
 
             <a href="classes.html">
                 Classes
@@ -1216,48 +1210,43 @@
 
 <!-- =========================================================
      FOOTER
-========================================================= -->
+========================================================== -->
 
 <footer class="site-footer">
 
     <div class="footer-top">
 
 
+        <!-- FOOTER BRAND -->
         <div class="footer-brand">
 
             <a
                 href="index.html"
                 class="footer-logo"
+                aria-label="AURA Yoga Home"
             >
-
-                AURA
-
-                <small>
-                    YOGA STUDIO
-                </small>
-
+                <img
+                    src="assets/logo.webp"
+                    alt="AURA Yoga"
+                    class="footer-logo-image"
+                >
             </a>
 
-
             <p>
-
-                A quiet place to move,
-                breathe and return to yourself.
-
+                A quieter place to move,<br>
+                breathe deeply and reconnect<br>
+                with yourself.
             </p>
 
         </div>
 
 
+        <!-- EXPLORE -->
         <div class="footer-column">
 
             <span>
                 EXPLORE
             </span>
-
-            <a href="index.html">
-                Home
-            </a>
 
             <a href="about.html">
                 About
@@ -1267,18 +1256,27 @@
                 Classes
             </a>
 
-            <a href="instructors.html">
-                Instructors
+            <a href="retreats.html">
+                Retreats
+            </a>
+
+            <a href="wellness.html">
+                Wellness
             </a>
 
         </div>
 
 
+        <!-- CONNECT -->
         <div class="footer-column">
 
             <span>
                 CONNECT
             </span>
+
+            <a href="instructors.html">
+                Instructors
+            </a>
 
             <a href="contact.html">
                 Contact
@@ -1289,52 +1287,75 @@
             </a>
 
             <a href="404.html">
-                Journal
-            </a>
-
-            <a href="404.html">
-                Login
+                YouTube
             </a>
 
         </div>
 
 
+        <!-- STUDIO + NEWSLETTER -->
         <div class="footer-column footer-contact">
 
             <span>
-                VISIT
+                STUDIO
             </span>
 
             <p>
-                Chennai
-                <br>
-                Tamil Nadu
-                <br>
+                18 Greenways Road<br>
+                Chennai, Tamil Nadu<br>
                 India
             </p>
 
-            <a href="mailto:hello@aurayoga.in">
-                hello@aurayoga.in
-            </a>
+
+            <!-- EMAIL -->
+            <div class="footer-subscribe">
+
+                <div class="subscribe-input">
+
+                    <input
+                        type="email"
+                        placeholder="Enter your email address"
+                        aria-label="Email address"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="subscribe-button"
+                    onclick="window.location.href='404.html'"
+                >
+                    SUBSCRIBE
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
 
+    <!-- FOOTER BOTTOM -->
     <div class="footer-bottom">
 
         <span>
-            © 2026 AURA YOGA
+            © 2026 AURA YOGA.
+            ALL RIGHTS RESERVED.
         </span>
 
         <span>
-            BREATHE · MOVE · BECOME
+            BREATHE. MOVE. BECOME.
         </span>
 
-        <span>
-            MADE WITH INTENTION
-        </span>
+        <a href="404.html">
+            Privacy
+        </a>
 
     </div>
 

@@ -219,26 +219,18 @@
         <!-- LOGO -->
 
         <a
-            href="index.html"
-            class="site-logo"
-            aria-label="AURA Yoga Home"
-        >
+    href="index.html"
+    class="site-logo"
+    aria-label="AURA Yoga Home"
+>
 
-            <span class="logo-mark">
-                A
-            </span>
+    <img
+        src="assets/logo.webp"
+        alt="AURA Yoga"
+        class="site-logo-image"
+    >
 
-            <span class="logo-text">
-
-                AURA
-
-                <small>
-                    YOGA
-                </small>
-
-            </span>
-
-        </a>
+</a>
 
 
 
@@ -251,7 +243,7 @@
 
             <a
                 href="index.html"
-                class="active"
+                
             >
                 Home
             </a>
@@ -260,9 +252,11 @@
                 About
             </a>
 
-            <a href="classes.html">
+            <a href="classes.html"
+            class="active">
                 Classes
-            </a>
+                </a>
+            
 
     
 
@@ -1572,32 +1566,31 @@
     <div class="footer-top">
 
 
+        <!-- FOOTER BRAND -->
         <div class="footer-brand">
 
             <a
                 href="index.html"
                 class="footer-logo"
+                aria-label="AURA Yoga Home"
             >
-
-                AURA
-
-                <small>
-                    YOGA
-                </small>
-
+                <img
+                    src="assets/logo.webp"
+                    alt="AURA Yoga"
+                    class="footer-logo-image"
+                >
             </a>
 
             <p>
-
-                A quieter place to move,
-                breathe and reconnect.
-
+                A quieter place to move,<br>
+                breathe deeply and reconnect<br>
+                with yourself.
             </p>
 
         </div>
 
 
-
+        <!-- EXPLORE -->
         <div class="footer-column">
 
             <span>
@@ -1623,7 +1616,7 @@
         </div>
 
 
-
+        <!-- CONNECT -->
         <div class="footer-column">
 
             <span>
@@ -1649,7 +1642,7 @@
         </div>
 
 
-
+        <!-- STUDIO + NEWSLETTER -->
         <div class="footer-column footer-contact">
 
             <span>
@@ -1657,34 +1650,52 @@
             </span>
 
             <p>
-
-                18 Greenways Road
-                <br>
-
-                Chennai, Tamil Nadu
-                <br>
-
+                18 Greenways Road<br>
+                Chennai, Tamil Nadu<br>
                 India
-
             </p>
 
-            <a href="404.html">
-                hello@aurayoga.in
-            </a>
+
+            <!-- EMAIL -->
+            <div class="footer-subscribe">
+
+                <div class="subscribe-input">
+
+                    <input
+                        type="email"
+                        placeholder="Enter your email address"
+                        aria-label="Email address"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="subscribe-button"
+                    onclick="window.location.href='404.html'"
+                >
+                    SUBSCRIBE
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
 
-
+    <!-- FOOTER BOTTOM -->
     <div class="footer-bottom">
 
         <span>
-
             © 2026 AURA YOGA.
             ALL RIGHTS RESERVED.
-
         </span>
 
         <span>
@@ -1698,8 +1709,6 @@
     </div>
 
 </footer>
-
-
 
 <!-- =========================================================
      AURA YOGA LOGIN MODAL

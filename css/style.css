@@ -14778,3 +14778,285 @@ body:not(.menu-open):not(.modal-open) {
         animation: none !important;
     }
 }
+
+
+.site-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 0;
+}
+
+.site-logo-image {
+    width: 145px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+
+
+@media (max-width: 768px) {
+    .site-logo-image {
+        width: 120px;
+    }
+}
+
+
+
+
+
+
+
+
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.footer-logo-image {
+    width: 150px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .footer-logo-image {
+        width: 125px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FOOTER SUBSCRIBE
+========================================================= */
+
+.footer-subscribe {
+    width: 100%;
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subscribe-input {
+    width: 100%;
+}
+
+.subscribe-input input {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 4px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.subscribe-input input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.subscribe-input input:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* SUBSCRIBE BUTTON */
+
+.subscribe-button {
+    width: 100%;
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+
+    background: #ffffff;
+    color: #15372c;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.subscribe-button span {
+    font-size: 17px;
+    line-height: 1;
+}
+
+.subscribe-button:hover {
+    transform: translateY(-2px);
+    background: transparent;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FOOTER — COMPACT + LARGER TEXT
+========================================================= */
+
+.site-footer {
+    padding-top: 55px;
+    padding-bottom: 20px;
+}
+
+.footer-top {
+    gap: 35px;
+}
+
+
+/* BRAND TEXT */
+
+.footer-brand p {
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+
+/* COLUMN */
+
+.footer-column {
+    gap: 9px;
+}
+
+.footer-column > span {
+    margin-bottom: 10px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+}
+
+.footer-column > a {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+
+/* STUDIO TEXT */
+
+.footer-contact p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+
+/* EMAIL INPUT */
+
+.footer-subscribe {
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.subscribe-input input {
+    height: 46px;
+    font-size: 14px;
+    padding: 0 14px;
+}
+
+.subscribe-button {
+    min-height: 46px;
+    font-size: 12px;
+}
+
+
+/* BOTTOM */
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 18px;
+    gap: 15px;
+}
+
+.footer-bottom span,
+.footer-bottom a {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .site-footer {
+        padding-top: 45px;
+    }
+
+    .footer-top {
+        gap: 30px;
+    }
+
+    .footer-brand p,
+    .footer-column > a,
+    .footer-contact p {
+        font-size: 14px;
+    }
+
+    .footer-column {
+        gap: 7px;
+    }
+
+    .footer-column > span {
+        margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+        margin-top: 30px;
+        gap: 10px;
+    }
+
+}
