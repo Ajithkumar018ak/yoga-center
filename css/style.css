@@ -15060,3 +15060,636 @@ body:not(.menu-open):not(.modal-open) {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   CLASSES GRID
+========================================================= */
+
+.classes-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+
+/* =========================================================
+   CLASS CARD
+========================================================= */
+
+.class-card {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CLASS IMAGE
+========================================================= */
+
+.class-image {
+    position: relative;
+
+    width: 100%;
+    height: 460px;
+
+    overflow: hidden;
+
+    border-radius: 0;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.class-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+/* =========================================================
+   IMAGE HOVER
+========================================================= */
+
+.class-card:hover .class-image img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   CLASS INDEX
+========================================================= */
+
+.class-index {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    z-index: 5;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   CLASS LEVEL
+========================================================= */
+
+.class-level {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 5;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   CLASS CONTENT
+========================================================= */
+
+.class-content {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 26px 0 34px;
+}
+
+
+/* =========================================================
+   TOP CONTENT
+========================================================= */
+
+.class-content > div {
+    width: 100%;
+}
+
+.class-content > div > span {
+    display: block;
+
+    margin-bottom: 8px;
+}
+
+.class-content h3 {
+    margin: 0;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.class-content p {
+    margin: 16px 0 22px;
+
+    max-width: 520px;
+}
+
+
+/* =========================================================
+   EXPLORE LINK
+========================================================= */
+
+.class-content a {
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+}
+
+.class-content a i {
+    transition: transform 0.3s ease;
+}
+
+.class-content a:hover i {
+    transform: translate(4px, -4px);
+}
+
+
+/* =========================================================
+   LARGE CLASS — SAME WIDTH & SAME HEIGHT
+========================================================= */
+
+.class-card-large {
+    width: 100%;
+}
+
+.class-card-large .class-image {
+    width: 100%;
+    height: 460px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .classes-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .class-image,
+    .class-card-large .class-image {
+        width: 100%;
+        height: 420px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .classes-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+
+    .class-image,
+    .class-card-large .class-image {
+        width: 100%;
+        height: 380px;
+    }
+
+    .class-content {
+        padding-top: 22px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .classes-grid {
+        gap: 32px;
+    }
+
+    .class-image,
+    .class-card-large .class-image {
+        width: 100%;
+        height: 340px;
+    }
+
+    .class-index {
+        top: 16px;
+        left: 16px;
+    }
+
+    .class-level {
+        top: 16px;
+        right: 16px;
+    }
+
+}
+
+
+
+
+
+
+
+.reveal {
+    opacity: 0;
+    transform: translate3d(0, 70px, 0);
+    visibility: hidden;
+
+    transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0.9s ease;
+
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+}
+
+
+/* =========================================================
+   STAGGER
+========================================================= */
+
+.about-values-grid .about-value-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.about-values-grid .about-value-card:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.about-values-grid .about-value-card:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+
+.about-timeline-item:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.about-timeline-item:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.about-timeline-item:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+.about-timeline-item:nth-child(4) {
+    transition-delay: 0.35s;
+}
+
+
+/* =========================================================
+   SMOOTH PAGE SCROLL
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+.classes-rhythm-heading h2 {
+    color: #111111;
+}
+
+.classes-rhythm-heading h2 em {
+    color: inherit;
+}
+
+
+
+
+html,
+body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   INSTRUCTOR HERO
+========================================================= */
+
+.instructors-hero-section {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   ALL FOLLOWING SECTIONS
+========================================================= */
+
+.instructors-intro-section,
+.instructor-collection-section,
+.instructors-gallery-section,
+.teaching-philosophy-section,
+.instructor-story-section,
+.instructor-stats-section,
+.instructors-final-section {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   REVEAL — DON'T HIDE CONTENT FOREVER
+========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    visibility: hidden;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .reveal {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+    }
+
+}
+
+
+
+
+
+
+
+
+.reveal {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   AURA INSTRUCTOR CENTER IMAGE
+   FIXED CENTER + IMAGE CHANGE ONLY
+========================================================= */
+
+.instructor-hero-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 360px;
+    height: 460px;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Kill all orbit movement */
+.instructor-orbit-stage {
+    position: relative !important;
+
+    width: 300px !important;
+    height: 400px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: none !important;
+    animation: none !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+}
+
+/* Every image occupies EXACT same position */
+.orbit-image {
+    position: absolute !important;
+
+    left: 0 !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: 300px !important;
+    height: 400px !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    transform: none !important;
+    rotate: 0deg !important;
+
+    animation: none !important;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0s linear 0.8s !important;
+
+    z-index: 1;
+}
+
+.orbit-image.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transform: none !important;
+    rotate: 0deg !important;
+
+    animation: none !important;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0s linear 0s !important;
+
+    z-index: 2;
+}
+
+/* PNG itself */
+.orbit-image img {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block !important;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    transform: none !important;
+    rotate: 0deg !important;
+
+    animation: none !important;
+}
+
+/* Disable orbit rings from affecting the image */
+.hero-center-ring {
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .instructor-hero-center {
+        width: 320px;
+        height: 420px;
+    }
+
+    .instructor-orbit-stage {
+        width: 270px !important;
+        height: 360px !important;
+    }
+
+    .orbit-image {
+        width: 270px !important;
+        height: 360px !important;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .instructor-hero-center {
+        position: relative;
+
+        left: auto;
+        top: auto;
+
+        width: 100%;
+        height: 390px;
+
+        transform: none;
+
+        margin: 30px auto;
+    }
+
+    .instructor-orbit-stage {
+        width: 240px !important;
+        height: 320px !important;
+    }
+
+    .orbit-image {
+        width: 240px !important;
+        height: 320px !important;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .instructor-hero-center {
+        height: 350px;
+    }
+
+    .instructor-orbit-stage {
+        width: 210px !important;
+        height: 280px !important;
+    }
+
+    .orbit-image {
+        width: 210px !important;
+        height: 280px !important;
+    }
+
+}
+
+
+

@@ -2996,3 +2996,72 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 });
+
+
+
+
+/* =========================================================
+   INSTRUCTOR CENTER IMAGE SWITCHER
+   NO ROTATION
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const images = document.querySelectorAll(".orbit-image");
+
+    const details = document.querySelectorAll(".instructor-detail");
+
+    const philosophies = document.querySelectorAll(
+        ".instructor-detail-copy"
+    );
+
+    if (!images.length) return;
+
+    let currentIndex = 0;
+
+    function changeInstructor() {
+
+        /* Remove active */
+
+        images.forEach((image) => {
+            image.classList.remove("active");
+        });
+
+        details.forEach((detail) => {
+            detail.classList.remove("active");
+        });
+
+        philosophies.forEach((philosophy) => {
+            philosophy.classList.remove("active");
+        });
+
+
+        /* Next instructor */
+
+        currentIndex++;
+
+        if (currentIndex >= images.length) {
+            currentIndex = 0;
+        }
+
+
+        /* Activate */
+
+        images[currentIndex].classList.add("active");
+
+        if (details[currentIndex]) {
+            details[currentIndex].classList.add("active");
+        }
+
+        if (philosophies[currentIndex]) {
+            philosophies[currentIndex].classList.add("active");
+        }
+
+    }
+
+
+    /* Change every 3 seconds */
+
+    setInterval(changeInstructor, 3000);
+
+});

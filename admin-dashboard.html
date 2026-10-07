@@ -7,7 +7,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>ZENORA YOGA — Admin Dashboard</title>
+    <title>Admin Dashboard</title>
 
     <!-- =========================================================
          GOOGLE FONTS
@@ -2437,6 +2437,24 @@
             font-size: 10px;
         }
 
+        .brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    display: block;
+    width: 120px;
+    height: 82px;
+    flex-shrink: 0;
+}
+
+.brand-logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
     </style>
 </head>
 
@@ -2476,18 +2494,11 @@
 
         <!-- BRAND -->
 
-        <div class="brand">
-
-            <div class="brand-mark">
-                <i class="fa-solid fa-spa"></i>
-            </div>
-
-            <div class="brand-copy">
-                <strong>ZENORA</strong>
-                <span>YOGA ADMIN</span>
-            </div>
-
-        </div>
+       <div class="brand">
+    <a href="admin-dashboard.html" class="brand-logo" aria-label="ZENORA">
+        <img src="assets/logo.webp" alt="ZENORA">
+    </a>
+</div>
 
 
         <div class="sidebar-label">
@@ -2565,7 +2576,7 @@
                 >
 
                 <div>
-                    <strong>Zenora Admin</strong>
+                    <strong> Admin</strong>
                     <span>Center Administrator</span>
                 </div>
 
@@ -2573,7 +2584,7 @@
 
 
             <a
-                href="404.html"
+                href="index.html"
                 class="logout-link"
             >
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
