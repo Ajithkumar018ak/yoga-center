@@ -2447,9 +2447,9 @@
 
             <div class="topbar-left">
 
-                <h1 id="topTitle">
-                    Good Morning, USERS
-                </h1>
+               <h1 id="topTitle">
+    Good Morning, <span id="userName">USER</span>
+</h1>
 
                 <p id="topSubtitle">
                     Take a moment to breathe, move and reconnect with yourself.
@@ -5875,6 +5875,20 @@
 
     });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const userNameElement = document.getElementById("userName");
+
+    if (!userNameElement) return;
+
+    const userName = sessionStorage.getItem("auraUserName");
+
+    if (userName) {
+        userNameElement.textContent = userName;
+    }
+
+});
 </script>
 
 </body>
